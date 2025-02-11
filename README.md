@@ -12,6 +12,11 @@ Me ajudem com o titulo:
 
 Alguma outra combinação?
 
+TODO:
+
+- [ ] baixar plugin corretor ortografico IDE
+- [ ] corrigir duvidas de estilo e traducao
+
 # O projeto
 
 Me chamo Carol, sou engenheira de software há pouco mais de 2 anos. [Migrei de carreira](https://www.youtube.com/watch?v=vF2PPVPYf4k) vindo de uma área totalmente diferente e, como muitas pessoas na área, vivo quase que diariamente a síndrome do impostora. Dentre as muitas crises, eu venho tentando ler o livro Clojure for the Brave and True, e por diversas vezes, falhei em continuar. 

@@ -47,5 +47,60 @@ Ter um curto ciclo de feedback é crucial para o aprendizado. Neste capitulo ire
 ## Parte II - Fundamentos da Linguagem
 Esses capitulos irao te dar uma base solida para seguir aprendendo Clojure. Você começará aprendendo os conceitos básicos do Clojure (sintaxe, semântica e estruturas de dados) de forma a poder fazer algumas coisas. Então, você dará um passo para trás para examinar em detalhes as funções mais usadas do Clojure e aprenderá como resolver problemas com elas usando a mentalidade da programação funcional.
 
-TIME IS UP, SEE YOU NEXT WEEK!
-O TEMPO ACABOU, VEJO VOCÊS NA SEMANA QUE VEM!
+### *Capítulo 3: Faça coisas: Intensivão de Clojure*
+É aqui que você começará a realmente se aprofundar no Clojure. É também onde você precisará fechar suas janelas porque começará a gritar: "NUH, ISSO É LINDIMAIS SÔ!" do fundo da sua alma e não vai parar até chegar ao índice(?) deste livro.  
+
+Sem sombra de dúvida você já ouviu falar do incrível suporte a concorrência  e outros recursos estupendos do Clojure, mas a característica mais marcante do Clojure é que ele é um Lisp. Você explorará esse núcleo do Lisp, que é composto de duas partes: funções e dados.
+
+### *Capítulo 4: Funções principais em profundidade*
+Neste capítulo, você aprenderá sobre alguns conceitos mais aprofundados do Clojure. Isso lhe dará a base necessária para ler a documentação de funções que você ainda não terá usado e entender o que acontece quando você as experimenta.  
+
+Você também verá exemplos de uso das funções que você vai usar mais. Isso lhe dará uma base sólida para escrever seu próprio código e para ler e aprender com os projetos de outras pessoas. E lembra que eu falei sobre perseguir vampiros purpurinados? Você fará isso neste capítulo (a menos que você já faça isso no seu tempo livre).
+
+### *Capítulo 5: Programação Funcional*
+Neste capítulo, você usará sua experiência concreta com funções e estruturas de dados e a integrará a uma nova mentalidade: a mentalidade de programação funcional. Você vai esbanjar conhecimento construindo o mais novo e mais intenso jogo que está dominando a nação: Peg Thing! (Pregador Mania(?))
+
+### *Capítulo 6: Organizando seu projeto: Um conto de um bibliotecário*
+Este capítulo explica o que são namespaces e como usá-los para organizar seu código. Não quero revelar muito, mas também envolve um ladrão de queijo internacional.
+
+### *Capítulo 7: Alquimia do Clojure: Leitura, Avaliação e Macros*
+Neste capítulo, daremos um passo para trás e descreveremos como o Clojure executa seu código. Isso lhe dará a estrutura conceitual necessária para realmente entender como o Clojure funciona e como ele é diferente de outras linguagens não Lisp. Com essa estrutura bem estabelecida, irei apresentar a macro, uma das ferramentas mais poderosas que existe!
+
+### *Capítulo 8: Criando Macros*
+Este capítulo examina detalhadamente como escrever macros, começando com exemplos básicos e avançando em complexidade. Você encerrará colocando sua cartola mágica, imaginando que administra uma loja de poções online e usando macros para validar os pedidos dos clientes.
+
+## Parte III: Tópicos avançados
+Esses capítulos abordam os tópicos super-ultra divertidos do Clojure: concorrência, interoperabilidade com Java e abstração. Embora você possa escrever programas sem entender essas ferramentas e conceitos, eles são intelectualmente recompensantes e lhe dão um poder tremendo enquanto profissional dos códigos. Um dos motivos pelo qual as pessoas dizem que aprender Clojure te faz programar melhor é o que torna os conceitos abordados nesses capítulos fáceis de entender e práticos de usar.
+
+### *Capítulo 9:A Sagrada Arte da Programação Concorrente e Paralela*
+
+Neste capítulo, você aprenderá o que são concorrência e paralelismo e por que eles são importantes. Você aprenderá sobre os desafios que enfrentará ao escrever programas paralelos e sobre como o design do Clojure ajuda a mitigá-los. Você usará futures, delays e promises (?) para escrever programas paralelos com segurança.
+
+### *Capítulo 10: Metafísica do Clojure: Átomos, Refs, Vars e Zumbis do Cafuné*
+Este capítulo entra em bastante detalhes sobre a abordagem do Clojure para gerenciar estado e como isso simplifica a programação concorrente. Você aprenderá como usar átomos, refs e vars, três construções para gerenciar o estado, e aprenderá como fazer computação paralela sem estado com pmap. E, sim, teremos Zumbis do Cafuné.
+
+### *Capítulo 11: Dominando Processos Simultâneos com core.async*
+Neste capítulo, você vai refletir sobre a ideia de que tudo no universo é uma máquina de self-service de cachorro-quente. Com isso, quero dizer que você aprenderá a modelar sistemas de processos de execução independente que se comunicam entre si por canais usando a biblioteca core.async.
+
+### *Capítulo 12: Trabalhando com a JVM*
+Este capítulo é como um cruzamento entre um livro de expressões e uma introdução cultural à Terra do Java. Ele fornece uma visão geral do que é a JVM, como ela executa programas e como compilar programas com ela. Ele também fornece um breve tour pelas classes e métodos Java mais usados ​​e explica como interagir com eles a partir do Clojure. Mais do que isso, ele mostra como pensar e entender Java para que você possa incorporar qualquer biblioteca Java ao seus programas em Clojure.
+
+### *Capítulo 13: Criando e Estendendo Abstrações com Multimétodos, Protocolos e Registros(?)*
+No Capítulo 4, você aprendeu que Clojure é escrito em termos de abstrações. Este capítulo serve como uma introdução ao mundo da criação e implementação de suas próprias abstrações. Você aprenderá os conceitos básicos de multimétodos, protocolos e registros(?).
+
+
+### *Apêndice A: Construindo e desenvolvendo com Leiningen*
+Este apêndice esclarece alguns dos pontos mais sutis do trabalho com Leiningen, como o que é Maven e como descobrir os números de versão das bibliotecas Java para que você possa utilizá-las.
+
+### *Apêndice B: Boot, o Framework chiquérrimo para Clojure Build*
+Boot é uma alternativa ao Leiningen que fornece a mesma funcionalidade, mas com o bônus adicional de que é mais fácil estender e escrever tarefas combináveis. Este apêndice explica os conceitos mais aprofundados do Boot e te orienta na escrita de suas primeiras tarefas.
+
+# O Código
+Você pode baixar todo o código-fonte do livro em http://www.nostarch.com/clojure/. O código está organizado por capítulo.
+
+O Capítulo 1 descreve as diferentes maneiras de executar o código Clojure, incluindo como usar um REPL. Recomendo executar a maioria dos exemplos no REPL conforme você os encontrar, especialmente nos Capítulos 3 a 8. Isso te ajudará a se acostumar a escrever e entender o código Lisp, e te ajudará a reter tudo o que está aprendendo. Mas para os exemplos longos, é mais recomendável escrever seu código em um arquivo e, em seguida, executá-lo no REPL.
+
+# A Jornada Está Começando!
+Você está pronto ou pronta, valente leitor(a)? Você está pronto para encontrar seu verdadeiro destino? Pegue seu melhor par de parênteses: você está prestes a embarcar na jornada de uma vida!
+
+Construindo, Executando e o REPL →

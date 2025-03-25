@@ -68,6 +68,81 @@ Este comando deverá criar uma estrutura de pastas semelhante a esta (não tem p
 | | clojure_noob
 | | | core_test.clj
 
-Este esqueleto de projeto não é inerentemente especial ou Clojuristico. É apenas uma convenção usada pelo Leiningen. Você usará Leiningen para construir e executar aplicativos Clojure, e o Leiningen espera que seu aplicativo tenha essa estrutura. O primeiro arquivo para tomar nota é o *project.clj* ➊, que é um arquivo de configuração para Leiningen. Ele ajuda o Leiningen a responder perguntas como "Quais dependências este projeto tem?" e "Quando este programa Clojure é executado, qual função deve ser executada primeiro?" Em geral, você salvará seu código-fonte em *src/<project_name>* . Neste caso, o arquivo *src/clojure_noob/core.clj* ➌ é onde você escreverá seu código Clojure, para começar. O diretório de teste ➍ obviamente contém testes, e *resources* em ➋ é onde você armazena recursos como imagens, por exemplo.
+Este esqueleto de projeto não é inerentemente especial ou Clojuristico. É apenas uma convenção usada pelo Leiningen. Você usará Leiningen para construir e executar aplicativos Clojure, e o Leiningen espera que seu aplicativo tenha essa estrutura. O primeiro arquivo para tomar nota é o *project.clj* ➊, que é um arquivo de configuração para Leiningen. Ele ajuda o Leiningen a responder perguntas como "Quais dependências este projeto tem?" e "Quando este programa Clojure é executado, qual função deve ser executada primeiro?" Em geral, você salvará seu código-fonte em *src/<project_name>* . Neste caso, o arquivo *src/clojure_noob/core.clj* ➌ é onde você escreverá seu código Clojure, para começar. O diretório de teste ➍ obviamente contém testes, e *resources* em ➋ é onde você armazena recursos como imagens.
+
+## Executando um projeto em Clojure
+
+
+Agora vamos de fato executar o projeto. Agora abra o *src/clojure_noob/core.clj* no seu editor favorito. Você deve ver isso:
+
+```
+➊ (ns clojure-noob.core
+  (:gen-class))
+
+➋ (defn -main
+  "Eu nao faço quase nada..."
+  [& args]
+➌   (println "Hello, World!"))
+
+```
+As linhas no ➊ declaram o namespace. Na qual você não precisa se preocupar agora. A funcao main ➋ é o ponto de entrada do seu programa, um topico que sera abordado no Apendice A. Por agora troque o texto ```"Hello, World!"``` do ➌ por ```"Sou uma chaleirinha"```. A linha inteira ```(println "Sou uma chaleirinha")```.
+
+Em seguida, navegue para o diretorio clojure.noob no seu terminal e dê enter:
+
+```lein run```
+
+E voce deverá ver a saida **"Sou uma chaleirinha"** .
+Parabéns, Chaleirinha. Você escreveu e executou o programa.
+
+Você aprenderá mais sobre o que de fato aconteceu agora no programa de acordo com o que voce for lendo o livro. Mas por agora, tudo que voce precisa saber e que voce criou uma funcao ```-main``` e essa funcao executou quando voce digitou o comando lein run no terminal. 
+
+## Construindo um projeto Clojure
+
+Usar lein run é otimo para testar coisas, mas e se voce quiser compartilhar seu trabalho com pessoas que nao tem o Leiningen instalado?  Para fazer isso voce pode criar um arquivo independente que qualquer pessoa com Java instalado (que basicamente todo mundo tem) consegue executar. Para criar esse arquivo execute isto:
+
+``` lein uberjar``` 
+
+Esse comando cria o arquivo *target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalone.jar.* e voce pode fazer o Java executa-lo ao rodar isso:
+ ``` java -jar target/uberjar/clojure-noob-0.10-SNAPSHOT-standalone.jar ```
+
+Veja isso! O arquivo *target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalone.jar.* é o seu novo e premiado programa Clojure o qual voce consegue distribuir e rodar em quase qualquer plataforma. 
+
+Basicamente agora voce tem  todos as informacoes para construir, executir e distribuir programas clojures (bem) basicos.
+
+Nos proximos capitulos voce aprenderá mais sobre o que o Lein está fazendo enquanto voce executou os comandos anteriores, ganhando um entendimento completo da relacao do Clojure com a JVM e como voce pode executar codigos em producao.
+
+Antes de voce ir para o capitulo 2 e discutir as glorias e as maravilhas do Emacs vamos a outra importante ferramenta: o REPL.
+
+## Usando o REPL
+
+O REPL é uma ferramenta para experimentar o codigo. Ele te permite interagir com um programa em execucao e rapidamente testar ideas. Ele faz isso ao te disponibilizar um prompt para execucao de codigo. Ele lê seu input, o avalia, imprime o resultado e faz um loop disponibilizando o prompt novamente.
+
+Esse processo permite um ciclo de feedback rapido que nao seria possivel na maioria das outras linguagens. Eu fortemente recomendo que voce use o REPL com frequencia, porque voce sera capaz de checar seu entendimento do Clojure enquanto você aprende. Alem disso o desenvolvimento usando o REPL é uma parte essencial da experiencia Clojure, e voce estaria perdendo muito se nao usa-lo. 
+
+Para iniciar o REPL execute isso
+
+``` lein repl```
+
+A saída(? ver padronizacao) deverá ser parecer com isso:
+
+``` 
+nREPL server started on port 28925
+REPL-y 0.1.10
+Clojure 1.9.0
+    Exit: Control+D or (exit) or (quit)
+Commands: (user/help)
+    Docs: (doc nome-da-funcao-aqui)
+          (find-doc "parte-do-nome-aqui")
+  Source: (source nome-da-funcao-aqui)
+          (user/magia nome-da-funcao-aqui)
+ Javadoc: (javadoc java-object-ou-classe-aqui)
+Examples from clojuredocs.org: [clojuredocs or cdoc]
+          (user/clojuredocs nome-aqui)
+          (user/clojuredocs "ns-aqui" "nome-aqui")
+clojure-noob.core=>
+
+```
+
+
 
 

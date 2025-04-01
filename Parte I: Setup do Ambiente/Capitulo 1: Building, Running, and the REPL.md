@@ -123,7 +123,7 @@ Para iniciar o REPL execute isso
 
 ``` lein repl```
 
-A saída(? ver padronizacao) deverá ser parecer com isso:
+A saída (? ver padronizacao) deverá ser parecer com isso:
 
 ``` 
 nREPL server started on port 28925
@@ -143,6 +143,68 @@ clojure-noob.core=>
 
 ```
 
+A ultima linha ``` clojure-noob.core=>``` , te diz que voce está no namespace clojure-noob.core. Voce aprender sobre namespaces depois, mas note que o namespace basicamente corresponde o arquivo src/clojure_noob/core/clj tambem note que o REPL mostra a versao do Clojure 1.9.0 mas como mencionado antes tudo funcioará normalmente independentemente da versao que voce usar. 
+
+O prompt tambem indica que seu codigo está carregado no REPL, e voce pode executar as funcoes que foram definidas. Por agora so temos uma funcao ```-main``` definida. Vá em frente e execute isso:
+
+```
+clojure-noob.core=> (-main)
+"Sou uma chaleirinha"
+nil
+```
+
+Bom trabalho! Voce acabou de usar o REPL para avaliar a chamada da funcao -main.
+Tente algumas outras funcoes basicas de Clojure:
+
+```
+clojure-noob.core=> (+ 1 2 3 4)
+10
+clojure-noob.core=> (* 1 2 3 4)
+24
+clojure-noob.core=> (first [1 2 3 4])
+1
+```
+
+Incrivel! Voce somou alguns numeros, multiplicou alguns numeros e pegou o primeiro elemento de um vetor. Voce tambem teve seu primeiro encontro com a estranha sintaxe de Lisp! Todos os Lisps, incluindo o Clojure, empregam a notacao de prefixo, isto signifca que o operador sempre vem primeiro em uma expressao. Se voce tem duvida do que isso significa, nao se preocupe, voce aprendara sobre a sintaxe do Clojure logo mais. 
+
+Conceitualmente o REPL é similar a um SSH (Secure Shell). Da mesma maneira que voce pode usar o SSH para interagir com um servidor remoto o REPL do Clojure permite que voce interaja com o processo do Clojure em execucao. Esta funcionalidade é bastante poderosa porque voce pode ate mesmo anexar em REPL a um aplicativo ativo em producao, e modificar seu programa enquanto ele esta sendo executado. Por agora voce usara o REPL para para construir seu conhecimento da sintaxe e da semantica do Clojure. 
+
+Mais uma coisa: mais pra frente este livro apresentara codigos sem prompt do REPL, mas por favor sempre experimente executar o codigo. Segue um exemplo:
+
+```
+(do (println "sem prompt aqui!")
+   (+ 1 3))
+; => sem prompt aqui!
+; => 4
+```
+
+Quando voce ver um trecho de codigo como este , as linhas que comecam com ;=> indicam que o output do codigo que esta sendo executado. Neste caso, a frase ```sem prompt aqui``` deve ser exibida e o valor de retorno do codigo é 4. 
+
+## Editores de Clojure
+
+A essa altura voce devera ter o conhecimento basico que voce precisa para aprender Clojure sem ter que se meter com um editor ou IDE (integrated development environment - ambiente de desenvolviment integrado). Mas se voce de fato quiser um bom tutorial de um poderoso editor, o capitulo cobre Emacs, o editor mais popular entre os Clojuristas. Voce absolutamente nao precisa usar Emacs para desenvolvimento em Clojure, mas o Emacs oferece uma integracao muito boa com o REPL do Clojure e é muito adequado para escrever codigos Lisp. O que é mais importante, porem, é usar o que funcionar para você.
+
+Se Emacs nao for sua praia, seguem alguns materiais sobre editores e IDEs para desenvolver Clojure:
+
+- Esse video do YouTube te mostrara como configurar o Sublime Text 2 para o desenvolvimento  em Clojure: http://www.youtube.com/watch?v=wBl0rYXQdGg/.
+- Vim tem boas ferramentas para o desenvolvimento  em Clojure. Este artigo é um bom comeco: http://mybuddymichael.com/writings/writing-clojure-with-vim-in-2013.html.
+- Counterclockwise é um plugin altamente recomendado para Eclipse: https://github.com/laurentpetit/ccw/wiki/GoogleCodeHome.
+- Cursive Clojure é a IDE recomendada para quem usa IntelliJ: https://cursiveclojure.com/
+- Nightcode é uma IDE simples e gratuita escrita em Clojure: https://github.com/oakes/Nightcode/.
+
+(?) biscoito para nosso colega BR ? (definir se autor autoriza)
+https://plugins.jetbrains.com/plugin/22489-clojure-lsp 
 
 
+## Summary
 
+Estou muito orgulhoso de você, querida Chaleirinha. Voce executou o seu primeiro programa Clojure! Nao apenas, voce comecou a se familiarizar com o REPL, uma das ferramentas mais importantes para desenvolver programas Clojure. Incrivel, isto me faz lembrar dos versos imortais de *Long Live* (Vida Longa), de umas das minhas heroinas pessoais preferidas:
+
+
+You held your head like a hero - Você manteve sua cabeca erguida como um heroi
+On a history book page         - em um pagina de um livro de historia    
+It was the end of a decade     - esse foi o fim de uma decada  
+But the start of an age        - mas o inicio de uma era.  
+                         —Taylor Swift
+
+Bravo!

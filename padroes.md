@@ -1,4 +1,5 @@
 (?) - definicao para voltar para revisar 
+buffer - manter em inglês
 input - manter em ingles - entrada
 output - manter em ingles - saida
 run - traduzir pois em portugues faz sentido - executar

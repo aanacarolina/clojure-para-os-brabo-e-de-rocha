@@ -26,22 +26,22 @@ Seja bem vindo ao culto do Emacs! Você deixou o Richard Stallman orgulhoso!
 
 ## Configurações
 
-Eu criei um repositorio com todos os arquivos que você precisa para configurar o Emcas para clojure que está disponível em [https://github.com/flyingmachine/emacs-for-clojure/archive/book1.zip](https://github.com/flyingmachine/emacs-for-clojure/archive/book1.zip)
+Eu criei um repositorio com todos os arquivos que você precisa para configurar o Emacs para clojure que está disponível em [https://github.com/flyingmachine/emacs-for-clojure/archive/book1.zip](https://github.com/flyingmachine/emacs-for-clojure/archive/book1.zip)
 
-Observação: Essas ferramentas sao constamente atualizadas.Entao se as instruções abaixo nao funcionarem para voce ou se voce quiser utilizar a ultima instrução, por favor leia a instrução em
+Observação: Essas ferramentas sao constamente atualizadas. Então se as instruções abaixo nao funcionarem para voce ou se voce quiser utilizar a ultima instrução, por favor leia a instrução em
 [https://github.com/flyingmachine/emacs-for-clojure/.](https://github.com/flyingmachine/emacs-for-clojure/.)
 
 Faça o seguinte para deletar a configuração existente do seu Emacs e instale a a configuração amigavel ao Clojure. 
 
 1. Feche o Emacs
-2. Delete o arquivo *~/.emacs OU ~/.emacs.d* se eles existirem (usuários de Windows, seu arquivo de Emcs está em *C:\Users\your_user_name\AppData\Roaming*.) Este é o local onde ficam os arquivos de configuração do Emcas e deletando estes arquivos e diretorios voce tera certeza de estará iniciando com uma folha em branco.
+2. Delete o arquivo *~/.emacs OU ~/.emacs.d* se eles existirem (usuários de Windows, seu arquivo de Emacs está em *C:\Users\your_user_name\AppData\Roaming*.) Este é o local onde ficam os arquivos de configuração do Emacs e deletando estes arquivos e diretorios voce tera certeza de estará iniciando com uma folha em branco.
 3. Baixe o arquivo de configuração citado no item 1 e descompacte-o. No conteúdo deverá ter uma pasta *emacs-for-clojure-book1* . Execute o comando *mv path/to/emacs-for-clojure-book1 ~/.emacs.d.*
 4. Abra o Emacs.
 Quando voce abrir o Emacs, você verá muita atividades, pois ele estára baixando um monte de pacotes úteis. Quando esta atividades terminarem, feche e abra o Emacs novamente. (Se não tiver nenhuma atividade rolando, não tem problema, feche e abra o Emacs por diversão mesmo.) Apos ter feito isso você deverá ver uma janela como na Imagem 2-3, abaixo. 
 
 ![img2-3.png](../imagens/img2-3.png)
 
-Agora que já temos tudo configurado. Vamos aprendar como usar o Emacs!
+Agora que já temos tudo configurado. Vamos aprender como usar o Emacs!
 
 ## (?) Escotilha de Fuga do Emacs
 
@@ -65,6 +65,7 @@ Apos executar essa sequence de teclas, voce verá um prompt na parte inferior de
 
 ![img2-5.png](../imagens/img2-5.png)
 
-*Imagem 2-5: O minibuffer é onde o Emacs fornece um prompt para a entrada de dados.
+*Imagem 2-5: O minibuffer é onde o Emacs fornece um prompt para a entrada de dados.*
 
 
+(?) TODO - iremos fazer o resto desta tradução ao final com google translate e depois somente revisar, dado que em termos de conteúdo nao engrandece muitos as sessões e o conteúdo é muito extenso.

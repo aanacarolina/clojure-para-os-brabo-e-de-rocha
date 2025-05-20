@@ -1,4 +1,6 @@
 (?) - definicao para voltar para revisar 
+revisar markdown para acessibilidade
+
 buffer - manter em inglês
 input - manter em ingles - entrada
 output - manter em ingles - saida

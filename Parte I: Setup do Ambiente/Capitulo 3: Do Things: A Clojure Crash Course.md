@@ -32,5 +32,71 @@ O teu código raramente irá ter valores literais boiando soltos, pois obviament
 ```clojure
 (operator operand1 operand2 ... operandn)
 ```
+Perceba que não tem virgulas. O Clojure usa espaços para separar operandos e trata virgulas como se fossem espacos em branco. Seguem algumas operações de exemplo:
+
+```clojure
+(+ 1 2 3)
+; => 6
+
+(str "It was the panda " "in the library " "with a dust buster")
+; => "It was the panda in the library with a dust buster"
+```
+
+Na primeira operação, o operador _*_ soma os operandos *1*, *2* e *3*. Na segunda operação, o operador *str* concatena três _strings_ para formar uma nova _string_. Ambas formas são válidas. Segue ai algo que não é uma forma porque nao tem um parenteses sendo fechado.
+
+```clojure
+(+
+```
+
+A uniformidade estrutural do Clojure é provavelmente diferente do que você deve ter se acostumado. Em outras linguagens diferentes operações podem ter estruturas diferentes dependendo do operador e dos operandos. Por exemplo, o Javascript utiliza um rodízio de pizzas de notações fixas, operadores de ponto e parenteses:
+
+```javascript
+1 + 2 + 3
+"It was the panda ".concat("in the library ", "with a dust buster")
+```
+
+A estrutura do Clojure é muito simples e consistente em comparação. Nao interessa qual operador voce estiver usando ou o tipo de dados no qual voce estiver operando, a estrutura permanece a mesma.
+
+## Fluxo de Controle
+
+Vamos dar uma olhada em três controles de fluxo basicos: *if*, *do* e *when*.
+Ao longo do livro você encotrará mais outros, mas esses vão dar um gostinho:
+
+# if
+Essa é uma estrutura geral para uma expressão usando *if*:
+```clojure
+(if boolean-form
+  then-form
+  optional-else-form)
+```
+
+(?) revisar se traduzir o codigo
+
+Uma forma Booleana é apenas uma forma que é avaliada para um valor 
+verdadeiro ou falso. Você irá aprender sobre veracidade ou falsidade na proxima seção. Segue mais um par de exemplos de *if*:
+
+```clojure
+(if true
+  "Pelo martelo de Zeus!"
+"Pelo tridente do Aquaman!")
+; => "Pelo martelo de Zeus!"
+
+(if false
+  "Pelo martelo de Zeus!"
+"Pelo tridente do Aquaman!")
+; => "Pelo tridente do Aquaman!"
+```
+(?)
+
+O primeiro exemplo retorna `Pelo martelo de Zeus` porque a forma Booleana é avaliada como `true`, um valor verdadeiro, e o segundo exemplo retorna `Pelo tridente do Aquaman!`porque a forma Booleana é `false`, avaliada como um valor falso.
+
+Você também pode omitir o bloco do `else`. Se você fizer isso e a expressão Booleana for `false, o Clojure retorna `nil`, dessa forma:
+
+```clojure
+(if false
+  "Pelo cotovelo de Odin!")
+; => nil
+```
+
 
 

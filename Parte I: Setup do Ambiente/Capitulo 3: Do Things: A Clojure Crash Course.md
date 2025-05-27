@@ -73,7 +73,7 @@ Essa é uma estrutura geral para uma expressão usando *if*:
 (?) revisar se traduzir o codigo
 
 Uma forma Booleana é apenas uma forma que é avaliada para um valor 
-verdadeiro ou falso. Você irá aprender sobre veracidade ou falsidade na proxima seção. Segue mais um par de exemplos de *if*:
+verdadeiro ou falso. Você irá aprender sobre veracidade ou falsidade na próxima seção. Segue mais um par de exemplos de *if*:
 
 ```clojure
 (if true
@@ -90,7 +90,7 @@ verdadeiro ou falso. Você irá aprender sobre veracidade ou falsidade na proxim
 
 O primeiro exemplo retorna `Pelo martelo de Zeus` porque a forma Booleana é avaliada como `true`, um valor verdadeiro, e o segundo exemplo retorna `Pelo tridente do Aquaman!`porque a forma Booleana é `false`, avaliada como um valor falso.
 
-Você também pode omitir o bloco do `else`. Se você fizer isso e a expressão Booleana for `false, o Clojure retorna `nil`, dessa forma:
+Você também pode omitir o bloco do `else`. Se você fizer isso e a expressão Booleana for falsa, o Clojure retorna `nil`, dessa forma:
 
 ```clojure
 (if false
@@ -98,5 +98,88 @@ Você também pode omitir o bloco do `else`. Se você fizer isso e a expressão 
 ; => nil
 ```
 
+Repare que `if` usa a posição do operando para associar operandos com os blocos `then` e `else`: o primeiro operando é o bloco `then` e o segundo operando é o bloco (opcional) `else`. Como resultado, cada bloco somente possui uma forma. Isso é diferente da maioria das linguagens. Por exemplo, em Ruby você pode escrever o seguinte:
 
+
+```clojure
+if true
+  doer.do_thing(1)
+  doer.do_thing(2)
+else
+  other_doer.do_thing(1)
+  other_doer.do_thing(2)
+end
+```
+
+Para contarnar esse aparente limitação podemos usar o operador `do`.
+
+# do
+O operador `do` nos deixa _envelopar_ multiplas formas nos parenteses e executar cada uma delas. Tente o seguinte no seu REPL:
+
+```clojure
+(if true
+  (do (println "Sucesso total!")
+      "Pelo martelo de Zeus!")
+  (do (println "Errou!")
+      "Pelo tridente do Aquaman!"))
+; => Sucesso total!
+; =>  "Pelo martelo de Zeus!"
+```
+
+Este operador te permite fazer várias coisas em cada expressão do bloco `if`. Nesse caso, duas coisas acontecem:
+`Sucesso total!` é impresso no REPL e  `"Pelo martelo de Zeus!"` é o valor de retorno da expressão `if` inteira.
+
+# when
+
+O operador `when` é como se fosse uma combinação do `if` e `do`, mas sem o bloco do `else`. Segue um exemplo:
+
+```clojure
+(when true
+  (println "Sucesso total!")
+  "abra cadabra")
+; => Sucesso total!
+; => "abra cadabra"
+```
+
+Use o `when` se voce quiser fazer multiplas coisas quando uma condição for verdadeira, e sempre quiser retornar `nil` quando a condição for falsa.
+
+# nil, true, false, veracidade, iqualidade e expressoes Booleanas
+
+O Clojure tem o valores `true` e `falso`. No Clojure o `nil` é usado para indicar _nenhum valor_ . Você pode verificar se um valor é `nil` com a função apropriadamente chamada de `nil?`:
+
+```clojure
+(nil? 1)
+; => false
+
+(nil? nil)
+; => true
+```
+
+Ambos `nil` e `false` são usados para representar falsidade lógica, sendo todos os outros valores logicamente verdadeiros. _Truthy_ e _Falsey_ se referem a como um valor é tratado em uma expressão Booleana, como na primeira expressão que passamos pro `if`:
+
+```clojure
+(if "ursos comem beterraba"
+"ursos beterrabam Battlestar Galactica")
+; => "ursos beterrabam Battlestar Galactica"
+
+(if nil 
+  "Esse não será o resultado porque nil é falsey"
+  "nil é falsey")
+; => "nil é falsey"
+```
+
+No primeiro exemplo, a string `ursos comem beterraba` é considerada _truthy_, então a expressão é avaliada pra `ursos beterrabam Battlestar Galactica`. O segundo exemplo mostra um valor _falsey_ sendo _falsey_.
+
+O operador de igualidade do Clojure é `=`:
+
+```clojure
+(= 1 1)
+; => true
+
+(= nil nil)
+; => true
+
+(= 1 2)
+; => false
+```
 

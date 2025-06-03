@@ -183,3 +183,50 @@ O operador de igualidade do Clojure é `=`:
 ; => false
 ```
 
+Algumas outras linguagens exigem que você utilize diferentes operadores ao comparar valores de diferentes tipos. Por exemplo, talvez você tenha que usar algum tipo especial de operador de igualdade de string, feito especialmente para strings. Mas você nao precisa de nada estranho ou tedioso do tipo para testar a igualdade ao usar as estruturas de dados built-in do Clojure. 
+
+O Clojure usa os operadores Booleanos `or` e `and`. O `or` retorna ou o primeiro valor verdadeiro ou o último valor. O `and` retorna o primeiro valor falso ou, se nenhum valor for falso, o último valor verdadeiro. Vamos ver o `or` primeiro:
+
+```clojure
+(or false nil :grande_quero_dizer_venti :por_que_nao_posso_dizer_grande)
+; => :grande_quero_dizer_venti
+
+(or (= 0 1) (= "sim" "não"))
+; => false
+
+(or nil)
+; => nil
+```
+
+No primeiro exemplo o valor do retorno é `:grande_quero_dizer_venti` porque este é o primeiro valor verdadeiro. O segundo exemplo não possui valor verdadeiro, entao o `or` retorna o ultimo valor, o qual é `false`. No ultimo exemplo, novamente nao existe valor verdadeiro, e o `or` retorna o ultimo valor, o qual é `nil`.  E agora vamos ver o `and`:
+
+```clojure
+(and :wifi_gratis :cafe_quentinho)
+; => :cafe_quentinho
+
+(and :de_boa_na_lagoa nil false)
+; => nil
+```
+
+No primeiro exemplo o `and` retorna o ultimo valor verdadeiro `:cafe_quentinho` No segundo exemplo, `and` retorna `nil`, o qual é o primeiro valor falso. 
+
+## Nomeando valores com def
+
+No Clojure você usa `def` para vincular (`bind`)um nome a um valor 
+
+```clojure
+(def nomes-errados-de-protagonistas
+  ["Larry Potter" "Dorinha a aventureira" "O Incrivel Bulk"])
+
+nomes-errados-de-protagonistas
+; => ["Larry Potter" "Dorinha a aventureira" "O Incrivel Bulk"]
+
+```
+
+Neste caso voce está associando o nome `nomes-errados-de-protagonistas` com um vetor contendo três coisas (você irá aprender sobre vetores em [Vetores na pagina 45](?) TODO add link)).
+
+Note que eu estou usando o termo vincular, onde em outras linguagens você diria que voce está atribuindo (_assigning_) um valor para uma _variável_. Outras linguagens te encorajam a performar multiplas atribuicoes para a mesma variavel.
+
+Por exemplo, em Ruby voce precisa performar varias atribuicoes para uma variavel para estabelecer o seu valor.
+
+

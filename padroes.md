@@ -19,3 +19,11 @@ if - manter em ingles - SE em PT-BR
 when - manter em ingles - QUANDO em PT-BR
 else - manter em ingles - SENÃO em PT-BR
 then - manter em ingles - ENTÃO em PT-BR
+built-in - manter em ingles - integrado em PT
+or - manter em ingles - OU em PT-BR
+and - manter em ingles - E em PT-br
+false - manter em ingles 
+falsey - traduzir para falso 
+true - manter em ingles
+truthy - traduzir para verdadeiro
+associar (`bind`)

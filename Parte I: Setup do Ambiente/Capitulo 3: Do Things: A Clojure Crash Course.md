@@ -230,3 +230,39 @@ Note que eu estou usando o termo vincular, onde em outras linguagens você diria
 Por exemplo, em Ruby voce precisa performar varias atribuicoes para uma variavel para estabelecer o seu valor.
 
 
+```ruby
+severidade = :moderada
+mensagem_de_erro = "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS..."
+if severidade == :moderada
+messagem_de_erro = messagem_de_erro + "MODERADAMENTE INCONVENIENTES"
+else
+mensagem_de_erro = mensagem_de_erro + "LASCADOS!"
+end
+```
+
+Você deve estar tentando a fazer algo similar em Clojure:
+
+```clojure
+(def severidade :moderada)
+(def mensagem_de_erro "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS ")
+(if (= severidade :moderada)
+    (def messagem_de_erro (str messagem_de_erro + "MODERADAMENTE INCOMODADOS"))
+    (def mensagem_de_erro (str mensagem_de_erro + "LASCADOS!")))
+```
+
+Entretanto alterar o valor associado com um nome como este pode dificultar a compreensao do comportamento do seu programa, porque é mais dificil de entender qual valor está associado a um nome ou porque aquele valor tenha sido alterado. O Clojure tem um conjunto de ferramentas para lidar com mudanças, o qual voce ira aprender sobre no capítulo 10. Enquanto voce estiver aprendendo Clojure, voce descobrirá que voce raramente precisa alterar um nome/valor associado. Segue uma maneira de como poderia escrever o codigo anterior:
+
+
+```clojure
+(defn mensagem_de_erro
+  [severidade]
+  (str "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS "
+       (if (= severidade :moderada)
+         "MODERADAMENTE INCOMODADOS"
+         "LASCADOS!")))
+
+(mensagem_de_erro :moderada)
+; => "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS MODERADAMENTE INCOMODADOS!"
+```
+
+Aqui, voce criou uma funcao `mensagem_de_erro`, a qual aceita um unico argumento, `severidade`, e o utiliza para determinar qual string retornará. Vocé, entao, chama a funcao com `moderada` para a severidade. Voce ira aprender tudo sobre criacao de funcao em [functions na pagina 48](?) TODO add link; enquanto isso, voce deve tratar `def` como se tivesse definindo uma constante. Nos proximos capitulos, voce ira aprender como trabalhar com esta, aparente, limitacao ao adotar o paradigma da programacao funcional. 

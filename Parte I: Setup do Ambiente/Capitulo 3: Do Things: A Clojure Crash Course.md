@@ -266,3 +266,40 @@ Entretanto alterar o valor associado com um nome como este pode dificultar a com
 ```
 
 Aqui, voce criou uma funcao `mensagem_de_erro`, a qual aceita um unico argumento, `severidade`, e o utiliza para determinar qual string retornará. Vocé, entao, chama a funcao com `moderada` para a severidade. Voce ira aprender tudo sobre criacao de funcao em [functions na pagina 48](?) TODO add link; enquanto isso, voce deve tratar `def` como se tivesse definindo uma constante. Nos proximos capitulos, voce ira aprender como trabalhar com esta, aparente, limitacao ao adotar o paradigma da programacao funcional. 
+
+# Estrutura de Dados
+
+O Clojure vem com um punhado de estrutura de dados que voce usará na maior parte do tempo. Se voce estiver vindo de uma experiencia de Orientação a Objetos, você ficará surpresa com o quanto voce pode fazer com os tipos, aparentemente, básicos apresentados aqui.
+Todas as estruturas de dados do Clojure são imutáveis, ou seja, não é possível alterá-las diretamente. Por exemplo, em Ruby voce pode reatribuir o nome errado dos protagonistas na posição(?) 0:
+
+``` ruby
+nomes_errados_de_protagonistas = [
+  "Larry Potter", 
+  "Dorinha a aventureira", 
+  "O Incrivel Bulk"
+  ]
+
+nomes_errados_de_protagonistas[0] = "Gary Potter"
+
+nomes_errados_de_protagonistas
+# => [
+#   "Gary Potter",
+#   "Dorinha a aventureira",
+#   "O Incrivel Bulk"
+# ]
+```
+
+O Clojure nao tem um equivalente a isso. Voce aprendera mais sobre o porque o Clojure foi implementado dessa forma no Capitulo 10, mas por enquanto é mais divertido aprender sem todas essas filosofias. Sem mais delongas, vamos ver numeros em Clojure.
+
+# Números
+
+O Clojure tem um suporte para numeros bastante sofisticado. Eu não irei perder muito ficando nesses detalhes tecnicos chatos (como coesão e contágio numérico), porque isso vai nos atrapalhar a fazer as coisas. Se voce tem interesse nesses detalhes chatos, confira a documentação em [https://clojure.org/reference/data_structures#Numbers](https://clojure.org/reference/data_structures#Numbers). Resumindo, o Clojure lida de boa com praticamente qualquer coisa que você jogar pra ele.
+
+Enquanto isso iremos trabalhar com inteiros e casas decimais. Nos tambem iremos trabalhar com frações, no qual o clojure pode representar diretamente. Aqui estão um inteiro, um numero com casas decimais e uma fração, respectivamente:
+
+``` clojure
+93
+1.2
+1/5
+``` 
+

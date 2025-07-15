@@ -27,3 +27,4 @@ falsey - traduzir para falso
 true - manter em ingles
 truthy - traduzir para verdadeiro
 associar (`bind`)
+index - posicao usar em PT

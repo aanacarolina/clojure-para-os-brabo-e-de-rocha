@@ -303,3 +303,95 @@ Enquanto isso iremos trabalhar com inteiros e casas decimais. Nos tambem iremos 
 1/5
 ``` 
 
+# Strings
+
+Strings representam texto!. O nome vem dos antigos Fenícios, que um dia inventaram o alfabeto por conta de um acidente envolvendo um novelo. _(string em inglês significa fio)_ Seguem alguns exemplos de strings literais:
+
+``` clojure
+"Lord Voldemort"
+"\"Aquele que não pode ser nomeado\""
+"\"Grande vaca de Moscou!\" - Hermes Conrad"
+```
+
+Perceba que o Clojure somente permite aspas duplas para delinear strings. 'Lord Voldemort', por exemplo, não é uma string válida. Perceba também que o Clojure não tem interpolação de strings. Ele somente permite concatenação através da função 'str'.
+
+``` clojure
+
+(def nome "Chewbacca")
+(str "\"Uggllglglglglglglglll\" - " nome)
+; => "Uggllglglglglglglglll" - Chewbacca
+```
+
+[Ilustração em preto e branco de um Wookiee, personagem da série Star Wars, com o punho levantado e uma expressão facial feroz. Um balão de fala acima da cabeça exibe o som "Uggllglglglglgl".](wookie.png)
+
+# Mapas
+
+Mapas são semelhantes a dicionários ou hashes em outras linguages. Eles são uma maneira de associar algum valor com outro valor. Os dois tipos de mapas em Clojure são hash maps e sorted maps (mapas ordenados). Irei cobrir apenas o mais basico hash maps. Vamos dar uma olhada em alguns exemplos de mapas literais. Aqui está um mapa vazio:
+
+``` clojure
+{}
+``` 
+
+Neste exemplo, :nome e :sobrenome são keywords (falarei sobre elas na proxima seção):
+
+``` clojure
+{:nome "Carlos"
+ :sobrenome "McPeixe"}
+ ```
+
+Aqui nós associamos a "chave-string" com a função '+' :
+
+{"chave-string" +}
+
+Mapas podem ser aninhados:
+
+``` clojure
+{:nome {:primeiro "João" :meio "Jacó" :ultimo "daSilvaSantos"}}
+```
+
+Perceba que os valores do mapa podem ser de qualquer tipo: strings, numeros, mapas, vetores e até funções. O Clojure não liga!
+
+Além de usar mapas literais, também podemos usar a função hash-map para criar um mapa:
+
+``` clojure
+(hash-map :a 1 :b 2)
+; => {:a 1 :b 2}
+```
+
+Você pode procurar valores em mapas com a função 'get':
+
+``` clojure
+(get {:a 0 :b 1} :b)
+; => 1
+
+(get {:a 0 :b {:c "uh hum"}} :b)
+; => {:c "uh hum"}
+```
+
+Em ambos os exemplos, nós pedimos para o 'get' o valor da chave :b no mapa - no primeiro caso ele retorna 1 e no segundo caso ele retorna o mapa aninhado '{:c "uh hum"}'
+
+'get' irá retornar 'nil' se ele não encontrar a sua chave ou você pode passar um valor de retorno padrão, tipo : "unicórnios?".
+
+``` clojure
+(get {:a 0 :b 1} :c)
+; => nil
+
+(get {:a 0 :b 1} :c "unicórnios?")
+; => "unicórnios?"
+```
+
+A função get-in te permite procurar valores em mapas aninhados:
+
+``` clojure
+(get-in {:a 0 :b {:c "uh hum"}} [:b :c])
+; => "uh hum"
+```
+
+Um outro jeito de procurar um valor em um mapa é tratar o mapa como uma função, usando a chave como seu argumento:
+
+``` clojure
+({:nome "O bule humano"} :nome)
+; => "O bule humano"
+```
+
+Outra coisa legal que você pode fazer com mapas é usar keywords como funções para procurar valores, o que nos leva ao nosso próximo assunto, keywords (palavras-chave).

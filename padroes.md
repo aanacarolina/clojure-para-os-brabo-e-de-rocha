@@ -28,3 +28,5 @@ true - manter em ingles
 truthy - traduzir para verdadeiro
 associar (`bind`)
 index - posicao usar em PT
+string - manter em ingles - significa fio
+keyword - manter em ingles - significa palavra-chave

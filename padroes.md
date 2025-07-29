@@ -27,6 +27,13 @@ falsey - traduzir para falso
 true - manter em ingles
 truthy - traduzir para verdadeiro
 associar (`bind`)
-index - posicao usar em PT
+index - como posicao usar em PT
+index - como indice usar em ingles (?)
 string - manter em ingles - significa fio
 keyword - manter em ingles - significa palavra-chave
+collection - manter em ingles - signifca coleção (estrutura de dados concretas - listas, vetores, mapas)
+sequence - manter em ingles - significa sequencia (são interfaces ordenas e abstratas de uma estrutura de dados) 
+array - usar em portugues - matriz
+lists - usar em portugues. significa lista
+sets - conjuntos - usar em portgues 
+lazy - mantem em ingles - significa preguicosa

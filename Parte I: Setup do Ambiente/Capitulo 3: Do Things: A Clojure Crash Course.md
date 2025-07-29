@@ -395,3 +395,117 @@ Um outro jeito de procurar um valor em um mapa é tratar o mapa como uma funçã
 ```
 
 Outra coisa legal que você pode fazer com mapas é usar keywords como funções para procurar valores, o que nos leva ao nosso próximo assunto, keywords (palavras-chave).
+
+# Keywords 
+
+Para entender melhor as keywords em Clojure é melhor vermos como elas sao usadas. Elas são usadas primariamente em mapas, como voce viu na seção anterior. Seguem alguns exemplos de keywords:
+
+``` clojure
+:a
+:rumplestiltsken
+:34
+:_?
+``` 
+
+As keywords podem ser usadas como funções que procuram o valor correspondente em uma estrutura de dados. Por exemplo, voce pode procurar `:a` em um mapa:
+
+``` clojure
+(:a {:a 1 :b 2 :c 3})
+; => 1
+```
+
+Isso equivale a 
+
+``` clojure
+(get {:a 1 :b 2 :c 3} :a)
+; => 1
+```
+
+Você pode passar uma valor padrão, usando o `get`:
+
+``` clojure
+(:d {:a 1 :b 2 :c 3} "Nenhum gnomo conhece as casas, como o gnomo de jardim Noe")
+; => "Nenhum gnomo conhece as casas, como o gnomo de jardim Noe"
+```
+
+Usar uma keyword como função é prazerosamente sucinto e Clojuristas Reais o fazem sempre. Você deveria fazer também!
+
+# Vetores
+
+Um vetor é parecido com uma matriz, no sentido que é uma collection que começa com indice 0. Por exemplo, segue um vetor literal:
+
+``` clojure
+[3 2 1]
+```
+
+E aqui retornamos o elemento na posicao 0 de um vetor:
+
+``` clojure
+(get [3 2 1] 0)
+; => 3
+```
+
+Segue outro exemplo de get pelo posição:
+
+``` clojure
+(get ["a" {:name "Pugsley Winterbottom"} "c"] 1)
+; => {:name "Pugsley Winterbottom"}
+```
+
+Veja que os elementos de um vetor podem ser de qualquer tipo, e voce pode misturar os tipos. Perceba também que estamos usando a mesma funcao `get` como usamos quando estávamos procurando valores em mapas:
+
+Voce pode criar vetores com a função `vector`:
+
+``` clojure
+(vector "arrepiante" "lua" "cheia")
+; => ["arrepiante" "lua" "cheia"]
+```
+
+Você pode usar a função `conj` para incluir elementos adicionais no vetor. Esses elementos são adicionados no `final` de um vetor:
+
+``` clojure
+(conj [1 2 3] 4)
+; => [1 2 3 4]
+```
+
+Vetores não sao o unico jeito de guardar sequencias; o Clojure também tem listas.
+
+# Listas
+
+Listas são parecidas com vetores, no sentido que elas sao colecoes lineares e valores. Mas tem suas diferencas. Por exemplo, voce nao consegue buscar elementos de uma lista com `get`. Para escrever uma lista literal, basta inserir os elementos entre parenteses e usar aspas simples no começo
+
+``` clojure
+'(1 2 3 4)
+; => (1 2 3 4)
+```
+
+Perceba que quando o REPL imprime a lista, ele nao inclui as aspas simples. Nós voltaremos para explicar porque isso acontece no Capitulo 7. Se voce quiser buscar um elemento de uma lista, voce pode usar a funcao `nth`:
+
+
+``` clojure
+(nth '(:a :b :c) 0)
+; => :a
+
+(nth '(:a :b :c) 2)
+; => :c
+```
+
+Eu não vou cobrir performance em detalhe nesse livro porque eu nao acho que seja util focar nisso até a linguagem se tornar familiar para você. De todo modo, é bom saber que usar `nth` para buscar um elemento de uma lista é mais lento que usar `get` para buscar um elemento de um vetor. Isso se dá porque o Clojure tem que atravessar todos os _n_ elementos de uma lista para achar o _enésimo_  (nth), enquanto que para acessar um elemento de um vetor pelo seu indice bastam algums poucos pulos, na maioria dos casos.
+
+Valores em uma lista poder ser de diferentes tipos e voce pode criar listas com a função `list`:
+
+``` clojure
+(list 1 "two" {3 4})
+; => (1 "two" {3 4})
+```
+
+Os elementos são adicionados no _começo_ de uma lista:
+
+```clojure
+(conj '(1 2 3) 4)
+; => (4 1 2 3)
+```
+
+Quando voce deve usar uma lista e quando deve usar um vetor? Uma boa regra geral é que se voce precisa adicionar itens facilmente no inicio de uma sequencia ou se voce estiver escrevendo uma macro, voce deverá usar uma lista. Do contrario, use um vetor. De acordo com que voce for aprendendo mais, voce vai comecar a ter uma boa nocao de quando usar qual.
+
+# Conjuntos 

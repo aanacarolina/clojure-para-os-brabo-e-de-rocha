@@ -509,3 +509,73 @@ Os elementos são adicionados no _começo_ de uma lista:
 Quando voce deve usar uma lista e quando deve usar um vetor? Uma boa regra geral é que se voce precisa adicionar itens facilmente no inicio de uma sequencia ou se voce estiver escrevendo uma macro, voce deverá usar uma lista. Do contrario, use um vetor. De acordo com que voce for aprendendo mais, voce vai comecar a ter uma boa nocao de quando usar qual.
 
 # Conjuntos 
+
+Conjuntos são collections de valores únicos. O Clojure tem dois tipos de conjuntos: hash e ordenados. Irei focar nos conjuntos hash (hash set) pois eles são usados com mais frequencia. Segue a notação literal de um conjunto hash:
+
+``` clojure
+#{"kurt vonnegut" 20 :icicle}
+```
+
+Você também pode criar um conjunto usando a função hash-set:
+``` clojure
+(hash-set 1 1 2 2)
+; => #{1 2}
+```
+
+Perceba que multiplas instâncias de um valor se torna um unico valor no conjunto, então ficamos com um unico 1 e um unico 2. Se voce tentar adicionar um valor em um conjunto que ja possui aquele valor (como :b no codigo abaixo), ainda assim o conjunto terá apenas um unico elemento desse valor:
+
+``` clojure
+(conj #{:a :b} :b)
+; => #{:a :b}
+```
+
+Você também pode criar conjuntos a partir de vetores e listas existentes usando a função _set_:
+
+``` clojure
+(set [3 3 3 4 4])
+; => #{3 4}
+```
+
+Você pode verificar se um valor pertence a um conjunto usando a função _constains?_, _get_ ou usando uma keyword como função, usando o conjunto como seu argumento. A função _contains?_ retorna true ou false, enquanro que _get_ e buscar por keyword irão retornar o valor, caso exista, ou do contrário, nil. 
+
+Veja como usar _contains?_:
+
+``` clojure
+(contains? #{:a :b} :a)
+; => true
+
+(contains? #{:a :b} 3)
+; => false
+
+(contains? #{nil} nil)
+; => true
+```
+
+Veja como usar uma keyword:
+
+``` clojure
+(:a #{:a :b})
+; => :a
+```
+
+Veja como usar _get_:
+
+``` clojure
+(get #{:a :b} :a)
+; => :a
+
+(get #{:a nil} nil)
+; => nil
+
+(get #{:a :b} "kurt vonnegut")
+; => nil
+```
+
+Perceba que ao usar _get_ para testar se um conjunto contem ou não _nil_ irá sempre retornar _nil_, o que é confuso. A função ```contains?``` pode ser a melhor opção quando você estiver testando especificamente para pertencimento. 
+
+# Simplicity
+
+Você deve ter percebido que o tratamento das estruturas de dados até o momento não incluem a descrição de como criar novos tipos ou classes. O motivo é que a enfase do Clojure em simplicidade encoraja você a utilizar as estruturas de dados nativas primeiro.
+
+
+

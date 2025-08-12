@@ -577,5 +577,11 @@ Perceba que ao usar _get_ para testar se um conjunto contem ou não _nil_ irá s
 
 Você deve ter percebido que o tratamento das estruturas de dados até o momento não incluem a descrição de como criar novos tipos ou classes. O motivo é que a enfase do Clojure em simplicidade encoraja você a utilizar as estruturas de dados nativas primeiro.
 
+Se vocês estiver vindo de um background(?) de programação orientada a objetos, você poderá pensar que essa abordagem é estranha e retrógrado. Entretanto, você descobrirá que seus dados não precisam estar hermeticamente empacotados com um classe para que eles sejam uteis e inteligiveis. Segue um epigrama muito amado pelos Clojuristas para você pegar a visão da filosofia do Clojure:
 
+> É melhor ter 100 funções que operam em uma única estrutura de dados do que 10 funções que operam em 10 estruturas de dados 
+> -Alan Perlis
 
+Você irá aprender mais sobre este aspecto da filosofia do Clojure nos proximos capitulos. Por enquanto, fique atento nas várias maneiras de obter reutilização de codigo ao se ater as estruturas de dados básicas.
+
+Com isso, finalizamos nossa primeira camada de estrutura de dados. Agora é hora de nos aprofundarmos em funções e aprender como usar essas estruturas de dados!

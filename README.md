@@ -43,3 +43,5 @@ Compartilhe este projeto com sua rede de contatos! Quanto mais pessoas souberem 
 
 # Futuro do Projeto
 Ao final das traduções, o plano é criar um projeto colaborativo de front-end e back-end para publicar o site da versão em português, assim como a versão em inglês.
+
+[repo original](https://github.dev/flyingmachine/brave-clojure-web)

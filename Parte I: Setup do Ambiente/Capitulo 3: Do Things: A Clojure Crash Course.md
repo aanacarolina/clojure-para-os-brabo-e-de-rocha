@@ -501,7 +501,7 @@ Valores em uma lista poder ser de diferentes tipos e voce pode criar listas com 
 
 Os elementos são adicionados no _começo_ de uma lista:
 
-```clojure
+``` clojure
 (conj '(1 2 3) 4)
 ; => (4 1 2 3)
 ```
@@ -571,7 +571,7 @@ Veja como usar _get_:
 ; => nil
 ```
 
-Perceba que ao usar _get_ para testar se um conjunto contem ou não _nil_ irá sempre retornar _nil_, o que é confuso. A função ```contains?``` pode ser a melhor opção quando você estiver testando especificamente para pertencimento. 
+Perceba que ao usar _get_ para testar se um conjunto contem ou não _nil_ irá sempre retornar _nil_, o que é confuso. A função _contains?_ pode ser a melhor opção quando você estiver testando especificamente para pertencimento. 
 
 # Simplicity
 
@@ -580,8 +580,76 @@ Você deve ter percebido que o tratamento das estruturas de dados até o momento
 Se vocês estiver vindo de um background(?) de programação orientada a objetos, você poderá pensar que essa abordagem é estranha e retrógrado. Entretanto, você descobrirá que seus dados não precisam estar hermeticamente empacotados com um classe para que eles sejam uteis e inteligiveis. Segue um epigrama muito amado pelos Clojuristas para você pegar a visão da filosofia do Clojure:
 
 > É melhor ter 100 funções que operam em uma única estrutura de dados do que 10 funções que operam em 10 estruturas de dados 
-> -Alan Perlis
+> - Alan Perlis
 
 Você irá aprender mais sobre este aspecto da filosofia do Clojure nos proximos capitulos. Por enquanto, fique atento nas várias maneiras de obter reutilização de codigo ao se ater as estruturas de dados básicas.
 
 Com isso, finalizamos nossa primeira camada de estrutura de dados. Agora é hora de nos aprofundarmos em funções e aprender como usar essas estruturas de dados!
+
+
+# Funções
+
+Uma das razões pela qual as pessoas piram nos Lisps é que essas linguagens te fazem construir programas com comportamentos complexos, mas ainda assim o seu pilar principal-a função- é tão simples. Essa seção faz a sua iniciação para a beleza e elegancia das funcoes Lisp explicando o seguinte:
+
+- Chamada de funcoes
+- Como funcoes diferem de macros e special forms
+- Definicao de funcoes
+- Funcoes anonimas
+- Retornando funcoes
+
+
+## Chamada de funções
+
+Até o momento você ja viu varios exemplos de chamada de funcoes:
+ 
+``` clojure
+(+ 1 2 3 4)
+(* 1 2 3 4)
+(first [1 2 3 4])
+```
+
+Lembre-se que todas as operacoes do Clojure tem a mesma sintaxe: abre parentesis, operador, operandos, fecha parenteses. Chamadas de funcoes é apenas mais um termo para uma operacao, onde o operador é a funcao ou uma expressao de funcao (uma expressao que retorna uma funcao).
+
+Isto te permite escrever alguns codigos bem interessantes. Segue uma expresao de funcao que retorna a funcao + (soma):
+
+``` clojure
+(or + -)
+#object[clojure.core$_PLUS_ 0x1b9c1b51 "clojure.core$_PLUS_@1b9c1b51"]
+```
+
+Esse valor de retorno é a string que representa a funcao de soma. Porque o valor de retorno de OR é o primeiro valor verdadeiro e aqui a funcoao de de soma é verdadeiro, a funcao de soma é retornada. Voce também pode usar essa expressao como operador de outra expressao:
+
+``` clojure
+((or + -) 1 2 3)
+; => 6
+```
+
+Porque (or + -) retorna +, essa expressao é avaliada como a soma de 1, 2 e 3, retornando 6.
+
+Seguem mais dois exemplos de chamada de funcoes válidas que também retornam 6:
+
+``` clojure
+((and (= 1 1) +) 1 2 3)
+; => 6
+
+((first [+ 0]) 1 2 3)
+; => 6
+```
+
+No primeiro exemplo, o valor de retorno de _and_ é o primeiro valor falso ou o primeiro valor verdadeiro. Nesse caso, o + é retornado porque é o ultimo valor verdadeiro, e então é aplicado aos argumentos 1 2 3, retornando 6. No segundo exemplo, o valor de retorno de _first_ é o primeiro elemento de uma sequencia, que é _+_ nesse caso.
+
+Porém, estes não são chamadas de funcao validas, porque numero e strings nao sao funcoes:
+
+``` clojure
+(1 2 3 4)
+("test" 1 2 3)
+```
+
+Se você executar esses exemplos no seu REPL, você receberá uma mensagem mais ou menos assim:
+
+``` clojure
+ClassCastException java.lang.String cannot be cast to clojure.lang.IFn
+user/eval728 (NO_SOURCE_FILE:1)
+```
+ 
+É possivel que você veja esse erro muitas vezes enquanto você continuar usando Clojure: _<x> cannot be cast to clojure.lang.IFn_ simplesmente signifca que voce está tentando usar algo como funcoao quando este algo nao é uma funcao.

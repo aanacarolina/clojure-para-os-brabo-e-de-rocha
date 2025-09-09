@@ -652,4 +652,62 @@ ClassCastException java.lang.String cannot be cast to clojure.lang.IFn
 user/eval728 (NO_SOURCE_FILE:1)
 ```
  
-É possivel que você veja esse erro muitas vezes enquanto você continuar usando Clojure: _<x> cannot be cast to clojure.lang.IFn_ simplesmente signifca que voce está tentando usar algo como funcoao quando este algo nao é uma funcao.
+É possivel que você veja esse erro muitas vezes enquanto você continuar usando Clojure: _<x> cannot be cast to clojure.lang.IFn_ simplesmente signifca que voce está tentando usar algo como funcao quando este algo nao é uma funcao.
+
+
+A flexibilidade das funcoes nao termina com expressoa de funcoes! Sintaticamente, funcoes pode receber quaisquer expressoes como argumento, incluindo outras funcoes. Funcoes que podem tanto receber uma funcao como argumento ou retornar uma funcao sao chamadas de funca de ordem maior. Linguagens de programacao com funcoes de ordem maior sao conhecidas por dar suporte a funcoes de primeira classe, pois voce trata as funcoes como valores da mesmo maneira como voce trata outros tipos de dados como numeros e vetores.
+
+Pegue a funcao map _(nao confudir com map a estrutura de dados)_, por exemplo. map cria uma nova lista ao aplicar a funcao para cada membro de uma colecao. Aqui, a funcao inc  incrementa um numero de 1 em 1:
+
+
+``` clojure
+(inc 1.1)
+; => 2.1
+
+(map inc [0 1 2 3])
+; => (1 2 3 4)
+```
+
+(Perceba que map nao retorna um vetor, apesar de termos passado um vetor como argumento. Voce ira entender porque no Capitulo 4. Por enquanto, confia e trabalha!(?)).
+
+Ao suportar funcoes de primeira classe, o Clojure te permite construir abstracoes mais poderosas em comparacao com  linguagens que nao as tem. Para quem nao for familiarizado com esse modo de programar, pense em funcoes como forma de permitir generalizar operacoes ao inves de estrutura de dados. Por exemplo, a funcao _+_ abstrai adiçao para quaisquer numeros especificos(?).
+
+Por outro lado, o Clojure (e todos os Lisps) te permite criar funcoes que generalizam processos. map te permite generalizar o processo de transformar uma colecao ao aplicar a funcao - qualquer funcao - sobre qualquer colecao.
+
+O ultimo detalhe que voce precisa saber sobre chamda de funcoes e que o Clojure avalia todos os argumentos das funcoes recursivamente antes de passa-los para a funcao. Vejamos como o Clojure avaliaria a chamada de funcao cujos argumentos tambem sao chamadas de funcoes:
+
+``` clojure
+(+ (inc 199) (/ 100 (- 7 2)))
+(+ 200 (/ 100 (- 7 2))) ; avaliou "(inc 199)"
+(+ 200 (/ 100 5)) ; avaliou (- 7 2)
+(+ 200 20) ; avaliou (/ 100 5)
+220 ; avaliou final
+```
+
+A chamada de funcao inicia o processo de avaliacao e todas as subformas sao avaliadas antes de aplicar a funca _+_.
+
+
+## Chamada de funcoes, chamada de Macro e Special Forms
+
+Na seção anterior voce aprendeu que chamada de funcoes sao expressoes que tem a expressao de uma funcao como operador. 
+As outras duas formas de expressao sao chamada de macros e special forms. Voce ja viu algumas special forms: definicoes e expressoes _if_.
+
+Voce ira aprender tudinho sobre chamadas de macro e special forms no Capitulo 7. Para o momento, a principal caracteristica que faz uma special form ser, ora, especial, é que, diferente de outras chamada de funcoes, elas nem sempre avaliam todos os seus operandos.
+
+Pegue o _if_, or exemplo. Este é a sua estrutura geral:
+
+``` clojure
+(if boolean-form
+  then-form
+  optional-else-form)
+
+```
+
+Agora imagine que você tem um _if_ assim:
+
+``` clojure
+(if de-bom-humor
+  (tweet sambinha-raiz)
+  (tweet musicas-de-sofrencia))
+```
+

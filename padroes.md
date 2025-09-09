@@ -12,6 +12,7 @@ namespace - manter em ingles - (?) entender melhor se equivalente classe ou arqu
 IDE - (integrated development environment) usar abreviacao em ingles - ambiente de desenvolviment integrado
 string - manter em ingles
 form - manter em ingles - forma em PT-BR
+special forms - manter em ingles - formas especiais em PT-BR
 expression - manter em ingles - expressao em PT-BR
 https://clojure.org/guides/learn/namespaces
 major - manter em ingles - maior

@@ -711,3 +711,34 @@ Agora imagine que você tem um _if_ assim:
   (tweet musicas-de-sofrencia))
 ```
 
+Obviamente, em um ´if´ como esse, nos queremos que o Clojure avalie apenas uma das duas condições. Se o Clojure avalia ambas chamadas de função de tweet, seus seguimores do Twitter vão ficar um pouco confusos. 
+
+Outra funcionalidade que diferencia as special forms é que você não pode usá-las como argumentos de funções. Em geral, as special forms implementam funcionalidades centrais do Clojure que simplesmente não podem ser implementadas com funções. O Clojure tem poucas special forms e é deveras incrivel que uma linguagem tão rica seja implementada com tão poucos blocos fundamentais.
+
+As macros são parecidas com as special forms, no sentido em que elas avaliam os seus operandos diferentemente das chamadas de função e elas também não podem ser passadas como argumentos de funções. Mas esse desvio já se alongou por demais; é hora de aprender como definir funções!
+
+## Definindo funções
+
+Definições de funções são compostas de 5 partes principais:
+
+- defn
+- nome da função
+- uma docstring descrevendo a função (opcional)
+- parametros listados em colchetes
+- corpo da função
+
+Aqui temos um exemplo de uma definição de função e uma amostra da chamada da função:
+
+```clojure 
+
+➊ (defn super-empolgada
+➋   "Retorna um incentivo que talvez seja um pouco empolgada demais"
+➌   [nome]
+➍   (str "OH. MEU. DEUS! " nome " VOCÊ É ABSULTAMENTE A MELHOR "
+  "HOMEM BARRA MULHER, DE TODOS OS TEMPOS, EU TE AMO E A GENTE DEVERIA FUGIR PRA OUTRO LUGAR"))
+
+(super-empolgada "Zelda")
+; => "OH. MEU. DEUS! " Zelda " VOCÊ É ABSULTAMENTE A MELHOR  HOMEM BARRA MULHER, DE TODOS OS TEMPOS, EU TE AMO E A GENTE DEVERIA FUGIR PRA OUTRO LUGAR"
+```
+
+Em ➊ `super-empolgada` é o nome da função que é seguido pela 

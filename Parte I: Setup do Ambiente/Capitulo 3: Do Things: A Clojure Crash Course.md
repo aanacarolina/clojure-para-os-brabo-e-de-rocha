@@ -741,4 +741,49 @@ Aqui temos um exemplo de uma definição de função e uma amostra da chamada da
 ; => "OH. MEU. DEUS! " Zelda " VOCÊ É ABSULTAMENTE A MELHOR  HOMEM BARRA MULHER, DE TODOS OS TEMPOS, EU TE AMO E A GENTE DEVERIA FUGIR PRA OUTRO LUGAR"
 ```
 
-Em ➊ `super-empolgada` é o nome da função que é seguido pela 
+Na linha ➊ `super-empolgada` é o nome da função, que é seguido pela docstring descritiva na linha ➋. O parametro, nome, é declarado na linha ➌ e o corpo da função, na linha 4, pega o parametro é faz o que promete - retorna uma saudação que talvez seja ligeiramente super empolgada.
+
+Vamos nos aprofundar na docstrings, parametros e corpo da função.
+
+### A docstring
+
+A docstring é uma maneira útil de descrever e documentar seu codigo. Você consegue ver a docstring de uma função no REPL com (doc fn-nome) - por exemplo, (doc map). A docstring também é importante caso você use alguma ferramenta para gerar documentação do seu código.
+
+
+### Parametros e Aridades
+
+As funções do Clojure podem ser definidas com zero ou mais parametros. Os valores que você passa para funções são chamados argumentos, e os argumentos podem ser de qualquer tipo. O número de parametros é a aridade da função. Seguem algumas definições de funções com diferentes aridades:
+
+``` clojure
+(defn sem-parametros
+  []
+  "Eu não tenho paramentros!")
+(defn um-parametro
+  [x]
+  (str "Eu recebo um parametro: " x))
+(defn dois-parametros
+  [x y]
+  (str "Dois parametros! Isso não é nada! Bah! Eu vou destruí-los" 
+  "pra te injuriar! (?) " x y))
+
+```
+
+Nestes exemplos, `sem-parametros` é uma função com aridade 0, `um-parametro` tem aridade 1 e `dois-parametros` tem  aridade 2. 
+
+Funções também suportam sobrecarga de aridade (arity overloading). Isso significa que você pode definir uma função de modo que o corpo da função a ser executado vai depender da aridade. Segue uma forma geral da definição de uma função de multiplas aridades. Perceba que cada definição de aridade está entre parenteses e tem uma lista de argumentos:
+
+``` clojure
+
+(defn multi-aridade
+  ;; Argumento com 3 aridades e corpo da função
+  ([arg-um arg-dois arg-tres]
+     (fazer-coisas arg-um arg-dois arg-tres))
+   ;; Argumento com 2 aridades e corpo da função
+  ([arg-um arg-dois]
+      (fazer-coisas arg-um arg-dois -tres))
+   ;; Argumento com 1 aridade e corpo da função
+  ([first-arg]
+      (fazer-coisas arg-um )))
+```
+
+Sobrecarga de aridade é uma maneira de prover valores padrões para argumentos. No exemplo a seguir "karatê" é o argumento padrão para o parametro `tipo-do-golpe`:

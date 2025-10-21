@@ -782,8 +782,68 @@ Funções também suportam sobrecarga de aridade (arity overloading). Isso signi
   ([arg-um arg-dois]
       (fazer-coisas arg-um arg-dois -tres))
    ;; Argumento com 1 aridade e corpo da função
-  ([first-arg]
+  ([arg-um]
       (fazer-coisas arg-um )))
 ```
 
-Sobrecarga de aridade é uma maneira de prover valores padrões para argumentos. No exemplo a seguir "karatê" é o argumento padrão para o parametro `tipo-do-golpe`:
+Sobrecarga de aridade é uma maneira de prover valores padrões para argumentos. No exemplo a seguir `"karatê"` é o argumento padrão para o parametro `tipo-do-golpe`:
+
+
+``` clojure
+(defn golpe-x
+  "Descrive o tipo de golpe que você vai dar em alguém."
+  ([nome tipo-de-golpe]
+     (str "Eu dou o golpe:" tipo-de-type " em " nome "! Receba!"))
+  ([nome]
+     (golpe-x nome "karate")))
+
+```
+
+Se você chamar `golpe-x` com dois argumentos, a função funciona como deveria se não fosse uma funcao de de multiplas aridades:
+
+```clojure
+(golpe-x "Kanye West" "tapa")
+; => "Eu dou o golpe: tapa em Kanye West! Receba!"
+```
+
+Se você chamar `golpe-x` somente com um argumento, `golpe-x` vai se autochamar com o segundo argumento `karate`que foi definido:
+
+```clojure
+(golpe-x "Kanye West")
+; => "Eu dou o golpe: karate em Kanye West! Receba!"
+```
+![a black and white illustration of Kanye West at a table with some vegetables and pushing a pump dispenser. ](imagens/kanye.png)
+
+Pode parecer nao muito comum definir uma funcao dessa forma, em termos dela mesma. Se sim, ótimo! Isso significa que você está aprendendo uma nova maneira de fazer coisas!  
+
+Você també pode definir que cada aridade faça algo completamente diferente entre si:
+
+```clojure
+
+(defn aridade-estranha
+  ([]
+  "O destino te vestiu essa manhã, meu amigo, e agora o Medo está tentado tirar as suas calças. Se você desistir, se você ceder, você sempre acabará pelado com o Medo rindo das suas vergonhas - O Tick")
+  ([numero]
+     (inc numero)))
+```
+
+O corpo da função de aridade zero retorna uma frase sábia e o corpo de aridade um aumenta o valor em 1 unidade do número. Muito provavelmente você não vai querer escrever uma função assim, porque poderia ser confuso ter dois corpos de  função que são totalmente nao relacionados.
+
+O Clojure também te permite funções com aridades variaveis ao incluir um _parametro rest_, tipo "coloque o _resto_ desses argumentos em uma lista com seguinte nome". O parametro _rest_ é indicado por um "e comercial" (`&`), como vemos no ➊:
+
+
+```clojure
+(defn xingamento-de-velhote
+  [moleque]
+  (str "Saia do meu gramado, " moleque "!!!"))
+
+(defn velhote
+➊   [& moleque]
+  (map xingamento-de-velhote moleque))
+
+(velhote "Cleitn" "'Na Maria" "O Incrivel Bulk")
+; => ("Saia do meu gramado, Cleitin!!!"
+      "Saia do meu gramado, 'Na Maria!!!"
+      "Saia do meu gramado, O Incrivel Bulk!!!")
+
+```` ![A imagem retrata um velhinho rabugento com uma bengala, expressando frustração com a frase "Xinguem tudo até a morte!", e junto dele está um cachorrinho dachshund vestindo um suéter e uma cartola.](imagens/velhinho.png)

@@ -15,3 +15,8 @@ user=>
 
 ClassCastException java.lang.String cannot be cast to clojure.lang.IFn
 user/eval728 (NO_SOURCE_FILE:1)
+
+who is doreen ?
+(favorite-things "Doreen" "gum" "shoes" "kara-te")
+
+fix - Here, the rest parameter unimportant -choices

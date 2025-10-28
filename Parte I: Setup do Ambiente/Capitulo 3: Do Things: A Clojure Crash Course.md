@@ -832,7 +832,7 @@ O corpo da função de aridade zero retorna uma frase sábia e o corpo de aridad
 O Clojure também te permite funções com aridades variaveis ao incluir um _parametro rest_, tipo "coloque o _resto_ desses argumentos em uma lista com seguinte nome". O parametro _rest_ é indicado por um "e comercial" (`&`), como vemos no ➊:
 
 
-```clojure
+``` clojure
 (defn xingamento-de-velhote
   [moleque]
   (str "Saia do meu gramado, " moleque "!!!"))
@@ -845,5 +845,73 @@ O Clojure também te permite funções com aridades variaveis ao incluir um _par
 ; => ("Saia do meu gramado, Cleitin!!!"
       "Saia do meu gramado, 'Na Maria!!!"
       "Saia do meu gramado, O Incrivel Bulk!!!")
+```
 
-```` ![A imagem retrata um velhinho rabugento com uma bengala, expressando frustração com a frase "Xinguem tudo até a morte!", e junto dele está um cachorrinho dachshund vestindo um suéter e uma cartola.](imagens/velhinho.png)
+![A imagem retrata um velhinho rabugento com uma bengala, expressando frustração com a frase "Xinguem tudo até a morte!", e junto dele está um cachorrinho dachshund vestindo um suéter e uma cartola.](velhinho.png)
+
+Como você pode ver, quando você passa argumentos para funções com aridade variável, os argumentos são tratados como uma lista. Você consegue misturar parametros _rest_ com parametros normais, mas os parametros rest tem que vir por ultimo:
+
+``` clojure
+(defn coisas-favoritas
+[nome & coisas]
+(str "Oier, " nome ", aqui estão as minhas coisas favoritas: "
+(clojure.string/join ", " coisas)))
+
+(coisas-favoritas "Dorinha" "chiclete" "sapatos" "kara-tê")
+; => "Oier, Dorinha, aqui estão as minhas coisas favoritas: chiclete, sapatos, kara-tê"
+```
+
+Finalmente, o Clojure tem uma maneira mais sofisticada de definir parametros, chamada _destructuring_ (desestruturação), a qual merece sua própria subseção.
+
+### Destructuring
+
+A idéia basica por trás de _destructuring_ é que ela te permite associar , de forma concisa, valores a nomes dentro de uma coleção. Vejamos um exemplo básico:
+
+
+``` clojure 
+;Retorna o primeiro elemento de uma coleção
+(defn minha-primeira
+[[primeira-coisa]] ; Perceba qie primeira-coisa está dentro de um vetor
+primeira-coisa)
+
+(minha-primeira ["forno" "bicicleta" "machado de guerra"])
+; => "forno"
+```
+
+Aqui, a função `minha-primeira` associar o símbolo `primeira-coisa` com o primeiro elemento do vetor que foi passado como argumento. Você diz para `minha-primeira` fazer isso ao colocar o simbolo dentro de um vetor.
+
+Esse vetor é como um simbolo grandão levantado para o Clojure que diz:“Ei! Esta função vai receber uma lista ou um vetor como argumento. Facilite minha vida desmembrando a estrutura do argumento para mim e associando nomes significativos às diferentes partes do argumento!”. Quando você desestrutura um vetor ou uma lista, você pode nomear quantos elementos quiser e também usar parametros _rest_:
+
+``` clojure
+(defn seletor
+[[primeira-escolha, segunda-escolha e escolhas-desimportantes]]
+(println (str "Sua primeira escolha é: " primeira-escolha))
+(println (str "Sua segunda escolha é: " segunda-escolha))
+(println (str "Estamos ignorando o resto das suas escolhas. "
+"Aqui estão elas, caso você precise chorar por elas: "
+(clojure.string/join ", " escolhas-desimportantes))))
+
+(seletor ["Geleia", "Jack Bonitão", "Chiqueirinho", "Aquaman"])
+; => Sua primeira escolha é: Geleia
+; => Sua segunda escolha é: Jack Bonitão
+; => Estamos ignorando o resto das suas escolhas. Aqui estão elas, caso você precise chorar por elas: Chiqueirinho, Aquaman
+```
+
+Aqui, o parametro _rest_ `escolhas-desimportantes` lida com qualquer numero adicional de escolhas do usuário, após a primeira e segunda.
+
+Você também pode desestruturar mapas. Da mesma maneira que você diz pro Clojure desestruturar um vetor ou lista, fornecendo um vetor como parametro, você desestrutura mapas ao fornecer um mapa como parametro:
+
+``` clojure
+(defn anunciar-localizacao-do-tesouro
+➊   [{lat :lat lng :lng}]
+  (println (str "Lat do tesouro: " lat))
+  (println (str "Lng do tesouro: " lng)))
+
+(anunciar-localizacao-do-tesouro {:lat 28.22 :lng 81.33})
+;"Lat do tesouro: 28.22"
+;"Lng do tesouro: 81.33"
+```
+
+Vamos analisar a linha em ➊ com mais detalhes. É como dizer ao Clojure, "Clojure, mano! Quebra essa pra mim e associe o nome `lat` com o valor correspondente a chave `:lat`. Faz o mesmo pra `lgn` e `:lng`. Flw, vlw!"
+
+

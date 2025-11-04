@@ -914,4 +914,133 @@ Você também pode desestruturar mapas. Da mesma maneira que você diz pro Cloju
 
 Vamos analisar a linha em ➊ com mais detalhes. É como dizer ao Clojure, "Clojure, mano! Quebra essa pra mim e associe o nome `lat` com o valor correspondente a chave `:lat`. Faz o mesmo pra `lgn` e `:lng`. Flw, vlw!"
 
+Com uma certa frequencia a gente so quer separar as keywords de um mapa, então existe uma sintaxe mais curta para isso. Este tem o mesmo resultado que o exemplo anterior:
+
+
+``` clojure
+(defn anunciar-localizacao-do-tesouro
+➊   [{:keys lat lng}]
+  (println (str "Lat do tesouro: " lat))
+  (println (str "Lng do tesouro: " lng)))
+``` 
+
+Você pode reter acesso ao mapa original do argumento usando a keyword `:as`. No exemplo a seguir, o mapa orignal é acessado com `localizacao-do-tesouro`:
+
+```clojure
+(defn receber-localizacao-do-tesouro
+  [{:keys [lat lng] :as localizacao-do-tesouro}]
+  (println (str "Lat do tesouro: " lat))
+  (println (str "Lng do tesouro: " lng))
+
+  ;;Poderia-se supor que isso definiria novas coordenadas para seu navio.
+  (pilotar-navio! localizacao-do-tesouro))
+```
+
+Em geral, você pode pensar em desestruturação como instruir o Clojure em como associkar nomes com valores em uma lista, mapa, conjunto ou vetor. Agora, vamos para a parte da função que de fato faz algo: o corpo da função! 
+
+### Corpo da Função
+
+O corpo da função pode conter qualquer tipo de forma. O Clojure automaticamente retorna a ultima forma avaliada. Este corpo da função contém apenas três formas, e quando você chama a função, ele cospe fora a última forma `"joe"`:
+
+``` clojure
+(defn funcao-ilustrativa
+[]
+
+(+ 1 304)
+30
+"joe")
+
+
+(funcao-ilustrativa)
+; => "joe"
+```
+
+Segue mais outro corpo de função que usa a expressção `if`:
+
+``` clojure
+(defn comentar-numero
+  [x]
+  (if (> x 6)
+    "Minha nossa! Que númerão!"
+    "Esse número é ok, acho..."))
+
+(comentar-numero 5)
+; => "Esse número é ok, acho..."
+
+(comentar-numero 7)
+; => "Minha nossa! Que númerão!"
+
+```
+
+### Todas as funções são criadas iguais
+
+Uma nota final: o Clojure não tem funções privilegiadas. `+` é só uma função, `-`  é só uma função é `inc` e `map`  são só funções. Elas não são melhores do que as funções que você define. Portanto, não deixe que elas te respondam com insolência!
+
+Mais importante ainda, este fato ajuda a demonstrar a simplicidade inerente do Clojure. De um certo modo o Clojure é bem burrinho. Quando você faz uma chamada de função, o Clojure apenas diz "`map`? Claro, que seja! Eu vou só aplicar isso e seguir em frente." Ele não se importa que função seja ou de onde veio; ele trata todas as funções da mesma maneira. No seu cerne, o Clojure não dá a mininma sobre adição, multipliocação ou mapeamento. Ele só se importa em aplicar funções.
+
+À medida que você continua a programar com Clojure, você vai ver que essa simplicidade é ideal. Você não precisa se preocupar com regras ou sintaxes especiais para trabalhar com diferentes funções. Todas funcionam da mesma maneira!
+
+## Funções anônimas
+
+Em Clojure, funções não precisam ter nomes. De fato, você irá usar funções _anônimas_ o tempo todo. Que misterioso! Você pode criar funções anônimas de dois jeitos. A primeira é usar a forma `fn`:
+
+``` clojure
+(fn [lista-de-paramentros]
+corpo da função)
+```
+
+Parece bastante com `defn`né? Vamos tentar dois exemplos:
+
+```clojure 
+(map (fn [nome] (str "Olá, " nome))
+["Darth Vader" "Mr. Magoo"])
+
+; => ("Olá, Darth Vader" "Olá, Mr. Magoo")
+
+((fn [x] (* x 3)) 8)
+; => 24
+```
+
+Você pode tratar `fn` praticamente identicamente da maneira que você trata `defn`. A lista de parametros e corpos da função funcionam exatament da mesma maneira. Você poide usar desestruturação de argumento, parametros rest e por ai vai. Você pode até mesmo associar sua função anonima com um nome, o que não deveria causar surpresa (mas se causou surpresa, bem... Surpresa!):
+
+```clojure
+(def meu-multiplicador-especial (fn [x] (* x 3)))
+(meu-multiplicador-especial 12)
+; => 36
+```
+
+O Clojure também oferece outro jeito mais compacto de criar funções anônimas. Veja como é uma função anônima:
+
+```clojure
+
+#(* % 3)
+```
+
+Nossa, isso parece estranho. Vá em frente e aplique essa função estranha:
+
+```clojure
+(#(* % 3) 8)
+; => 24
+````
+
+Segue um exemplo de como passar uma função anônima como argumento para a função map:
+
+```clojure
+(map #(str "Olá, " %)
+["Darth Vader" "Mr. Magoo"])
+
+; => ("Olá, Darth Vader" "Olá, Mr. Magoo"))
+```
+
+Esse estilo estranhão de escrever funções anônimas é possível através de uma funcionalidade chamada _reader macros_. Você aprenderá sobre elas no Capítulo 7. Por agora é de boa só aprender como usar essas funções anônimas.
+
+Você pode perceber que essa sintaxe é definitivamente mais compacta, mas também um pouco estranha. Vamos ver por parte. Esse tipo de função anônima se parece muito com uma chamada de função, exceto pelo fato de ser precedida por uma cerquilha, `#`:
+
+```clojure
+;; Chamada de função
+(* 8 3)
+
+;; Função anônima
+#(* % 3)
+```
 

@@ -1044,3 +1044,48 @@ Você pode perceber que essa sintaxe é definitivamente mais compacta, mas tamb�
 #(* % 3)
 ```
 
+Essa semelhança permite que você veja mais rapidamente o que acontecerá quando essa função anonima é aplicada. "Oh," você pode dizer para si, "isto irá multiplicar o argumento por três." 
+
+Como você já deve ter adivinhado, o simbolo de porcentagem `%`, indica o argumento passado para a função. Se suas funções anonimas recebem múltiplos argumentos, você pode diferenciá-los dessa forma: `%1`, `%2`, `%3`, e assim por diante. `%` é equivalente a `%1`:
+
+``` clojure 
+(#(str %1 " e " %2) "pão de milho" "feijão manteiga")
+; => "pão de milho e feijão manteiga"
+
+```
+
+
+Você também pode passar parametros _rest_ com `%`:
+
+```clojure 
+(# (identity %1)1 "bleh" :hey)
+; => (1 "bleh" :hey)
+```
+
+Neste caso, você aplicou a função _identity_ ao argumento _rest_. 
+_Identity_ retorna o argumento que é dado sem alterá-lo. Argumentos _rest_ são armazenados como listas, então a aplicação da função retorna uma lista de todos os argumentos.
+
+Se você precisa escrever uma função anônima simples, usar esse estilo é melhor por causa do seu impacto visual. Por outro lado, isso pode facilmente se tornar ilegível se você estiver escrevendo uma função mais longa e mais complexa. Se esse for o caso, use `fn`.
+
+## Retornando Funções
+
+Por agora você já viu que funções podem retornar outra funções. As funções retornadas são _closures_, o que significa que elas podem acessar todas as variáveis que estavam no escopo quando a função foi criada. Aqui está um exemplo padrão:
+
+```clojure
+(defn fazedor-de-soma
+  "Cria um incrementador personalizado"
+  [somar-por]
+  #(+ % somar-por))
+
+(def soma3 (fazedor-de-soma 3))
+
+(soma3 7)
+; => 10
+
+```
+
+Aqui, `somar-por` está no escopo, então a função retornada tem acesso a isso, mesmo quando a função retornada está fora do `fazedor-de-soma`.
+
+## Juntando tudo
+
+Okay! É hora de você usar o seu conhecimento recém adquirido para um nobre propósito: abater hobbits! Para bater em um hobbit, você primeiramente irá modelar as partes do corpo dele. Cada parte do corpo incluirá o seu tamanho relativo para indicar a possibilidade de ela ser atingida. Para evitar repetição, o modelo do hobbit irá incluir apenas entradas para _pé esquerdo_, _orelha esquerda_, e assim por diante. Portanto, você precisará de uma função para simetrizar integralmente o modelo, e criar _pé direito_, _orelha direita_ e assim por diante. Por ultimo, você criará uma função que itera pelas partes do corpo e aleatoriamente escolhe onde atingir. Ao longo do caminho, você aprenderá sobre algumas novas ferramentas do Clojure: expressões `let`, loops e expressões regulares. Que divertido!

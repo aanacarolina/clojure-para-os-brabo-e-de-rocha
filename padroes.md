@@ -39,3 +39,4 @@ lists - usar em portugues. significa lista
 sets - conjuntos - usar em portgues 
 lazy - mantem em ingles - significa preguicosa
 arity overloading - sobrecarga de aridade. usar em portugues
+closure - usar em EN - significa encerramento

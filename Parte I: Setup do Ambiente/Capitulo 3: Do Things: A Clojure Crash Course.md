@@ -448,8 +448,8 @@ E aqui retornamos o elemento na posicao 0 de um vetor:
 Segue outro exemplo de get pelo posição:
 
 ``` clojure
-(get ["a" {:name "Pugsley Winterbottom"} "c"] 1)
-; => {:name "Pugsley Winterbottom"}
+(get ["a" {:nome "Pugsley Winterbottom"} "c"] 1)
+; => {:nome "Pugsley Winterbottom"}
 ```
 
 Veja que os elementos de um vetor podem ser de qualquer tipo, e voce pode misturar os tipos. Perceba também que estamos usando a mesma funcao `get` como usamos quando estávamos procurando valores em mapas:
@@ -1021,7 +1021,7 @@ Nossa, isso parece estranho. Vá em frente e aplique essa função estranha:
 ```clojure
 (#(* % 3) 8)
 ; => 24
-````
+```
 
 Segue um exemplo de como passar uma função anônima como argumento para a função map:
 
@@ -1081,11 +1081,100 @@ Por agora você já viu que funções podem retornar outra funções. As funçõ
 
 (soma3 7)
 ; => 10
-
 ```
-
 Aqui, `somar-por` está no escopo, então a função retornada tem acesso a isso, mesmo quando a função retornada está fora do `fazedor-de-soma`.
 
 ## Juntando tudo
 
 Okay! É hora de você usar o seu conhecimento recém adquirido para um nobre propósito: abater hobbits! Para bater em um hobbit, você primeiramente irá modelar as partes do corpo dele. Cada parte do corpo incluirá o seu tamanho relativo para indicar a possibilidade de ela ser atingida. Para evitar repetição, o modelo do hobbit irá incluir apenas entradas para _pé esquerdo_, _orelha esquerda_, e assim por diante. Portanto, você precisará de uma função para simetrizar integralmente o modelo, e criar _pé direito_, _orelha direita_ e assim por diante. Por ultimo, você criará uma função que itera pelas partes do corpo e aleatoriamente escolhe onde atingir. Ao longo do caminho, você aprenderá sobre algumas novas ferramentas do Clojure: expressões `let`, loops e expressões regulares. Que divertido!
+
+## O proximo top model do Condado dos Hobbits
+
+Para o nosso modelo de hobbit, vamos evitar características como jovialidade e travessura, focando apenas no pequenino corpo do hobbit. Aqui está o modelo do hobbit:
+
+``` clojure
+(def partes-do-corpo-de-hobbit-assimétrico  
+[{:nome "cabeça" :tamanho 3}
+{:nome "olho-esquerdo" :tamanho 1}
+{:nome "orelha-esquerda" :tamanho 1}
+{:nome "boca" :tamanho 1}
+{:nome "nariz" :tamanho 1}
+{:nome "pescoço" :tamanho 2}
+{:nome "ombro-esquerdo" :tamanho 3}
+{:nome "braço-esquerdo" :tamanho 3}
+{:nome "peito" :tamanho 10}
+{:nome "costas" :tamanho 10}
+{:nome "antebraço-esquerdo" :tamanho 3}
+{:nome "abdômen" :tamanho 6}
+{:nome "rim-esquerdo" :tamanho 1}
+{:nome "mão-esquerda" :tamanho 2}
+{:nome "joelho-esquerdo" :tamanho 2}
+{:nome "coxa-esquerda" :tamanho 4}
+{:nome "perna-esquerda" :tamanho 3}
+{:nome "tendão-de-aquiles-esquerdo" :tamanho 1}
+{:nome "pé-esquerdo" :tamanho 2}])
+```
+
+Este é um vetor de mapas. Cada mapa tem o nome da parte do corpo e tamanho relativo à parte do corpo. (Eu sei que só personagens de anime têm olhos com um terço do tamanho da cabeça, mas relevem, tá?)
+
+O que chama a atenção é a ausência do lado direito do hobbit. Vamos arrumar isso. O bloco de código 3-1 é o mais complexo que você já viu até agora, e ele introduz algumas ideias novas. Mas não se preocupe, porque iremos examiná-lo nos mínimos detalhes!
+
+``` clojure
+(defn parte-correspondente)
+[parte]
+{:nome (clojure.string/replace (:nome parte) #"^esquerda-" "direita-")
+ :tamanho (:tamanho parte))}
+
+(defn simetrizar-partes-do-corpo
+"Espera uma sequência de mapas que possuem um :nome e um :tamanho"
+[partes-do-corpo-assimetricas]
+(loop [partes-assimetricas-restantes partes-do-corpo-assimetricas
+partes-do-corpo-finais []]
+(if (empty? partes-assimetricas-restantes)
+  partes-do-corpo-finais
+  (let [[parte & restantes] partes-assimetricas-restantes]
+   (recur restantes
+          (into partes-do-corpo-finais
+                (set [parte (parte-correspondente parte)])))))))
+```
+
+_3-1. As funções parte-correspondente e simetrizar-partes-do-corpo_
+
+Quando chamamos a função `simetrizar-partes-do-corpo` em `partes-do-corpo-de-hobbit-assimétrico`, obtemos um hobbit totalmente simétrico:
+```clojure
+(simetrizar-partes-do-corpo partes-do-corpo-de-hobbit-assimétrico)
+; => [{:nome "cabeça", :tamanho 3}
+{:nome "olho-esquerdo", :tamanho 1}
+{:nome "olho-direito", :tamanho 1}
+{:nome "orelha-esquerda", :tamanho 1}
+{:nome "orelha-direita", :tamanho 1}
+{:nome "boca", :tamanho 1}
+{:nome "nariz", :tamanho 1}
+{:nome "pescoco", :tamanho 2}
+{:nome "ombro-esquerdo", :tamanho 3}
+{:nome "ombro-direito", :tamanho 3}
+{:nome "braco-esquerdo", :tamanho 3}
+{:nome "braco-direito", :tamanho 3}
+{:nome "peito", :tamanho 10}
+{:nome "costas", :tamanho 10}
+{:nome "antebraco-esquerdo", :tamanho 3}
+{:nome "antebraco-direito", :tamanho 3}
+{:nome "abdomen", :tamanho 6}
+{:nome "rim-esquerdo", :tamanho 1}
+{:nome "rim-direito", :tamanho 1}
+{:nome "mao-esquerda", :tamanho 2}
+{:nome "mao-direita", :tamanho 2}
+{:nome "joelho-esquerdo", :tamanho 2}
+{:nome "joelho-direito", :tamanho 2}
+{:nome "coxa-esquerda", :tamanho 4}
+{:nome "coxa-direita", :tamanho 4}
+{:nome "perna-esquerda", :tamanho 3}
+{:nome "perna-direita", :tamanho 3}
+{:nome "tendao-de-aquiles-esquerdo", :tamanho 1}
+{:nome "tendao-de-aquiles-direito", :tamanho 1}
+{:nome "pe-esquerdo", :tamanho 2}
+{:nome "pe-direito", :tamanho 2}]
+
+```
+
+Vamos analisar esse código!

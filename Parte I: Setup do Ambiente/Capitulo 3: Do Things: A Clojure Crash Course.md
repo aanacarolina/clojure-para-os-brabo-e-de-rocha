@@ -1178,3 +1178,52 @@ Quando chamamos a função `simetrizar-partes-do-corpo` em `partes-do-corpo-de-h
 ```
 
 Vamos analisar esse código!
+
+## let
+
+No meio da loucura da Listagem 3-1 você pode ver a forma de uma estrutura `(let ...)`. Vamos construir um entendimento do `let`um exemplo por vez, e depois examinar o exemplo completo do programa quando tivermos familiarizados com todas as peças.
+
+`let` associa nomes a valores. Você pode pensar no `let`como abreviação para "deixa a vida me levar, vida leva eu" (_let it be_), que é uma linda canção do Zeca... digo, dos Beatles, sobre programação. Aqui vai um exemplo:
+
+``` clojure 
+(let [x 3]
+  x)
+; => 3
+
+(def lista-de-dalmatas
+  ["Florzinha" "Perdigueiro" "Auau 1" "Auau 2"])
+(let [dalmatas (take 2 lista-de-dalmatas)]
+  dalmatas)
+; => ("Florzinha" "Perdigueiro")
+```
+No primeiro exemplo, você associa o nome `x` ao valor `3`. No segundo, você associa o nome `dalmatas` ao resultado da expressão ` (take 2 lista-de-dalmatas)`, que era a lista `("Florzinha" "Perdigueiro")`. `let` também introduz um novo _escopo_:
+
+``` clojure 
+(def x 0)
+(let [x 1] x)
+; => 1
+```
+
+Aqui, primeiro você associa o nome `x` ao valor `0` usando `def`. Dai, `let` cria um novo escopo no qual o nome `x` é associado ao valor `1`. Eu penso no escopo como o contexto ao qual algo se refere. Por exemplo, na frase _por favor limpe essa sujeira_, sujeira significando algo diferente dependendo se você trabalha numa maternidade ou como zelador de uma conferência de fabricantes de cigarros. Nesse trecho de código você está dizendo, "Eu quero que `x` seja `0` no contexto global, mas dentro do contexto dessa expressão `let`, ele deve ser `1`."
+
+Você pode referenciar associações existentes na sua associação `let`:
+
+```clojure
+
+(def x 0)
+(let [x (inc x)] x)
+; => 1
+```
+
+Nesse exemplo, o `x` em `(inc x)` refere-se a associação criada por `(def x 0)`. O valor resultante é `1`, o qual é então associados ao nome `x` dentro do novo escopo criado pelo `let`. Dentro das delimitações da forma `let`, `x` se refere a `1`, não a `0`.
+
+Você também pode usar os parametros _rest_ no `let`, assim como você pode em funções:
+
+
+```clojure 
+(let [[florzinha & dalmatas] lista-de-dalmatas]
+  [florzinha dalmatas])
+; => ["Florzinha" ("Perdigueira" "Auau 1" "Auau 2")]
+
+```
+

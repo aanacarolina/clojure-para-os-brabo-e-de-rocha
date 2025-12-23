@@ -20,3 +20,5 @@ who is doreen ?
 (favorite-things "Doreen" "gum" "shoes" "kara-te")
 
 fix - Here, the rest parameter unimportant -choices
+
+fix  (take 2 dalmatian-list) - rendering is spaced

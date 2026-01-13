@@ -1227,3 +1227,34 @@ Você também pode usar os parametros _rest_ no `let`, assim como você pode em 
 
 ```
 
+Repare que o valor de uma `let` form é a ultima form no corpo da função a ser avaliada. As `let` forms seguem todas as regras de desestruturação que foram apresentadas em [Chamada de Funções na página 48](https://github.com/aanacarolina/clojure-para-os-brabo-e-de-rocha/blob/main/Parte%20I%3A%20Setup%20do%20Ambiente/Capitulo%203%3A%20Do%20Things%3A%20A%20Clojure%20Crash%20Course.md#chamada-de-fun%C3%A7%C3%B5es). Neste caso `[florzinha & dalmatas]` desestrturado `lista-de-dalmatas`, associa a string "Florzinha" ao nome ``florzinha`e a list do resto dos dálmatas a `dalmatas`. O vetor [florzinha dalmatas] é a última expression no `let`, então esse é o valor da `let` form.
+
+As `let` forms tem dois usos principais. Primeiro, elas proporcionam clareza permitindo que você nomeie as coisas. Segundo elas permitem que você avalie uma expression apenas uma vez e reuse o resultado. Isso é especialmente importante quando você precusa reusar o resultado de uma chamada de função cara, como uma chamada API de rede. Isso também é importante quando a expression tem efeitos colaterais.
+
+Vamos dar mais uma olhada na `let` form na nossa função de simetrização para que a gente entenda exatamente o que está acontecendo:
+
+
+``` clojure
+
+(let [[parte & restantes] partes-assimetricas-restantes]
+(recur restantes
+(into partes-do-corpo-finais
+(set [parte (parte-correspondente parte)]))))
+```
+
+Esse código diz pro Clojure, "Crie um novo escopo. Dentro dele, associe `parte` com o primeiro elemento de `partes-assimentricas-restantes`. Associe `restantes` com o resto dos elementos em `partes-assimentricas-restantes`."
+
+Em reção ao coropo da `let` expression, você aprenderá sobre o significado do `recur` na proxima seção. A chamada da função:
+
+``` clojure 
+(into partes-do-corpo-finais
+(set [parte (parte-correspondente parte)]))
+```
+
+primeiro diz ao Clojure, "Use a função `set`para criar um conjunto que consiste em `parte` e as suas parte correspondente. Depois use a função `into` para adiconar os elementos dauele conjunto ao vetor `partes-do-corpo-finais`." Você cria um conjunto aqui para se assegurar que você está adicionando elementos únicos a  `partes-do-corpo-finais` porque `parte`e `(parte-correspondente parte)` as vezes são a mesma coisa, como vocês irão ver na proxima seção sobre expressoes regulares. Aqui está o exemplo simplificado:
+
+``` clojure 
+(into [] (set [:a :a]))
+;=> [:a]
+```
+

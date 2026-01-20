@@ -5,7 +5,7 @@ buffer - manter em inglês
 input - manter em ingles - entrada em PT-BR
 output - manter em ingles - saida
 run - traduzir pois em PT-BR faz sentido - executar
-loop - manter me ingles - interacao
+loop - manter me ingles - laço de repetição / iteracao
 class - traduzir pois em portugues faz sentido - classe 
 prompt - manter em ingles - nem sabemos em PT-BR
 namespace - manter em ingles - (?) entender melhor se equivalente classe ou arquivo
@@ -27,7 +27,7 @@ false - manter em ingles
 falsey - traduzir para falso 
 true - manter em ingles
 truthy - traduzir para verdadeiro
-associar (`bind`)
+bind - significa associar - usar em PT
 index - como posicao usar em PT
 index - como indice usar em ingles (?)
 string - manter em ingles - significa fio

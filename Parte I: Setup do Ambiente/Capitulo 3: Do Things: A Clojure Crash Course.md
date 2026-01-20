@@ -1237,9 +1237,9 @@ Vamos dar mais uma olhada na `let` form na nossa função de simetrização para
 ``` clojure
 
 (let [[parte & restantes] partes-assimetricas-restantes]
-(recur restantes
-(into partes-do-corpo-finais
-(set [parte (parte-correspondente parte)]))))
+  (recur restantes
+    (into partes-do-corpo-finais
+      (set [parte (parte-correspondente parte)]))))
 ```
 
 Esse código diz pro Clojure, "Crie um novo escopo. Dentro dele, associe `parte` com o primeiro elemento de `partes-assimentricas-restantes`. Associe `restantes` com o resto dos elementos em `partes-assimentricas-restantes`."
@@ -1248,13 +1248,48 @@ Em reção ao coropo da `let` expression, você aprenderá sobre o significado d
 
 ``` clojure 
 (into partes-do-corpo-finais
-(set [parte (parte-correspondente parte)]))
+  (set [parte (parte-correspondente parte)]))
 ```
 
-primeiro diz ao Clojure, "Use a função `set`para criar um conjunto que consiste em `parte` e as suas parte correspondente. Depois use a função `into` para adiconar os elementos dauele conjunto ao vetor `partes-do-corpo-finais`." Você cria um conjunto aqui para se assegurar que você está adicionando elementos únicos a  `partes-do-corpo-finais` porque `parte`e `(parte-correspondente parte)` as vezes são a mesma coisa, como vocês irão ver na proxima seção sobre expressoes regulares. Aqui está o exemplo simplificado:
+primeiro diz ao Clojure, "Use a função `set`para criar um conjunto que consiste em `parte` e as suas parte correspondente. Depois use a função `into` para adiconar os elementos daquele conjunto ao vetor `partes-do-corpo-finais`." Você cria um conjunto aqui para se assegurar que você está adicionando elementos únicos a  `partes-do-corpo-finais` porque `parte`e `(parte-correspondente parte)` as vezes são a mesma coisa, como vocês irão ver na proxima seção sobre expressoes regulares. Aqui está o exemplo simplificado:
 
 ``` clojure 
 (into [] (set [:a :a]))
 ;=> [:a]
 ```
+Primeiro, `(set [:a :a])` retorna o conjunto `#{:a}` , porque conjuntos não contem elementos duplicados. Em seguida `(into [] #{:a})` retorna o vetor `[:a]`.
+
+Voltando ao `let`: repare que `part`é usada multiplas vezes no corpo do `let`. Se a gente usasse a expression original ao inves dos nimes `part`e `restante, ficaria uma bagunça! 
+Segue um exemplo:
+
+```clojure 
+(recur (rest partes-assimetricas-restantes)
+       (into partes-do-corpo-finais
+             (set [(first partes-assimetricas-restantes)(parte-correspondente (first partes-assimetricas-restantes))])))
+
+```
+
+Então, o `let` é uma maneira útil de introduzir nomes locais para valores, o que ajuda a simplificar o código.
+
+## loop
+
+
+Na nossa função `simetrizar-partes-do-corpo` nós usamos um `loop, que oferece outra maneira de fazer recursão em Clojure. Vamos dar uma olhada em um exemplo simples:
+
+``` clojure
+
+(loop [iteracao 0]
+  (println (str "Iteração " iteracao))
+  (if (> iteracao 3)
+    (println "Tchau!")
+    (recur (inc iteracao))))
+; => Iteração 0
+; => Iteração 1
+; => Iteração 2
+; => Iteração 3
+; => Iteração 4
+; => Tchau!
+```
+
+A primeira linha, `loop [iteracao 0]`, começa o loop e cria uma associação _(binding)_ com um valor inicial. Na primeira passagem pelo loop, `iteracao` tem o valor 0. Em seguida, imprimimos uma pequena mensagem. Depois checamos o valor de `iteracao`. Se o valor for maior que 3, é hora de dizer Tchau. Caso contrário, continuamos com a `recur`. É como se o `loop`criasse uma função anonima com um parametro chamado ìteracao` e o `recur` te permite chamar a função de dentro de si mesma, passando o argumento `(inc iteracao)`.
 

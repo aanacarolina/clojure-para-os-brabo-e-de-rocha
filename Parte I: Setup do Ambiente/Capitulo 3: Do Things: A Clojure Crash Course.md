@@ -1293,3 +1293,34 @@ Na nossa função `simetrizar-partes-do-corpo` nós usamos um `loop, que oferece
 
 A primeira linha, `loop [iteracao 0]`, começa o loop e cria uma associação _(binding)_ com um valor inicial. Na primeira passagem pelo loop, `iteracao` tem o valor 0. Em seguida, imprimimos uma pequena mensagem. Depois checamos o valor de `iteracao`. Se o valor for maior que 3, é hora de dizer Tchau. Caso contrário, continuamos com a `recur`. É como se o `loop`criasse uma função anonima com um parametro chamado ìteracao` e o `recur` te permite chamar a função de dentro de si mesma, passando o argumento `(inc iteracao)`.
 
+De fato, você pode fazer a mesma coisa apenas usando uma definição de função normal:
+``` clojure
+(defn impressao-recursiva
+  ([]
+     (impressao-recursiva 0))
+  ([iteracao]
+     (println iteracao)
+     (if (> iteracao 3)
+       (println "Tchau!")
+       (impressao-recursiva (inc iteracao)))))
+(impressao-recursiva)
+; => Iteração 0
+; => Iteração 1
+; => Iteração 2
+; => Iteração 3
+; => Iteração 4
+; => Tchau!
+```
+
+Mas, como você pode ver, assim fica mais verboso. Além disso, `loop` tem uma performance muito melhor. Na nossa função de simetrização, nos usaremos `loop` para passar por cada elemento da lista de partes do corpo assimétrica.
+
+
+
+## Expressões Regulares
+
+Expressões regulares são ferramentas para performar _pattern matching_ (correspondência de padrões) em textos. A notação literal para uma expressão regular é colocar a expressão entre aspas após a cerquilha:
+
+```clojure 
+#"expressao-regular"
+```
+

@@ -1086,7 +1086,7 @@ Aqui, `somar-por` está no escopo, então a função retornada tem acesso a isso
 
 ## Juntando tudo
 
-Okay! É hora de você usar o seu conhecimento recém adquirido para um nobre propósito: abater hobbits! Para bater em um hobbit, você primeiramente irá modelar as partes do corpo dele. Cada parte do corpo incluirá o seu tamanho relativo para indicar a possibilidade de ela ser atingida. Para evitar repetição, o modelo do hobbit irá incluir apenas entradas para _pé esquerdo_, _orelha esquerda_, e assim por diante. Portanto, você precisará de uma função para simetrizar integralmente o modelo, e criar _pé direito_, _orelha direita_ e assim por diante. Por ultimo, você criará uma função que itera pelas partes do corpo e aleatoriamente escolhe onde atingir. Ao longo do caminho, você aprenderá sobre algumas novas ferramentas do Clojure: expressões `let`, loops e expressões regulares. Que divertido!
+Okay! É hora de você usar o seu conhecimento recém adquirido para um nobre propósito: abater hobbits! Para bater em um hobbit, você primeiramente irá modelar as partes do corpo dele. Cada parte do corpo incluirá o seu tamanho relativo para indicar a possibilidade de ela ser atingida. Para evitar repetição, o modelo do hobbit irá incluir apenas entradas para _left pé _, _left orelha_, e assim por diante. Portanto, você precisará de uma função para simetrizar integralmente o modelo, e criar _right pé_, _right orelha_ e assim por diante. Por ultimo, você criará uma função que itera pelas partes do corpo e aleatoriamente escolhe onde atingir. Ao longo do caminho, você aprenderá sobre algumas novas ferramentas do Clojure: expressões `let`, loops e expressões regulares. Que divertido!
 
 ## O proximo top model do Condado dos Hobbits
 
@@ -1095,24 +1095,24 @@ Para o nosso modelo de hobbit, vamos evitar características como jovialidade e 
 ``` clojure
 (def partes-do-corpo-de-hobbit-assimétrico  
 [{:nome "cabeça" :tamanho 3}
-{:nome "olho-esquerdo" :tamanho 1}
-{:nome "orelha-esquerda" :tamanho 1}
+{:nome "left-olho" :tamanho 1}
+{:nome "left-orelha" :tamanho 1}
 {:nome "boca" :tamanho 1}
 {:nome "nariz" :tamanho 1}
 {:nome "pescoço" :tamanho 2}
-{:nome "ombro-esquerdo" :tamanho 3}
-{:nome "braço-esquerdo" :tamanho 3}
+{:nome "left-ombro" :tamanho 3}
+{:nome "left-braço" :tamanho 3}
 {:nome "peito" :tamanho 10}
 {:nome "costas" :tamanho 10}
-{:nome "antebraço-esquerdo" :tamanho 3}
+{:nome "left-antebraço" :tamanho 3}
 {:nome "abdômen" :tamanho 6}
-{:nome "rim-esquerdo" :tamanho 1}
-{:nome "mão-esquerda" :tamanho 2}
-{:nome "joelho-esquerdo" :tamanho 2}
-{:nome "coxa-esquerda" :tamanho 4}
-{:nome "perna-esquerda" :tamanho 3}
-{:nome "tendão-de-aquiles-esquerdo" :tamanho 1}
-{:nome "pé-esquerdo" :tamanho 2}])
+{:nome "left-rim" :tamanho 1}
+{:nome "left-mão" :tamanho 2}
+{:nome "left-joelho" :tamanho 2}
+{:nome "left-coxa" :tamanho 4}
+{:nome "left-perna" :tamanho 3}
+{:nome "left-tendão-de-aquiles" :tamanho 1}
+{:nome "left-pé" :tamanho 2}])
 ```
 
 Este é um vetor de mapas. Cada mapa tem o nome da parte do corpo e tamanho relativo à parte do corpo. (Eu sei que só personagens de anime têm olhos com um terço do tamanho da cabeça, mas relevem, tá?)
@@ -1122,7 +1122,7 @@ O que chama a atenção é a ausência do lado direito do hobbit. Vamos arrumar 
 ``` clojure
 (defn parte-correspondente)
 [parte]
-{:nome (clojure.string/replace (:nome parte) #"^esquerda-" "direita-")
+{:nome (clojure.string/replace (:nome parte) #"^left-" "right-") ;left: esquerda/o right: direta/o - mantendo em ingles para nao quebvrar a logica do regex em portugues
  :tamanho (:tamanho parte))}
 
 (defn simetrizar-partes-do-corpo
@@ -1144,36 +1144,36 @@ Quando chamamos a função `simetrizar-partes-do-corpo` em `partes-do-corpo-de-h
 ```clojure
 (simetrizar-partes-do-corpo partes-do-corpo-de-hobbit-assimétrico)
 ; => [{:nome "cabeça", :tamanho 3}
-{:nome "olho-esquerdo", :tamanho 1}
-{:nome "olho-direito", :tamanho 1}
-{:nome "orelha-esquerda", :tamanho 1}
-{:nome "orelha-direita", :tamanho 1}
+{:nome "left-olho", :tamanho 1}
+{:nome "right-olho", :tamanho 1}
+{:nome "left-orelha", :tamanho 1}
+{:nome "right-orelha", :tamanho 1}
 {:nome "boca", :tamanho 1}
 {:nome "nariz", :tamanho 1}
 {:nome "pescoco", :tamanho 2}
-{:nome "ombro-esquerdo", :tamanho 3}
-{:nome "ombro-direito", :tamanho 3}
-{:nome "braco-esquerdo", :tamanho 3}
-{:nome "braco-direito", :tamanho 3}
+{:nome "left-ombro", :tamanho 3}
+{:nome "right-ombro", :tamanho 3}
+{:nome "left-braco", :tamanho 3}
+{:nome "right-braço", :tamanho 3}
 {:nome "peito", :tamanho 10}
 {:nome "costas", :tamanho 10}
-{:nome "antebraco-esquerdo", :tamanho 3}
-{:nome "antebraco-direito", :tamanho 3}
+{:nome "left-antebraco", :tamanho 3}
+{:nome "right-antebraco", :tamanho 3}
 {:nome "abdomen", :tamanho 6}
-{:nome "rim-esquerdo", :tamanho 1}
-{:nome "rim-direito", :tamanho 1}
-{:nome "mao-esquerda", :tamanho 2}
-{:nome "mao-direita", :tamanho 2}
-{:nome "joelho-esquerdo", :tamanho 2}
-{:nome "joelho-direito", :tamanho 2}
-{:nome "coxa-esquerda", :tamanho 4}
-{:nome "coxa-direita", :tamanho 4}
-{:nome "perna-esquerda", :tamanho 3}
-{:nome "perna-direita", :tamanho 3}
-{:nome "tendao-de-aquiles-esquerdo", :tamanho 1}
-{:nome "tendao-de-aquiles-direito", :tamanho 1}
-{:nome "pe-esquerdo", :tamanho 2}
-{:nome "pe-direito", :tamanho 2}]
+{:nome "left-rim", :tamanho 1}
+{:nome "right-rim", :tamanho 1}
+{:nome "left-mao", :tamanho 2}
+{:nome "right-mao", :tamanho 2}
+{:nome "left-joelho", :tamanho 2}
+{:nome "right-joelho", :tamanho 2}
+{:nome "left-coxa", :tamanho 4}
+{:nome "right-coxa", :tamanho 4}
+{:nome "left-perna", :tamanho 3}
+{:nome "right-perna", :tamanho 3}
+{:nome "left-tendao-de-aquiles", :tamanho 1}
+{:nome "right-tendao-de-aquiles", :tamanho 1}
+{:nome "left-pe", :tamanho 2}
+{:nome "right-pe", :tamanho 2}]
 
 ```
 
@@ -1323,4 +1323,37 @@ Expressões regulares são ferramentas para performar _pattern matching_ (corres
 ```clojure 
 #"expressao-regular"
 ```
+
+Na função parte-correspondente do bloco de codigo 3-1, clojure.string/replace usa a expressão regular #"^left-" para encontrar strings com "left-" de modo a substituir o "left-" com "right-". O circunflexo , ^, é como a expressao regular sinaliza que ela vai encontrar o texto "left-" somente se estiver no começo da string, o qual garante que algo como ""cleft-queixo" não vai encontrar uma correspondencia. Você pode testar isso com a função `re-find`, que verifica se uma string corresponde ao padrão descrito por uma expressão regular, retornando o texto correspondente ou `nil` caso não haja correspondência.
+
+```clojure 
+
+(re-find #"^left-" "left-olho")
+; => "left-"
+
+(re-find #"^left-" "cleft-queixo")
+; => nil
+
+(re-find #"^left-" "uombleblarte")
+; => nil
+```
+
+Aqui estao outros exemplos de parte-correspondente que usa regex para substituir "left-" com "right-":
+
+```clojure 
+(defn parte-correspondente
+  [parte]
+  {:nome (clojure.string/replace (:nome parte) #"^left-" "right-")
+   :tamanho (:tamanho parte)})
+
+(parte-correspondente {:nome "left-olho" :tamanho 1})
+; => {:nome "right-olho" :tamanho 1}]
+
+(parte-correspondente {:nome "cabeça" :tamanho 3})
+; => {:nome "cabeça" :tamanho 3}]
+
+```
+
+Perceba que o nome "cabeça" retorna como é. 
+
 

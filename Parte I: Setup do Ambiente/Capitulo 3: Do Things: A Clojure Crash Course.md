@@ -1122,7 +1122,7 @@ O que chama a atenção é a ausência do lado direito do hobbit. Vamos arrumar 
 ``` clojure
 (defn parte-correspondente)
 [parte]
-{:nome (clojure.string/replace (:nome parte) #"^left-" "right-") ;left: esquerda/o right: direta/o - mantendo em ingles para nao quebvrar a logica do regex em portugues
+{:nome (clojure.string/replace (:nome parte) #"^left-" "right-") ;left: esquerda/o right: direta/o - mantendo em ingles para nao quebrar a logica do regex em portugues
  :tamanho (:tamanho parte))}
 
 (defn simetrizar-partes-do-corpo
@@ -1354,6 +1354,67 @@ Aqui estao outros exemplos de parte-correspondente que usa regex para substituir
 
 ```
 
-Perceba que o nome "cabeça" retorna como é. 
+Perceba que o nome _"cabeça"_ retorna como é. 
 
+## Simetrizador
+
+Agora, vamos voltar para o simetrizador inteiro e analisa-lo com mais detalhes:
+
+
+
+
+``` clojure
+
+(def partes-do-corpo-de-hobbit-assimétrico  
+[{:nome "cabeça" :tamanho 3}
+{:nome "left-olho" :tamanho 1}
+{:nome "left-orelha" :tamanho 1}
+{:nome "boca" :tamanho 1}
+{:nome "nariz" :tamanho 1}
+{:nome "pescoço" :tamanho 2}
+{:nome "left-ombro" :tamanho 3}
+{:nome "left-braço" :tamanho 3}
+{:nome "peito" :tamanho 10}
+{:nome "costas" :tamanho 10}
+{:nome "left-antebraço" :tamanho 3}
+{:nome "abdômen" :tamanho 6}
+{:nome "left-rim" :tamanho 1}
+{:nome "left-mão" :tamanho 2}
+{:nome "left-joelho" :tamanho 2}
+{:nome "left-coxa" :tamanho 4}
+{:nome "left-perna" :tamanho 3}
+{:nome "left-tendão-de-aquiles" :tamanho 1}
+{:nome "left-pé" :tamanho 2}])
+
+
+(defn parte-correspondente)
+[parte]
+{:nome (clojure.string/replace (:nome parte) #"^left-" "right-") 
+ :tamanho (:tamanho parte))}
+
+
+➊ (defn simetrizar-partes-do-corpo
+"Espera uma sequência de mapas que possuem um :nome e um :tamanho"
+[partes-do-corpo-assimetricas]
+➋ (loop [partes-assimetricas-restantes partes-do-corpo-assimetricas
+partes-do-corpo-finais []]
+➌  (if (empty? partes-assimetricas-restantes)
+  partes-do-corpo-finais
+➍    (let [[parte & restantes] partes-assimetricas-restantes]
+➎      (recur restantes
+          (into partes-do-corpo-finais
+                (set [parte (parte-correspondente parte)])))))))
+
+```
+
+A funçao simetrizar-partes-do-corpo (que comeca em  ➊) adota uma estratégia geral comum em programação funcional. Dada uma sequência (neste caso, um vetor de partes do corpo e seus tamanhos), a função divide continuamente a sequência em uma cabeça(head) e uma cauda(tail). Em seguida, processa a cabeça, adiciona-a a algum resultado e usa recursão para continuar o processo com a cauda.
+
+
+Começamos a iterar sobre as partes do corpo em ➋. A cauda da sequência será associada a `partes-assimetricas-restantes`. Inicialmente, ela é associada à sequência completa passada para a função: `partes-do-corpo-assimetricas`. Também criamos uma sequência de resultado, `partes-do-corpo-finais`; seu valor inicial é um vetor vazio.
+
+Se `partes-assimetricas-restantes` estiver vazio em ➌, isso significa que processamos toda a sequência e podemos retornar o resultado, `partes-do-corpo-finais`. Caso contrário, em ➍ dividimos a lista em cabeça, parte e cauda, ​​com os restantes.
+
+Em ➎, fazemos recursao nos restantes, uma lista que diminui em um elemento a cada iteração do loop, e à expressão (into), que constrói nosso vetor de partes do corpo simetrizadas.
+
+Se você é iniciante nesse tipo de programação, pode levar algum tempo para entender esse código. Segura firma! Quando você entender o que está acontecendo, vai se sentir uma pessoa de milhões!
 

@@ -20,7 +20,7 @@ if - manter em ingles - SE em PT-BR
 when - manter em ingles - QUANDO em PT-BR
 else - manter em ingles - SENÃO em PT-BR
 then - manter em ingles - ENTÃO em PT-BR
-built-in - manter em ingles - integrado em PT
+built-in - manter em ingles - integrado/nativo em PT
 or - manter em ingles - OU em PT-BR
 and - manter em ingles - E em PT-br
 false - manter em ingles 
@@ -42,3 +42,4 @@ arity overloading - sobrecarga de aridade. usar em portugues
 closure - usar em EN - significa encerramento
 rest - resto , usar em ingles
 pattern matching -  correspondência de padrões , usar em ingles
+reduce - reduzir/reducao - manter em ingles

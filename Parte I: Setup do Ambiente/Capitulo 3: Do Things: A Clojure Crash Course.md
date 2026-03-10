@@ -468,7 +468,7 @@ Você pode usar a função `conj` para incluir elementos adicionais no vetor. Es
 ; => [1 2 3 4]
 ```
 
-Vetores não sao o unico jeito de guardar sequencias; o Clojure também tem listas.
+Vetores não sao o unico jeito de guardar sequences; o Clojure também tem listas.
 
 # Listas
 
@@ -506,7 +506,7 @@ Os elementos são adicionados no _começo_ de uma lista:
 ; => (4 1 2 3)
 ```
 
-Quando voce deve usar uma lista e quando deve usar um vetor? Uma boa regra geral é que se voce precisa adicionar itens facilmente no inicio de uma sequencia ou se voce estiver escrevendo uma macro, voce deverá usar uma lista. Do contrario, use um vetor. De acordo com que voce for aprendendo mais, voce vai comecar a ter uma boa nocao de quando usar qual.
+Quando voce deve usar uma lista e quando deve usar um vetor? Uma boa regra geral é que se voce precisa adicionar itens facilmente no inicio de uma sequence ou se voce estiver escrevendo uma macro, voce deverá usar uma lista. Do contrario, use um vetor. De acordo com que voce for aprendendo mais, voce vai comecar a ter uma boa nocao de quando usar qual.
 
 # Conjuntos 
 
@@ -636,7 +636,7 @@ Seguem mais dois exemplos de chamada de funcoes válidas que também retornam 6:
 ; => 6
 ```
 
-No primeiro exemplo, o valor de retorno de _and_ é o primeiro valor falso ou o primeiro valor verdadeiro. Nesse caso, o + é retornado porque é o ultimo valor verdadeiro, e então é aplicado aos argumentos 1 2 3, retornando 6. No segundo exemplo, o valor de retorno de _first_ é o primeiro elemento de uma sequencia, que é _+_ nesse caso.
+No primeiro exemplo, o valor de retorno de _and_ é o primeiro valor falso ou o primeiro valor verdadeiro. Nesse caso, o + é retornado porque é o ultimo valor verdadeiro, e então é aplicado aos argumentos 1 2 3, retornando 6. No segundo exemplo, o valor de retorno de _first_ é o primeiro elemento de uma sequence, que é _+_ nesse caso.
 
 Porém, estes não são chamadas de funcao validas, porque numero e strings nao sao funcoes:
 
@@ -1416,5 +1416,71 @@ Se `partes-assimetricas-restantes` estiver vazio em ➌, isso significa que proc
 
 Em ➎, fazemos recursao nos restantes, uma lista que diminui em um elemento a cada iteração do loop, e à expressão (into), que constrói nosso vetor de partes do corpo simetrizadas.
 
-Se você é iniciante nesse tipo de programação, pode levar algum tempo para entender esse código. Segura firma! Quando você entender o que está acontecendo, vai se sentir uma pessoa de milhões!
+Se você é iniciante nesse tipo de programação, pode levar algum tempo para entender esse código. Segure firma! Quando você entender o que está acontecendo, vai se sentir uma pessoa de milhões!
 
+
+## Melhor simetrizar com reduce
+
+O padrao de processar cada elemento em uma sequence e construir um resultado é tão comum que existe uma funcao built-in para isso, chamada `reduce`. Aqui vai um exemplo:
+
+``` clojure
+;; adição com reduce
+(reduce + [1 2 3 4])
+; => 10
+```
+
+Isso é o mesmo que dizer ao Clojure para fazer isso:
+
+``` clojure
+(+ (+ (+ 1 2) 3) 4)
+``` 
+
+A funcao `reduce` funciona conforme os seguintes passos:
+
+1. Aplique a função dada aos dois primeiros elementos de uma sequence. Dai que o `(+ 1 2)` vieram. 
+2. Aplique a função ao resultado e o proximo elemento da sequence. Nesse caso, o resultado do passo 1 é `3`, e o proximo elemento da sequence tambem é `3`. Entao, o resultado final é `(+ 3 3)`.
+3. Repita o passo 2 para cada elemento restante na sequence.
+
+Reduce, opcionalmente, tambem recebe um valor inicial. O valor inicial aqui é `15`:
+
+``` clojure
+(reduce + 15 [1 2 3 4])
+```
+
+Se você passar um valor inicial, o reduce vai comecar aplicando a funcao dada ao valor inicial e ao primeiro elemento da sequence, ao inves dos dois primeiros elementos da sequence.
+
+Um detalhe para prestar atencao, nesses exemplos, reduce pega uma collection de elementos, [1 2 3 4], e retorna um unico numero. Apesar de que quem programa muitas vezes usa o reduce dessa forma, voce pode usar o reduce para retornar uma colecao ainda maior da que voce usou no comeco, assim como a gente tava tendno fazer cm `simetrizar-partes-do-corpo`. Reduce abstrai a tarefa "processe uma collection e construa um resultado", que é agnostica do tipo de resultado retornado. Para entender mais como o reduce funcional,  aqui vai uma maneira na qual voce pode implementa-la:
+
+``` clojure
+(defn meu-reduce
+  ([f inicial coll]
+   (loop [resultado inicial
+          restante coll]
+     (if (empty? restante)
+       resultado
+       (recur (f resultado (first restante)) (rest restante)))))
+  ([f [head & tail]]
+   (my-reduce f head tail)))
+   ```
+
+Podemos reimplementar nosso simetrizador da seguinte forma:
+
+``` clojure
+(defn melhor-simetrizador-de-partes-do-corpo
+  "Espera uma seq de mapas que tem :nome e :tamanho"
+  [partes-do-corpo-assimetricas]
+  (reduce (fn [partes-do-corpo-final parte]
+            (into partes-do-corpo-final (set [parte (parte-correspondente parte)])))
+          []
+          partes-do-corpo-assimetricas))
+```
+
+Maneiro! Uma vantagem imediata de usar reduce é que em geral vocē escreve menos codigo. A funcao anonima que voce passa para o reduce foca somente no processamento de cada elemento e na construcao do resultado. O motivo disso é que `reduce` lida com o maquinario de baixo nivel que é controlar quais elementos ja foram processados e decidindo quando é para retornar o resultado final ou continuar com a recursao.  
+
+
+Usar `reduce` tambem é mais expressivo. Se quem for ler seu codigo encontrar um `loop`, eles nao vai saber exatamente o que o `loop` está fazendo ate ler o final do codigo.  Mas se a pessoa ver o `reduce`, ela imediatamente sabera que o proposito do codigo é processar os elementos da collection e construir um resultado.
+
+Finalmente, ao abstrair o processo de `reduce` em uma funcao que recebe outra funcao como argumento, seu programar se torna mais componivel. Voce pode passar a funca `reduce` como argumento como argumento de outra funcao, por exemplo. Voce tambem pode criar uma versao mais generica da `simetrizar-partes-do-corpo`, digamos,`expandir-partes-do-corpo`. Essa receberia uma funcao expansora alem da lista de parte do corpo e te deixaria modelar outras coisas alem simples hobbits. Por exemplo, voce pode ter um expansor de aranhas que poderia multiplicar o numero de olhos e perninhas. Voce deixar voce escrever essa funcao, pois eh sou muito mal! 
+
+
+## Hobbit Violence

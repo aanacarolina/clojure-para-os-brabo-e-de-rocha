@@ -812,7 +812,7 @@ Se você chamar `golpe-x` somente com um argumento, `golpe-x` vai se autochamar 
 (golpe-x "Kanye West")
 ; => "Eu dou o golpe: karate em Kanye West! Receba!"
 ```
-![a black and white illustration of Kanye West at a table with some vegetables and pushing a pump dispenser. ](imagens/kanye.png)
+![Uma ilustração em preto e branco de Kanye West sentado à mesa com alguns vegetais e apertando um pote de alcool em gel. ](imagens/kanye.png)
 
 Pode parecer nao muito comum definir uma funcao dessa forma, em termos dela mesma. Se sim, ótimo! Isso significa que você está aprendendo uma nova maneira de fazer coisas!  
 
@@ -1484,3 +1484,28 @@ Finalmente, ao abstrair o processo de `reduce` em uma funcao que recebe outra fu
 
 
 ## Hobbit Violence
+
+Tens minha palavra, isso é realmente Clojure para os brabo e de rocha! Para colocar a pedra angular no seu trabalho, aqui está a funcao que determina qual parte de um hobbit é golpeada:
+
+```clojure
+
+(defn golpear
+  [partes-do-corpo-assimetricas]
+  (let [partes-simetricas (➊melhor-simetrizador-de-partes-do-corpo partes-do-corpo-assimetricas)
+        ➋soma-do-tamanho-das-partes-do-corpo (reduce + (map :tamanho partes-simetricas))
+        alvo (rand soma-do-tamanho-das-partes-do-corpo)]
+    ➌(loop [[parte & restante] partes-simetricas
+           tamanho-acumulado (:tamanho parte)]
+      (if (> tamanho-acumulado alvo)
+        parte
+        (recur restante (+ tamanho-acumulado (:tamanho (first restante))))))))
+
+```
+
+`golpear` funciona pegando um vetor de partes do corpo assimetricas, simetrizando-as na linha ➊ e em seguida somando os tamanhos das partes na linha ➋. Uma vez que somamos os tamanhos, é como se cada numero de 1 até `soma-do-tamanho-das-partes-do-corpo` corresponda a uma parte do corpo; 1 pode corresponder ao olho esquerdo, e 2, 3 e 4 a cabeça. Ela faz isso quando acerta uma parte do corpo (escolhendo um numero randomico naquele intervalo), a possibilidade de que uma parte especifica seja golpear vai depender do tamanho da parte do corpo.
+
+
+![A imag](../imagens/img3-1.png)
+
+
+Imagem 3-1: Partes do corpo correspondem a intervalos de numeros e são golpeadas se o alvo estiver naquelae intervalo.

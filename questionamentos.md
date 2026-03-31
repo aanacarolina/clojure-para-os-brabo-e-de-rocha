@@ -22,3 +22,5 @@ who is doreen ?
 fix - Here, the rest parameter unimportant -choices
 
 fix  (take 2 dalmatian-list) - rendering is spaced
+
+fix https://4clojure.oxal.org/ new link  end of chapter 3

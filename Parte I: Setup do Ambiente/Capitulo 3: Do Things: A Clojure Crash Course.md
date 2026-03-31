@@ -1508,4 +1508,69 @@ Tens minha palavra, isso é realmente Clojure para os brabo e de rocha! Para col
 ![A imag](../imagens/img3-1.png)
 
 
-Imagem 3-1: Partes do corpo correspondem a intervalos de numeros e são golpeadas se o alvo estiver naquelae intervalo.
+Imagem 3-1: Partes do corpo correspondem a intervalos de numeros e são golpeadas se o alvo estiver naquele intervalo.
+
+
+Finalmente um desses numeros é aleatoriamente escolhido e entao usamos o loop na linha ➌ para encontrar e retornar a parte do corpo que corresponde ao numero. O loop faz isso mantendo o controle dos tamanhos acumulados das partes que a gente ja viu e verificando se o tamanho acumulado é maior que o algo. Eu visualizo esse processo como se fosse o enfileiramento das partes do corpo em corredores numerados. Depois que eu enfileiro uma parte do corpo, eu me pergunto: "Já alcancei meu alvo?", se eu tiver chegado, isso significa que a parte do corpo que eu acabei de enfileirar foi a golpeada, Do contrario, eu so continuo a enfileirar essas partes.
+
+Por exemplo, digamos que sua lista de partes seja cabeça, olho esquerdo e mão esquerda, como na Figura 3-1. Após pegar a primeira parte, a cabeça, o tamanho acumulado é 3. A parte do corpo é golpeada quando o tamanho acumulado excede o alvo, entao, se o alvo for menor que 3, a cabeça foi golpeada. Caso contrário, você pega a próxima parte, o olho esquerdo, e aumenta o tamanho acumulado para 4, resultando em um golpe se o alvo for maior ou igual a 3 e menor que 4. Da mesma forma, a mão esquerda é golpeada se o alvo for maior ou igual a 4 e menor que 6.
+
+Aqui estão alguns exemplos de execução da função de `golpear`:
+
+``` clojure
+
+(golpear partes-do-corpo-de-hobbit-assimétrico )
+; => {:nome "right-antebraco", :tamanho 3}
+
+(golpear partes-do-corpo-de-hobbit-assimétrico )
+; => {:nome "peito", :tamanho 10}
+
+(golpear partes-do-corpo-de-hobbit-assimétrico )
+; => {:nome "left-olho", :tamanho 1}
+
+```
+
+Meu Deus, pobre hobbitzinho! Você é uma pessoa monstruosa!
+
+# Resumo
+
+Este capitulo te deu uma redemoinho de ideas de como fazer as coisas em Clojure. Voce como representar informacoes usando strings, numeros, mapas, keywords, vetores, listas, conjuntos e como nomear essas representacoes com `def` e `let`. Você aprendeu quao flexiveis as funcoes sao e como criar suas proprias funcoes. Alem disso, te foi apresentada a filosofia da simplicidade do Clojure, incluindo suas sintaxe uniforme e sua enfase em usa sua vasta bibliotecas de funcoes em tipos de dados primitivos.
+
+
+O Capitulo 4 irá te levar para uma examinicao detalhada das funcoes centrais do Clojure e o Capitulo 5 explicará a mentalidade da programacao funcional. Este capitulo te mostrou como escrever codigo Clojure, os proximos dois te mostrarao como escrever Clojure bem!
+
+
+A partir daqui, eu te recomendo com todas as minhas forcas, que voce comece a escrever codigo. Nao ha melhor maneira de solificar seu conhecimento em Clojure. Essa colinha do Clojure [http://clojure.org/api/cheatsheet](http://clojure.org/api/cheatsheet) é uma otima referencia que lista doas as funcoes nativas que operam nas estruturas de dados c que cobrimos nesse capitulo.
+
+
+Esses exercicios que vou te passar, vao fazer voce realmente causar cocegas no seu cerebro. Se voce quiser testar ainda mais suas novas habilidades, tente algum dos desafios do Project Euler em [http://www.projecteuler.net/](http://www.projecteuler.net/). Veja tambem o 4Clojure [https://4clojure.oxal.org/](https://4clojure.oxal.org/), um apanhado online de problem em Clojure criados para testar seus conhecimento. Basta escrever algo! 
+
+
+# Exercícios
+
+Esses exercícios são uma maneira divertida de testar seus conhecimentos em Clojure e aprender mais funções da linguagem. Os três primeiros podem ser concluídos usando apenas as informações apresentadas neste capítulo, mas os três últimos vao exigir o uso de funções que ainda não foram abordadas. Encare os três últimos se você estiver realmente querendo muito  escrever mais código e explorar a biblioteca padrão do Clojure. Se achar os exercícios muito difíceis, revise novamente  após ler os Capítulos 4 e 5,  você vai achá-los bem mais fáceis.
+
+1. Use as funcoes `str`, `vector`, `list`, `hash-map` e `hash-set`
+
+2. Escreva a funcao que recebe um numero e adiciona 100 a ele
+
+3. Escreva a funcao `dec-maker, que funcione exatamente como a funcao `inc-maker` exceto que com subtracao 
+
+``` clojure 
+(def dec9 (dec-maker 9))
+(dec9 10)
+; => 1
+```
+
+4. Escreva uma funcao `mapset`que funciona como um mapa, exceto que o valor de retorno seja um `set`
+
+``` clojure
+(mapset inc [1 1 2 2])
+; => #{2 3}
+```
+
+5. Crie uma função semelhante a `simetrizar-partes-do-corpo`, exceto que ela precisa funcionar com alienígenas espaciais estranhos com simetria radial. Ao inves de dois olhos, braços, pernas e assim por diante, eles têm cinco.
+
+
+6. Crie uma função que generalize `simetrizar-partes-do-corpo` e a função que você criou no Exercício 5. A nova função deve receber uma collection de partes do corpo e o número de partes do corpo correspondentes a serem somadas. Se você for completamente novo em linguagens Lisp e programação funcional, provavelmente não será muito óbvio como fazer isso. Se você travar, basta passar para o próximo capítulo e revisitar o problema mais tarde.
+

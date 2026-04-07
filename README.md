@@ -1,6 +1,6 @@
 #Clojure para os Corajosos e Verdadeiros
 
-Traducao do livro Clojure for the Brave and True
+Tradução do livro Clojure for the Brave and True
 Me ajudem com o titulo:
 
 - [ ] Clojure pros Brabo de Verdade
@@ -15,13 +15,13 @@ Alguma outra combinação?
 TODO:
 
 - [ ] baixar plugin corretor ortografico IDE
-- [ ] corrigir duvidas de estilo e traducao
+- [ ] corrigir duvidas de estilo e tradução
 
 # O projeto
 
 Me chamo Carol, sou engenheira de software há pouco mais de 2 anos. [Migrei de carreira](https://www.youtube.com/watch?v=vF2PPVPYf4k) vindo de uma área totalmente diferente e, como muitas pessoas na área, vivo quase que diariamente a síndrome do impostora. Dentre as muitas crises, eu venho tentando ler o livro Clojure for the Brave and True, e por diversas vezes, falhei em continuar. 
 
-No ano passado (2024), a convite do [Arhtur Fucher](https://www.linkedin.com/in/arthur-fucher/) me juntei ao comitê organizador da [Clojure BR](https://discord.gg/FaNxsztw) e achei que poderia resolver essa minha frustracao criando uma atividade legal para fazer coletivamente com a comunidade. Por que nao fazer disso um momento para produzir conteúdo de qualidade em português?! Espero contar com o apoio da comunidade nesse desafio de chegar ao fim desse livro tão incrível. E que isso seja enriquecedor para todos nós - e as gerações futuras!
+No ano passado (2024), a convite do [Arhtur Fucher](https://www.linkedin.com/in/arthur-fucher/) me juntei ao comitê organizador da [Clojure BR](https://discord.gg/FaNxsztw) e achei que poderia resolver essa minha frustração criando uma atividade legal para fazer coletivamente com a comunidade. Por que não fazer disso um momento para produzir conteúdo de qualidade em português?! Espero contar com o apoio da comunidade nesse desafio de chegar ao fim desse livro tão incrível. E que isso seja enriquecedor para todos nós - e as gerações futuras!
 
 # O livro e o autor 
 Antes de iniciar o projeto, conversei com o autor do livro, [Daniel Higginbotham](https://www.linkedin.com/in/danielhigginbotham/), que muito gentilmente aprovou essa missão. 

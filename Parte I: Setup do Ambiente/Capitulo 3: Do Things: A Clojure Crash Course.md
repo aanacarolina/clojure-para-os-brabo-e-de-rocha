@@ -1,7 +1,7 @@
 ### *Capítulo 3: Faça coisas: Curso intensivo de Clojure*
 
 Chegou a hora de aprender como de fato *fazer coisas* com Clojure! Caramba!
-Apesar de você, sem sombra de dúvidas já ter ouvido do incrível suporte do Clojure a concorrencia e outras estupendas funcionalidade, a caracteristicas mais aparentes é que ele é um LISP. Neste capítulo, você vai explorar os elementos centrais que compoem este Lisp: sintaxe, funções e dados.
+Apesar de você, sem sombra de dúvidas já ter ouvido do incrível suporte do Clojure a concorrência e outras estupendas funcionalidade, a características mais aparentes é que ele é um LISP. Neste capítulo, você vai explorar os elementos centrais que compõem este Lisp: sintaxe, funções e dados.
 Juntos eles irão te dar uma fundação sólida para representar e resolver problemas em Clojure.
 
 Após definirmos este trabalho de base você será capaz de escrever algum código super importantes. Na última sessão você irá amarrar tudo junto ao criar o modelo de Hobbit, e escrever uma função para atingir ele num lugar aleatório. Super! Importante!
@@ -10,7 +10,7 @@ Conforme você for passando por este capítulo, eu recomendo que você digite os
 
 ## Sintaxe
 
-A sintaxe do Clojure é simples. Como todos os Lisps ele utiliza uma estrutura uniforme, um punhado de operadores especiais e um fornecimento constante de parenteses entregues pela mina de parenteses escondidas embaixo do Massachusetts Institute of Technology, onde o Lisp nasceu.
+A sintaxe do Clojure é simples. Como todos os Lisps ele utiliza uma estrutura uniforme, um punhado de operadores especiais e um fornecimento constante de parênteses entregues pela mina de parênteses escondidas embaixo do Massachusetts Institute of Technology, onde o Lisp nasceu.
 
 # Formas
 
@@ -32,7 +32,7 @@ O teu código raramente irá ter valores literais boiando soltos, pois obviament
 ```clojure
 (operator operand1 operand2 ... operandn)
 ```
-Perceba que não tem virgulas. O Clojure usa espaços para separar operandos e trata virgulas como se fossem espacos em branco. Seguem algumas operações de exemplo:
+Perceba que não tem virgulas. O Clojure usa espaços para separar operandos e trata virgulas como se fossem espaços em branco. Seguem algumas operações de exemplo:
 
 ```clojure
 (+ 1 2 3)
@@ -42,25 +42,25 @@ Perceba que não tem virgulas. O Clojure usa espaços para separar operandos e t
 ; => "It was the panda in the library with a dust buster"
 ```
 
-Na primeira operação, o operador _*_ soma os operandos *1*, *2* e *3*. Na segunda operação, o operador *str* concatena três _strings_ para formar uma nova _string_. Ambas formas são válidas. Segue ai algo que não é uma forma porque nao tem um parenteses sendo fechado.
+Na primeira operação, o operador _*_ soma os operandos *1*, *2* e *3*. Na segunda operação, o operador *str* concatena três _strings_ para formar uma nova _string_. Ambas formas são válidas. Segue ai algo que não é uma forma porque não tem um parênteses sendo fechado.
 
 ```clojure
 (+
 ```
 
-A uniformidade estrutural do Clojure é provavelmente diferente do que você deve ter se acostumado. Em outras linguagens diferentes operações podem ter estruturas diferentes dependendo do operador e dos operandos. Por exemplo, o Javascript utiliza um rodízio de pizzas de notações fixas, operadores de ponto e parenteses:
+A uniformidade estrutural do Clojure é provavelmente diferente do que você deve ter se acostumado. Em outras linguagens diferentes operações podem ter estruturas diferentes dependendo do operador e dos operandos. Por exemplo, o Javascript utiliza um rodízio de pizzas de notações fixas, operadores de ponto e parênteses:
 
 ```javascript
 1 + 2 + 3
 "It was the panda ".concat("in the library ", "with a dust buster")
 ```
 
-A estrutura do Clojure é muito simples e consistente em comparação. Nao interessa qual operador voce estiver usando ou o tipo de dados no qual voce estiver operando, a estrutura permanece a mesma.
+A estrutura do Clojure é muito simples e consistente em comparação. não interessa qual operador você estiver usando ou o tipo de dados no qual você estiver operando, a estrutura permanece a mesma.
 
 ## Fluxo de Controle
 
-Vamos dar uma olhada em três controles de fluxo basicos: *if*, *do* e *when*.
-Ao longo do livro você encotrará mais outros, mas esses vão dar um gostinho:
+Vamos dar uma olhada em três controles de fluxo básicos: *if*, *do* e *when*.
+Ao longo do livro você encontrará mais outros, mas esses vão dar um gostinho:
 
 # if
 Essa é uma estrutura geral para uma expressão usando *if*:
@@ -70,7 +70,7 @@ Essa é uma estrutura geral para uma expressão usando *if*:
   optional-else-form)
 ```
 
-(?) revisar se traduzir o codigo
+(?) revisar se traduzir o código
 
 Uma forma Booleana é apenas uma forma que é avaliada para um valor 
 verdadeiro ou falso. Você irá aprender sobre veracidade ou falsidade na próxima seção. Segue mais um par de exemplos de *if*:
@@ -114,7 +114,7 @@ end
 Para contarnar esse aparente limitação podemos usar o operador `do`.
 
 # do
-O operador `do` nos deixa _envelopar_ multiplas formas nos parenteses e executar cada uma delas. Tente o seguinte no seu REPL:
+O operador `do` nos deixa _envelopar_ múltiplas formas nos parênteses e executar cada uma delas. Tente o seguinte no seu REPL:
 
 ```clojure
 (if true
@@ -141,9 +141,9 @@ O operador `when` é como se fosse uma combinação do `if` e `do`, mas sem o bl
 ; => "abra cadabra"
 ```
 
-Use o `when` se voce quiser fazer multiplas coisas quando uma condição for verdadeira, e sempre quiser retornar `nil` quando a condição for falsa.
+Use o `when` se você quiser fazer múltiplas coisas quando uma condição for verdadeira, e sempre quiser retornar `nil` quando a condição for falsa.
 
-# nil, true, false, veracidade, iqualidade e expressoes Booleanas
+# nil, true, false, veracidade, igualidade e expressões Booleanas
 
 O Clojure tem o valores `true` e `falso`. No Clojure o `nil` é usado para indicar _nenhum valor_ . Você pode verificar se um valor é `nil` com a função apropriadamente chamada de `nil?`:
 
@@ -183,12 +183,12 @@ O operador de igualidade do Clojure é `=`:
 ; => false
 ```
 
-Algumas outras linguagens exigem que você utilize diferentes operadores ao comparar valores de diferentes tipos. Por exemplo, talvez você tenha que usar algum tipo especial de operador de igualdade de string, feito especialmente para strings. Mas você nao precisa de nada estranho ou tedioso do tipo para testar a igualdade ao usar as estruturas de dados built-in do Clojure. 
+Algumas outras linguagens exigem que você utilize diferentes operadores ao comparar valores de diferentes tipos. Por exemplo, talvez você tenha que usar algum tipo especial de operador de igualdade de string, feito especialmente para strings. Mas você não precisa de nada estranho ou tedioso do tipo para testar a igualdade ao usar as estruturas de dados built-in do Clojure. 
 
 O Clojure usa os operadores Booleanos `or` e `and`. O `or` retorna ou o primeiro valor verdadeiro ou o último valor. O `and` retorna o primeiro valor falso ou, se nenhum valor for falso, o último valor verdadeiro. Vamos ver o `or` primeiro:
 
 ```clojure
-(or false nil :grande_quero_dizer_venti :por_que_nao_posso_dizer_grande)
+(or false nil :grande_quero_dizer_venti :por_que_não_posso_dizer_grande)
 ; => :grande_quero_dizer_venti
 
 (or (= 0 1) (= "sim" "não"))
@@ -198,10 +198,10 @@ O Clojure usa os operadores Booleanos `or` e `and`. O `or` retorna ou o primeiro
 ; => nil
 ```
 
-No primeiro exemplo o valor do retorno é `:grande_quero_dizer_venti` porque este é o primeiro valor verdadeiro. O segundo exemplo não possui valor verdadeiro, entao o `or` retorna o ultimo valor, o qual é `false`. No ultimo exemplo, novamente nao existe valor verdadeiro, e o `or` retorna o ultimo valor, o qual é `nil`.  E agora vamos ver o `and`:
+No primeiro exemplo o valor do retorno é `:grande_quero_dizer_venti` porque este é o primeiro valor verdadeiro. O segundo exemplo não possui valor verdadeiro, então o `or` retorna o ultimo valor, o qual é `false`. No ultimo exemplo, novamente não existe valor verdadeiro, e o `or` retorna o ultimo valor, o qual é `nil`.  E agora vamos ver o `and`:
 
 ```clojure
-(and :wifi_gratis :cafe_quentinho)
+(and :WiFi_gratis :cafe_quentinho)
 ; => :cafe_quentinho
 
 (and :de_boa_na_lagoa nil false)
@@ -216,25 +216,25 @@ No Clojure você usa `def` para vincular (`bind`)um nome a um valor
 
 ```clojure
 (def nomes-errados-de-protagonistas
-  ["Larry Potter" "Dorinha a aventureira" "O Incrivel Bulk"])
+  ["Larry Potter" "Dorinha a aventureira" "O Incrível Bulk"])
 
 nomes-errados-de-protagonistas
-; => ["Larry Potter" "Dorinha a aventureira" "O Incrivel Bulk"]
+; => ["Larry Potter" "Dorinha a aventureira" "O Incrível Bulk"]
 
 ```
 
-Neste caso voce está associando o nome `nomes-errados-de-protagonistas` com um vetor contendo três coisas (você irá aprender sobre vetores em [Vetores na pagina 45](?) TODO add link)).
+Neste caso você está associando o nome `nomes-errados-de-protagonistas` com um vetor contendo três coisas (você irá aprender sobre vetores em [Vetores na pagina 45](?) TODO add link)).
 
-Note que eu estou usando o termo vincular, onde em outras linguagens você diria que voce está atribuindo (_assigning_) um valor para uma _variável_. Outras linguagens te encorajam a performar multiplas atribuicoes para a mesma variavel.
+Note que eu estou usando o termo vincular, onde em outras linguagens você diria que você está atribuindo (_assigning_) um valor para uma _variável_. Outras linguagens te encorajam a performar múltiplas atribuições para a mesma variável.
 
-Por exemplo, em Ruby voce precisa performar varias atribuicoes para uma variavel para estabelecer o seu valor.
+Por exemplo, em Ruby você precisa performar varias atribuições para uma variável para estabelecer o seu valor.
 
 
 ```ruby
 severidade = :moderada
 mensagem_de_erro = "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS..."
 if severidade == :moderada
-messagem_de_erro = messagem_de_erro + "MODERADAMENTE INCONVENIENTES"
+mensagem_de_erro = mensagem_de_erro + "MODERADAMENTE INCONVENIENTES"
 else
 mensagem_de_erro = mensagem_de_erro + "LASCADOS!"
 end
@@ -246,11 +246,11 @@ Você deve estar tentando a fazer algo similar em Clojure:
 (def severidade :moderada)
 (def mensagem_de_erro "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS ")
 (if (= severidade :moderada)
-    (def messagem_de_erro (str messagem_de_erro + "MODERADAMENTE INCOMODADOS"))
+    (def mensagem_de_erro (str mensagem_de_erro + "MODERADAMENTE INCOMODADOS"))
     (def mensagem_de_erro (str mensagem_de_erro + "LASCADOS!")))
 ```
 
-Entretanto alterar o valor associado com um nome como este pode dificultar a compreensao do comportamento do seu programa, porque é mais dificil de entender qual valor está associado a um nome ou porque aquele valor tenha sido alterado. O Clojure tem um conjunto de ferramentas para lidar com mudanças, o qual voce ira aprender sobre no capítulo 10. Enquanto voce estiver aprendendo Clojure, voce descobrirá que voce raramente precisa alterar um nome/valor associado. Segue uma maneira de como poderia escrever o codigo anterior:
+Entretanto alterar o valor associado com um nome como este pode dificultar a compreensão do comportamento do seu programa, porque é mais difícil de entender qual valor está associado a um nome ou porque aquele valor tenha sido alterado. O Clojure tem um conjunto de ferramentas para lidar com mudanças, o qual você ira aprender sobre no capítulo 10. Enquanto você estiver aprendendo Clojure, você descobrirá que você raramente precisa alterar um nome/valor associado. Segue uma maneira de como poderia escrever o código anterior:
 
 
 ```clojure
@@ -265,18 +265,18 @@ Entretanto alterar o valor associado com um nome como este pode dificultar a com
 ; => "MEU DEUS! É UM DESASTRE, NÓS ESTAMOS MODERADAMENTE INCOMODADOS!"
 ```
 
-Aqui, voce criou uma funcao `mensagem_de_erro`, a qual aceita um unico argumento, `severidade`, e o utiliza para determinar qual string retornará. Vocé, entao, chama a funcao com `moderada` para a severidade. Voce ira aprender tudo sobre criacao de funcao em [functions na pagina 48](?) TODO add link; enquanto isso, voce deve tratar `def` como se tivesse definindo uma constante. Nos proximos capitulos, voce ira aprender como trabalhar com esta, aparente, limitacao ao adotar o paradigma da programacao funcional. 
+Aqui, você criou uma função `mensagem_de_erro`, a qual aceita um único argumento, `severidade`, e o utiliza para determinar qual string retornará. Vocé, então, chama a função com `moderada` para a severidade. você ira aprender tudo sobre criação de função em [functions na pagina 48](?) TODO add link; enquanto isso, você deve tratar `def` como se tivesse definindo uma constante. Nos próximos capítulos, você ira aprender como trabalhar com esta, aparente, limitação ao adotar o paradigma da programação funcional. 
 
 # Estrutura de Dados
 
-O Clojure vem com um punhado de estrutura de dados que voce usará na maior parte do tempo. Se voce estiver vindo de uma experiencia de Orientação a Objetos, você ficará surpresa com o quanto voce pode fazer com os tipos, aparentemente, básicos apresentados aqui.
-Todas as estruturas de dados do Clojure são imutáveis, ou seja, não é possível alterá-las diretamente. Por exemplo, em Ruby voce pode reatribuir o nome errado dos protagonistas na posição(?) 0:
+O Clojure vem com um punhado de estrutura de dados que você usará na maior parte do tempo. Se você estiver vindo de uma experiencia de Orientação a Objetos, você ficará surpresa com o quanto você pode fazer com os tipos, aparentemente, básicos apresentados aqui.
+Todas as estruturas de dados do Clojure são imutáveis, ou seja, não é possível alterá-las diretamente. Por exemplo, em Ruby você pode reatribuir o nome errado dos protagonistas na posição(?) 0:
 
 ``` ruby
 nomes_errados_de_protagonistas = [
   "Larry Potter", 
   "Dorinha a aventureira", 
-  "O Incrivel Bulk"
+  "O incrível Bulk"
   ]
 
 nomes_errados_de_protagonistas[0] = "Gary Potter"
@@ -285,17 +285,17 @@ nomes_errados_de_protagonistas
 # => [
 #   "Gary Potter",
 #   "Dorinha a aventureira",
-#   "O Incrivel Bulk"
+#   "O incrível Bulk"
 # ]
 ```
 
-O Clojure nao tem um equivalente a isso. Voce aprendera mais sobre o porque o Clojure foi implementado dessa forma no Capitulo 10, mas por enquanto é mais divertido aprender sem todas essas filosofias. Sem mais delongas, vamos ver numeros em Clojure.
+O Clojure não tem um equivalente a isso. você aprendera mais sobre o porque o Clojure foi implementado dessa forma no capítulo 10, mas por enquanto é mais divertido aprender sem todas essas filosofias. Sem mais delongas, vamos ver números em Clojure.
 
 # Números
 
-O Clojure tem um suporte para numeros bastante sofisticado. Eu não irei perder muito ficando nesses detalhes tecnicos chatos (como coesão e contágio numérico), porque isso vai nos atrapalhar a fazer as coisas. Se voce tem interesse nesses detalhes chatos, confira a documentação em [https://clojure.org/reference/data_structures#Numbers](https://clojure.org/reference/data_structures#Numbers). Resumindo, o Clojure lida de boa com praticamente qualquer coisa que você jogar pra ele.
+O Clojure tem um suporte para números bastante sofisticado. Eu não irei perder muito ficando nesses detalhes tecnicos chatos (como coesão e contágio numérico), porque isso vai nos atrapalhar a fazer as coisas. Se você tem interesse nesses detalhes chatos, confira a documentação em [https://clojure.org/reference/data_structures#Numbers](https://clojure.org/reference/data_structures#Numbers). Resumindo, o Clojure lida de boa com praticamente qualquer coisa que você jogar pra ele.
 
-Enquanto isso iremos trabalhar com inteiros e casas decimais. Nos tambem iremos trabalhar com frações, no qual o clojure pode representar diretamente. Aqui estão um inteiro, um numero com casas decimais e uma fração, respectivamente:
+Enquanto isso iremos trabalhar com inteiros e casas decimais. Nos também iremos trabalhar com frações, no qual o clojure pode representar diretamente. Aqui estão um inteiro, um número com casas decimais e uma fração, respectivamente:
 
 ``` clojure
 93
@@ -326,13 +326,13 @@ Perceba que o Clojure somente permite aspas duplas para delinear strings. 'Lord 
 
 # Mapas
 
-Mapas são semelhantes a dicionários ou hashes em outras linguages. Eles são uma maneira de associar algum valor com outro valor. Os dois tipos de mapas em Clojure são hash maps e sorted maps (mapas ordenados). Irei cobrir apenas o mais basico hash maps. Vamos dar uma olhada em alguns exemplos de mapas literais. Aqui está um mapa vazio:
+Mapas são semelhantes a dicionários ou hashes em outras linguages. Eles são uma maneira de associar algum valor com outro valor. Os dois tipos de mapas em Clojure são hash maps e sorted maps (mapas ordenados). Irei cobrir apenas o mais básico hash maps. Vamos dar uma olhada em alguns exemplos de mapas literais. Aqui está um mapa vazio:
 
 ``` clojure
 {}
 ``` 
 
-Neste exemplo, :nome e :sobrenome são keywords (falarei sobre elas na proxima seção):
+Neste exemplo, :nome e :sobrenome são keywords (falarei sobre elas na próxima seção):
 
 ``` clojure
 {:nome "Carlos"
@@ -349,7 +349,7 @@ Mapas podem ser aninhados:
 {:nome {:primeiro "João" :meio "Jacó" :ultimo "daSilvaSantos"}}
 ```
 
-Perceba que os valores do mapa podem ser de qualquer tipo: strings, numeros, mapas, vetores e até funções. O Clojure não liga!
+Perceba que os valores do mapa podem ser de qualquer tipo: strings, números, mapas, vetores e até funções. O Clojure não liga!
 
 Além de usar mapas literais, também podemos usar a função hash-map para criar um mapa:
 
@@ -398,7 +398,7 @@ Outra coisa legal que você pode fazer com mapas é usar keywords como funções
 
 # Keywords 
 
-Para entender melhor as keywords em Clojure é melhor vermos como elas sao usadas. Elas são usadas primariamente em mapas, como voce viu na seção anterior. Seguem alguns exemplos de keywords:
+Para entender melhor as keywords em Clojure é melhor vermos como elas são usadas. Elas são usadas primariamente em mapas, como você viu na seção anterior. Seguem alguns exemplos de keywords:
 
 ``` clojure
 :a
@@ -407,7 +407,7 @@ Para entender melhor as keywords em Clojure é melhor vermos como elas sao usada
 :_?
 ``` 
 
-As keywords podem ser usadas como funções que procuram o valor correspondente em uma estrutura de dados. Por exemplo, voce pode procurar `:a` em um mapa:
+As keywords podem ser usadas como funções que procuram o valor correspondente em uma estrutura de dados. Por exemplo, você pode procurar `:a` em um mapa:
 
 ``` clojure
 (:a {:a 1 :b 2 :c 3})
@@ -438,7 +438,7 @@ Um vetor é parecido com uma matriz, no sentido que é uma collection que começ
 [3 2 1]
 ```
 
-E aqui retornamos o elemento na posicao 0 de um vetor:
+E aqui retornamos o elemento na posição 0 de um vetor:
 
 ``` clojure
 (get [3 2 1] 0)
@@ -452,9 +452,9 @@ Segue outro exemplo de get pelo posição:
 ; => {:nome "Pugsley Winterbottom"}
 ```
 
-Veja que os elementos de um vetor podem ser de qualquer tipo, e voce pode misturar os tipos. Perceba também que estamos usando a mesma funcao `get` como usamos quando estávamos procurando valores em mapas:
+Veja que os elementos de um vetor podem ser de qualquer tipo, e você pode misturar os tipos. Perceba também que estamos usando a mesma função `get` como usamos quando estávamos procurando valores em mapas:
 
-Voce pode criar vetores com a função `vector`:
+você pode criar vetores com a função `vector`:
 
 ``` clojure
 (vector "arrepiante" "lua" "cheia")
@@ -468,18 +468,18 @@ Você pode usar a função `conj` para incluir elementos adicionais no vetor. Es
 ; => [1 2 3 4]
 ```
 
-Vetores não sao o unico jeito de guardar sequences; o Clojure também tem listas.
+Vetores não são o único jeito de guardar sequences; o Clojure também tem listas.
 
 # Listas
 
-Listas são parecidas com vetores, no sentido que elas sao colecoes lineares e valores. Mas tem suas diferencas. Por exemplo, voce nao consegue buscar elementos de uma lista com `get`. Para escrever uma lista literal, basta inserir os elementos entre parenteses e usar aspas simples no começo
+Listas são parecidas com vetores, no sentido que elas são coleções lineares e valores. Mas tem suas diferenças. Por exemplo, você não consegue buscar elementos de uma lista com `get`. Para escrever uma lista literal, basta inserir os elementos entre parênteses e usar aspas simples no começo
 
 ``` clojure
 '(1 2 3 4)
 ; => (1 2 3 4)
 ```
 
-Perceba que quando o REPL imprime a lista, ele nao inclui as aspas simples. Nós voltaremos para explicar porque isso acontece no Capitulo 7. Se voce quiser buscar um elemento de uma lista, voce pode usar a funcao `nth`:
+Perceba que quando o REPL imprime a lista, ele não inclui as aspas simples. Nós voltaremos para explicar porque isso acontece no capítulo 7. Se você quiser buscar um elemento de uma lista, você pode usar a função `nth`:
 
 
 ``` clojure
@@ -490,9 +490,9 @@ Perceba que quando o REPL imprime a lista, ele nao inclui as aspas simples. Nós
 ; => :c
 ```
 
-Eu não vou cobrir performance em detalhe nesse livro porque eu nao acho que seja util focar nisso até a linguagem se tornar familiar para você. De todo modo, é bom saber que usar `nth` para buscar um elemento de uma lista é mais lento que usar `get` para buscar um elemento de um vetor. Isso se dá porque o Clojure tem que atravessar todos os _n_ elementos de uma lista para achar o _enésimo_  (nth), enquanto que para acessar um elemento de um vetor pelo seu indice bastam algums poucos pulos, na maioria dos casos.
+Eu não vou cobrir performance em detalhe nesse livro porque eu não acho que seja util focar nisso até a linguagem se tornar familiar para você. De todo modo, é bom saber que usar `nth` para buscar um elemento de uma lista é mais lento que usar `get` para buscar um elemento de um vetor. Isso se dá porque o Clojure tem que atravessar todos os _n_ elementos de uma lista para achar o _enésimo_  (nth), enquanto que para acessar um elemento de um vetor pelo seu indice bastam algums poucos pulos, na maioria dos casos.
 
-Valores em uma lista poder ser de diferentes tipos e voce pode criar listas com a função `list`:
+Valores em uma lista poder ser de diferentes tipos e você pode criar listas com a função `list`:
 
 ``` clojure
 (list 1 "two" {3 4})
@@ -506,11 +506,11 @@ Os elementos são adicionados no _começo_ de uma lista:
 ; => (4 1 2 3)
 ```
 
-Quando voce deve usar uma lista e quando deve usar um vetor? Uma boa regra geral é que se voce precisa adicionar itens facilmente no inicio de uma sequence ou se voce estiver escrevendo uma macro, voce deverá usar uma lista. Do contrario, use um vetor. De acordo com que voce for aprendendo mais, voce vai comecar a ter uma boa nocao de quando usar qual.
+Quando você deve usar uma lista e quando deve usar um vetor? Uma boa regra geral é que se você precisa adicionar itens facilmente no inicio de uma sequence ou se você estiver escrevendo uma macro, você deverá usar uma lista. Do contrario, use um vetor. De acordo com que você for aprendendo mais, você vai começar a ter uma boa noção de quando usar qual.
 
 # Conjuntos 
 
-Conjuntos são collections de valores únicos. O Clojure tem dois tipos de conjuntos: hash e ordenados. Irei focar nos conjuntos hash (hash set) pois eles são usados com mais frequencia. Segue a notação literal de um conjunto hash:
+Conjuntos são collections de valores únicos. O Clojure tem dois tipos de conjuntos: hash e ordenados. Irei focar nos conjuntos hash (hash set) pois eles são usados com mais frequência. Segue a notação literal de um conjunto hash:
 
 ``` clojure
 #{"kurt vonnegut" 20 :icicle}
@@ -522,7 +522,7 @@ Você também pode criar um conjunto usando a função hash-set:
 ; => #{1 2}
 ```
 
-Perceba que multiplas instâncias de um valor se torna um unico valor no conjunto, então ficamos com um unico 1 e um unico 2. Se voce tentar adicionar um valor em um conjunto que ja possui aquele valor (como :b no codigo abaixo), ainda assim o conjunto terá apenas um unico elemento desse valor:
+Perceba que múltiplas instâncias de um valor se torna um único valor no conjunto, então ficamos com um único 1 e um único 2. Se você tentar adicionar um valor em um conjunto que ja possui aquele valor (como :b no código abaixo), ainda assim o conjunto terá apenas um único elemento desse valor:
 
 ``` clojure
 (conj #{:a :b} :b)
@@ -536,7 +536,7 @@ Você também pode criar conjuntos a partir de vetores e listas existentes usand
 ; => #{3 4}
 ```
 
-Você pode verificar se um valor pertence a um conjunto usando a função _constains?_, _get_ ou usando uma keyword como função, usando o conjunto como seu argumento. A função _contains?_ retorna true ou false, enquanro que _get_ e buscar por keyword irão retornar o valor, caso exista, ou do contrário, nil. 
+Você pode verificar se um valor pertence a um conjunto usando a função _constains?_, _get_ ou usando uma keyword como função, usando o conjunto como seu argumento. A função _contains?_ retorna true ou false, enquanto que _get_ e buscar por keyword irão retornar o valor, caso exista, ou do contrário, nil. 
 
 Veja como usar _contains?_:
 
@@ -577,30 +577,30 @@ Perceba que ao usar _get_ para testar se um conjunto contem ou não _nil_ irá s
 
 Você deve ter percebido que o tratamento das estruturas de dados até o momento não incluem a descrição de como criar novos tipos ou classes. O motivo é que a enfase do Clojure em simplicidade encoraja você a utilizar as estruturas de dados nativas primeiro.
 
-Se vocês estiver vindo de um background(?) de programação orientada a objetos, você poderá pensar que essa abordagem é estranha e retrógrado. Entretanto, você descobrirá que seus dados não precisam estar hermeticamente empacotados com um classe para que eles sejam uteis e inteligiveis. Segue um epigrama muito amado pelos Clojuristas para você pegar a visão da filosofia do Clojure:
+Se vocês estiver vindo de um background(?) de programação orientada a objetos, você poderá pensar que essa abordagem é estranha e retrógrado. Entretanto, você descobrirá que seus dados não precisam estar hermeticamente empacotados com um classe para que eles sejam uteis e inteligíveis. Segue um epigrama muito amado pelos Clojuristas para você pegar a visão da filosofia do Clojure:
 
 > É melhor ter 100 funções que operam em uma única estrutura de dados do que 10 funções que operam em 10 estruturas de dados 
 > - Alan Perlis
 
-Você irá aprender mais sobre este aspecto da filosofia do Clojure nos proximos capitulos. Por enquanto, fique atento nas várias maneiras de obter reutilização de codigo ao se ater as estruturas de dados básicas.
+Você irá aprender mais sobre este aspecto da filosofia do Clojure nos próximos capítulos. Por enquanto, fique atento nas várias maneiras de obter reutilização de código ao se ater as estruturas de dados básicas.
 
 Com isso, finalizamos nossa primeira camada de estrutura de dados. Agora é hora de nos aprofundarmos em funções e aprender como usar essas estruturas de dados!
 
 
 # Funções
 
-Uma das razões pela qual as pessoas piram nos Lisps é que essas linguagens te fazem construir programas com comportamentos complexos, mas ainda assim o seu pilar principal-a função- é tão simples. Essa seção faz a sua iniciação para a beleza e elegancia das funcoes Lisp explicando o seguinte:
+Uma das razões pela qual as pessoas piram nos Lisps é que essas linguagens te fazem construir programas com comportamentos complexos, mas ainda assim o seu pilar principal-a função- é tão simples. Essa seção faz a sua iniciação para a beleza e elegância das funções Lisp explicando o seguinte:
 
-- Chamada de funcoes
-- Como funcoes diferem de macros e special forms
-- Definicao de funcoes
-- Funcoes anonimas
-- Retornando funcoes
+- Chamada de funções
+- Como funções diferem de macros e special forms
+- Definição de funções
+- funções anonimas
+- Retornando funções
 
 
 ## Chamada de funções
 
-Até o momento você ja viu varios exemplos de chamada de funcoes:
+Até o momento você ja viu vários exemplos de chamada de funções:
  
 ``` clojure
 (+ 1 2 3 4)
@@ -608,25 +608,25 @@ Até o momento você ja viu varios exemplos de chamada de funcoes:
 (first [1 2 3 4])
 ```
 
-Lembre-se que todas as operacoes do Clojure tem a mesma sintaxe: abre parentesis, operador, operandos, fecha parenteses. Chamadas de funcoes é apenas mais um termo para uma operacao, onde o operador é a funcao ou uma expressao de funcao (uma expressao que retorna uma funcao).
+Lembre-se que todas as operações do Clojure tem a mesma sintaxe: abre parênteses, operador, operandos, fecha parênteses. Chamadas de funções é apenas mais um termo para uma operação, onde o operador é a função ou uma expressão de função (uma expressão que retorna uma função).
 
-Isto te permite escrever alguns codigos bem interessantes. Segue uma expresao de funcao que retorna a funcao + (soma):
+Isto te permite escrever alguns códigos bem interessantes. Segue uma expressão de função que retorna a função + (soma):
 
 ``` clojure
 (or + -)
 #object[clojure.core$_PLUS_ 0x1b9c1b51 "clojure.core$_PLUS_@1b9c1b51"]
 ```
 
-Esse valor de retorno é a string que representa a funcao de soma. Porque o valor de retorno de OR é o primeiro valor verdadeiro e aqui a funcoao de de soma é verdadeiro, a funcao de soma é retornada. Voce também pode usar essa expressao como operador de outra expressao:
+Esse valor de retorno é a string que representa a função de soma. Porque o valor de retorno de OR é o primeiro valor verdadeiro e aqui a função de de soma é verdadeiro, a função de soma é retornada. você também pode usar essa expressão como operador de outra expressão:
 
 ``` clojure
 ((or + -) 1 2 3)
 ; => 6
 ```
 
-Porque (or + -) retorna +, essa expressao é avaliada como a soma de 1, 2 e 3, retornando 6.
+Porque (or + -) retorna +, essa expressão é avaliada como a soma de 1, 2 e 3, retornando 6.
 
-Seguem mais dois exemplos de chamada de funcoes válidas que também retornam 6:
+Seguem mais dois exemplos de chamada de funções válidas que também retornam 6:
 
 ``` clojure
 ((and (= 1 1) +) 1 2 3)
@@ -638,7 +638,7 @@ Seguem mais dois exemplos de chamada de funcoes válidas que também retornam 6:
 
 No primeiro exemplo, o valor de retorno de _and_ é o primeiro valor falso ou o primeiro valor verdadeiro. Nesse caso, o + é retornado porque é o ultimo valor verdadeiro, e então é aplicado aos argumentos 1 2 3, retornando 6. No segundo exemplo, o valor de retorno de _first_ é o primeiro elemento de uma sequence, que é _+_ nesse caso.
 
-Porém, estes não são chamadas de funcao validas, porque numero e strings nao sao funcoes:
+Porém, estes não são chamadas de função validas, porque número e strings não são funções:
 
 ``` clojure
 (1 2 3 4)
@@ -652,12 +652,12 @@ ClassCastException java.lang.String cannot be cast to clojure.lang.IFn
 user/eval728 (NO_SOURCE_FILE:1)
 ```
  
-É possivel que você veja esse erro muitas vezes enquanto você continuar usando Clojure: _<x> cannot be cast to clojure.lang.IFn_ simplesmente signifca que voce está tentando usar algo como funcao quando este algo nao é uma funcao.
+É possível que você veja esse erro muitas vezes enquanto você continuar usando Clojure: _<x> cannot be cast to clojure.lang.IFn_ simplesmente significa que você está tentando usar algo como função quando este algo não é uma função.
 
 
-A flexibilidade das funcoes nao termina com expressoa de funcoes! Sintaticamente, funcoes pode receber quaisquer expressoes como argumento, incluindo outras funcoes. Funcoes que podem tanto receber uma funcao como argumento ou retornar uma funcao sao chamadas de funca de ordem maior. Linguagens de programacao com funcoes de ordem maior sao conhecidas por dar suporte a funcoes de primeira classe, pois voce trata as funcoes como valores da mesmo maneira como voce trata outros tipos de dados como numeros e vetores.
+A flexibilidade das funções não termina com expressão de funções! Sintaticamente, funções pode receber quaisquer expressões como argumento, incluindo outras funções. funções que podem tanto receber uma função como argumento ou retornar uma função são chamadas de funca de ordem maior. Linguagens de programação com funções de ordem maior são conhecidas por dar suporte a funções de primeira classe, pois você trata as funções como valores da mesmo maneira como você trata outros tipos de dados como números e vetores.
 
-Pegue a funcao map _(nao confudir com map a estrutura de dados)_, por exemplo. map cria uma nova lista ao aplicar a funcao para cada membro de uma colecao. Aqui, a funcao inc  incrementa um numero de 1 em 1:
+Pegue a função map _(não confundir com map a estrutura de dados)_, por exemplo. map cria uma nova lista ao aplicar a função para cada membro de uma coleção. Aqui, a função inc  incrementa um número de 1 em 1:
 
 
 ``` clojure
@@ -668,13 +668,13 @@ Pegue a funcao map _(nao confudir com map a estrutura de dados)_, por exemplo. m
 ; => (1 2 3 4)
 ```
 
-(Perceba que map nao retorna um vetor, apesar de termos passado um vetor como argumento. Voce ira entender porque no Capitulo 4. Por enquanto, confia e trabalha!(?)).
+(Perceba que map não retorna um vetor, apesar de termos passado um vetor como argumento. você ira entender porque no capítulo 4. Por enquanto, confia e trabalha!(?)).
 
-Ao suportar funcoes de primeira classe, o Clojure te permite construir abstracoes mais poderosas em comparacao com  linguagens que nao as tem. Para quem nao for familiarizado com esse modo de programar, pense em funcoes como forma de permitir generalizar operacoes ao inves de estrutura de dados. Por exemplo, a funcao _+_ abstrai adiçao para quaisquer numeros especificos(?).
+Ao suportar funções de primeira classe, o Clojure te permite construir abstrações mais poderosas em comparação com  linguagens que não as tem. Para quem não for familiarizado com esse modo de programar, pense em funções como forma de permitir generalizar operações ao invés de estrutura de dados. Por exemplo, a função _+_ abstrai adição para quaisquer números específicos(?).
 
-Por outro lado, o Clojure (e todos os Lisps) te permite criar funcoes que generalizam processos. map te permite generalizar o processo de transformar uma colecao ao aplicar a funcao - qualquer funcao - sobre qualquer colecao.
+Por outro lado, o Clojure (e todos os Lisps) te permite criar funções que generalizam processos. map te permite generalizar o processo de transformar uma coleção ao aplicar a função - qualquer função - sobre qualquer coleção.
 
-O ultimo detalhe que voce precisa saber sobre chamda de funcoes e que o Clojure avalia todos os argumentos das funcoes recursivamente antes de passa-los para a funcao. Vejamos como o Clojure avaliaria a chamada de funcao cujos argumentos tambem sao chamadas de funcoes:
+O ultimo detalhe que você precisa saber sobre chamada de funções e que o Clojure avalia todos os argumentos das funções recursivamente antes de passa-los para a função. Vejamos como o Clojure avaliaria a chamada de função cujos argumentos também são chamadas de funções:
 
 ``` clojure
 (+ (inc 199) (/ 100 (- 7 2)))
@@ -684,15 +684,15 @@ O ultimo detalhe que voce precisa saber sobre chamda de funcoes e que o Clojure 
 220 ; avaliou final
 ```
 
-A chamada de funcao inicia o processo de avaliacao e todas as subformas sao avaliadas antes de aplicar a funca _+_.
+A chamada de função inicia o processo de avaliação e todas as subformas são avaliadas antes de aplicar a funca _+_.
 
 
-## Chamada de funcoes, chamada de Macro e Special Forms
+## Chamada de funções, chamada de Macro e Special Forms
 
-Na seção anterior voce aprendeu que chamada de funcoes sao expressoes que tem a expressao de uma funcao como operador. 
-As outras duas formas de expressao sao chamada de macros e special forms. Voce ja viu algumas special forms: definicoes e expressoes _if_.
+Na seção anterior você aprendeu que chamada de funções são expressões que tem a expressão de uma função como operador. 
+As outras duas formas de expressão são chamada de macros e special forms. você ja viu algumas special forms: definições e expressões _if_.
 
-Voce ira aprender tudinho sobre chamadas de macro e special forms no Capitulo 7. Para o momento, a principal caracteristica que faz uma special form ser, ora, especial, é que, diferente de outras chamada de funcoes, elas nem sempre avaliam todos os seus operandos.
+você ira aprender tudinho sobre chamadas de macro e special forms no capítulo 7. Para o momento, a principal característica que faz uma special form ser, ora, especial, é que, diferente de outras chamada de funções, elas nem sempre avaliam todos os seus operandos.
 
 Pegue o _if_, or exemplo. Este é a sua estrutura geral:
 
@@ -708,12 +708,12 @@ Agora imagine que você tem um _if_ assim:
 ``` clojure
 (if de-bom-humor
   (tweet sambinha-raiz)
-  (tweet musicas-de-sofrencia))
+  (tweet musicas-de-sofrência))
 ```
 
 Obviamente, em um ´if´ como esse, nos queremos que o Clojure avalie apenas uma das duas condições. Se o Clojure avalia ambas chamadas de função de tweet, seus seguimores do Twitter vão ficar um pouco confusos. 
 
-Outra funcionalidade que diferencia as special forms é que você não pode usá-las como argumentos de funções. Em geral, as special forms implementam funcionalidades centrais do Clojure que simplesmente não podem ser implementadas com funções. O Clojure tem poucas special forms e é deveras incrivel que uma linguagem tão rica seja implementada com tão poucos blocos fundamentais.
+Outra funcionalidade que diferencia as special forms é que você não pode usá-las como argumentos de funções. Em geral, as special forms implementam funcionalidades centrais do Clojure que simplesmente não podem ser implementadas com funções. O Clojure tem poucas special forms e é deveras incrível que uma linguagem tão rica seja implementada com tão poucos blocos fundamentais.
 
 As macros são parecidas com as special forms, no sentido em que elas avaliam os seus operandos diferentemente das chamadas de função e elas também não podem ser passadas como argumentos de funções. Mas esse desvio já se alongou por demais; é hora de aprender como definir funções!
 
@@ -724,7 +724,7 @@ Definições de funções são compostas de 5 partes principais:
 - defn
 - nome da função
 - uma docstring descrevendo a função (opcional)
-- parametros listados em colchetes
+- parâmetros listados em colchetes
 - corpo da função
 
 Aqui temos um exemplo de uma definição de função e uma amostra da chamada da função:
@@ -734,43 +734,43 @@ Aqui temos um exemplo de uma definição de função e uma amostra da chamada da
 ➊ (defn super-empolgada
 ➋   "Retorna um incentivo que talvez seja um pouco empolgada demais"
 ➌   [nome]
-➍   (str "OH. MEU. DEUS! " nome " VOCÊ É ABSULTAMENTE A MELHOR "
+➍   (str "OH. MEU. DEUS! " nome " VOCÊ É ABSOLUTAMENTE A MELHOR "
   "HOMEM BARRA MULHER, DE TODOS OS TEMPOS, EU TE AMO E A GENTE DEVERIA FUGIR PRA OUTRO LUGAR"))
 
 (super-empolgada "Zelda")
-; => "OH. MEU. DEUS! " Zelda " VOCÊ É ABSULTAMENTE A MELHOR  HOMEM BARRA MULHER, DE TODOS OS TEMPOS, EU TE AMO E A GENTE DEVERIA FUGIR PRA OUTRO LUGAR"
+; => "OH. MEU. DEUS! " Zelda " VOCÊ É ABSOLUTAMENTE A MELHOR  HOMEM BARRA MULHER, DE TODOS OS TEMPOS, EU TE AMO E A GENTE DEVERIA FUGIR PRA OUTRO LUGAR"
 ```
 
-Na linha ➊ `super-empolgada` é o nome da função, que é seguido pela docstring descritiva na linha ➋. O parametro, nome, é declarado na linha ➌ e o corpo da função, na linha 4, pega o parametro é faz o que promete - retorna uma saudação que talvez seja ligeiramente super empolgada.
+Na linha ➊ `super-empolgada` é o nome da função, que é seguido pela docstring descritiva na linha ➋. O parâmetros, nome, é declarado na linha ➌ e o corpo da função, na linha 4, pega o parâmetros é faz o que promete - retorna uma saudação que talvez seja ligeiramente super empolgada.
 
-Vamos nos aprofundar na docstrings, parametros e corpo da função.
+Vamos nos aprofundar na docstrings, parâmetros e corpo da função.
 
 ### A docstring
 
-A docstring é uma maneira útil de descrever e documentar seu codigo. Você consegue ver a docstring de uma função no REPL com (doc fn-nome) - por exemplo, (doc map). A docstring também é importante caso você use alguma ferramenta para gerar documentação do seu código.
+A docstring é uma maneira útil de descrever e documentar seu código. Você consegue ver a docstring de uma função no REPL com (doc fn-nome) - por exemplo, (doc map). A docstring também é importante caso você use alguma ferramenta para gerar documentação do seu código.
 
 
-### Parametros e Aridades
+### parâmetros e Aridades
 
-As funções do Clojure podem ser definidas com zero ou mais parametros. Os valores que você passa para funções são chamados argumentos, e os argumentos podem ser de qualquer tipo. O número de parametros é a aridade da função. Seguem algumas definições de funções com diferentes aridades:
+As funções do Clojure podem ser definidas com zero ou mais parâmetros. Os valores que você passa para funções são chamados argumentos, e os argumentos podem ser de qualquer tipo. O número de parâmetros é a aridade da função. Seguem algumas definições de funções com diferentes aridades:
 
 ``` clojure
-(defn sem-parametros
+(defn sem-parâmetros
   []
-  "Eu não tenho paramentros!")
-(defn um-parametro
+  "Eu não tenho parâmetros!")
+(defn um-parâmetro
   [x]
-  (str "Eu recebo um parametro: " x))
-(defn dois-parametros
+  (str "Eu recebo um parâmetro: " x))
+(defn dois-parâmetros
   [x y]
-  (str "Dois parametros! Isso não é nada! Bah! Eu vou destruí-los" 
+  (str "Dois parâmetros! Isso não é nada! Bah! Eu vou destruí-los" 
   "pra te injuriar! (?) " x y))
 
 ```
 
-Nestes exemplos, `sem-parametros` é uma função com aridade 0, `um-parametro` tem aridade 1 e `dois-parametros` tem  aridade 2. 
+Nestes exemplos, `sem-parâmetros` é uma função com aridade 0, `um-parâmetro` tem aridade 1 e `dois-parâmetros` tem  aridade 2. 
 
-Funções também suportam sobrecarga de aridade (arity overloading). Isso significa que você pode definir uma função de modo que o corpo da função a ser executado vai depender da aridade. Segue uma forma geral da definição de uma função de multiplas aridades. Perceba que cada definição de aridade está entre parenteses e tem uma lista de argumentos:
+Funções também suportam sobrecarga de aridade (arity overloading). Isso significa que você pode definir uma função de modo que o corpo da função a ser executado vai depender da aridade. Segue uma forma geral da definição de uma função de múltiplas aridades. Perceba que cada definição de aridade está entre parênteses e tem uma lista de argumentos:
 
 ``` clojure
 
@@ -786,7 +786,7 @@ Funções também suportam sobrecarga de aridade (arity overloading). Isso signi
       (fazer-coisas arg-um )))
 ```
 
-Sobrecarga de aridade é uma maneira de prover valores padrões para argumentos. No exemplo a seguir `"karatê"` é o argumento padrão para o parametro `tipo-do-golpe`:
+Sobrecarga de aridade é uma maneira de prover valores padrões para argumentos. No exemplo a seguir `"karatê"` é o argumento padrão para o parâmetros `tipo-do-golpe`:
 
 
 ``` clojure
@@ -799,7 +799,7 @@ Sobrecarga de aridade é uma maneira de prover valores padrões para argumentos.
 
 ```
 
-Se você chamar `golpe-x` com dois argumentos, a função funciona como deveria se não fosse uma funcao de de multiplas aridades:
+Se você chamar `golpe-x` com dois argumentos, a função funciona como deveria se não fosse uma função de de múltiplas aridades:
 
 ```clojure
 (golpe-x "Kanye West" "tapa")
@@ -812,9 +812,9 @@ Se você chamar `golpe-x` somente com um argumento, `golpe-x` vai se autochamar 
 (golpe-x "Kanye West")
 ; => "Eu dou o golpe: karate em Kanye West! Receba!"
 ```
-![Uma ilustração em preto e branco de Kanye West sentado à mesa com alguns vegetais e apertando um pote de alcool em gel. ](imagens/kanye.png)
+![Uma ilustração em preto e branco de Kanye West sentado à mesa com alguns vegetais e apertando um pote de álcool em gel. ](imagens/kanye.png)
 
-Pode parecer nao muito comum definir uma funcao dessa forma, em termos dela mesma. Se sim, ótimo! Isso significa que você está aprendendo uma nova maneira de fazer coisas!  
+Pode parecer não muito comum definir uma função dessa forma, em termos dela mesma. Se sim, ótimo! Isso significa que você está aprendendo uma nova maneira de fazer coisas!  
 
 Você també pode definir que cada aridade faça algo completamente diferente entre si:
 
@@ -823,13 +823,13 @@ Você també pode definir que cada aridade faça algo completamente diferente en
 (defn aridade-estranha
   ([]
   "O destino te vestiu essa manhã, meu amigo, e agora o Medo está tentado tirar as suas calças. Se você desistir, se você ceder, você sempre acabará pelado com o Medo rindo das suas vergonhas - O Tick")
-  ([numero]
-     (inc numero)))
+  ([número]
+     (inc número)))
 ```
 
-O corpo da função de aridade zero retorna uma frase sábia e o corpo de aridade um aumenta o valor em 1 unidade do número. Muito provavelmente você não vai querer escrever uma função assim, porque poderia ser confuso ter dois corpos de  função que são totalmente nao relacionados.
+O corpo da função de aridade zero retorna uma frase sábia e o corpo de aridade um aumenta o valor em 1 unidade do número. Muito provavelmente você não vai querer escrever uma função assim, porque poderia ser confuso ter dois corpos de  função que são totalmente não relacionados.
 
-O Clojure também te permite funções com aridades variaveis ao incluir um _parametro rest_, tipo "coloque o _resto_ desses argumentos em uma lista com seguinte nome". O parametro _rest_ é indicado por um "e comercial" (`&`), como vemos no ➊:
+O Clojure também te permite funções com aridades variáveis ao incluir um _parâmetro rest_, tipo "coloque o _resto_ desses argumentos em uma lista com seguinte nome". O parâmetro _rest_ é indicado por um "e comercial" (`&`), como vemos no ➊:
 
 
 ``` clojure
@@ -841,15 +841,15 @@ O Clojure também te permite funções com aridades variaveis ao incluir um _par
 ➊   [& moleque]
   (map xingamento-de-velhote moleque))
 
-(velhote "Cleitn" "'Na Maria" "O Incrivel Bulk")
+(velhote "Cleitn" "'Na Maria" "O incrível Bulk")
 ; => ("Saia do meu gramado, Cleitin!!!"
       "Saia do meu gramado, 'Na Maria!!!"
-      "Saia do meu gramado, O Incrivel Bulk!!!")
+      "Saia do meu gramado, O incrível Bulk!!!")
 ```
 
 ![A imagem retrata um velhinho rabugento com uma bengala, expressando frustração com a frase "Xinguem tudo até a morte!", e junto dele está um cachorrinho dachshund vestindo um suéter e uma cartola.](velhinho.png)
 
-Como você pode ver, quando você passa argumentos para funções com aridade variável, os argumentos são tratados como uma lista. Você consegue misturar parametros _rest_ com parametros normais, mas os parametros rest tem que vir por ultimo:
+Como você pode ver, quando você passa argumentos para funções com aridade variável, os argumentos são tratados como uma lista. Você consegue misturar parâmetros _rest_ com parâmetros normais, mas os parâmetros rest tem que vir por ultimo:
 
 ``` clojure
 (defn coisas-favoritas
@@ -861,11 +861,11 @@ Como você pode ver, quando você passa argumentos para funções com aridade va
 ; => "Oier, Dorinha, aqui estão as minhas coisas favoritas: chiclete, sapatos, kara-tê"
 ```
 
-Finalmente, o Clojure tem uma maneira mais sofisticada de definir parametros, chamada _destructuring_ (desestruturação), a qual merece sua própria subseção.
+Finalmente, o Clojure tem uma maneira mais sofisticada de definir parâmetros, chamada _destructuring_ (desestruturação), a qual merece sua própria subseção.
 
 ### Destructuring
 
-A idéia basica por trás de _destructuring_ é que ela te permite associar , de forma concisa, valores a nomes dentro de uma coleção. Vejamos um exemplo básico:
+A ideia básica por trás de _destructuring_ é que ela te permite associar , de forma concisa, valores a nomes dentro de uma coleção. Vejamos um exemplo básico:
 
 
 ``` clojure 
@@ -880,7 +880,7 @@ primeira-coisa)
 
 Aqui, a função `minha-primeira` associar o símbolo `primeira-coisa` com o primeiro elemento do vetor que foi passado como argumento. Você diz para `minha-primeira` fazer isso ao colocar o simbolo dentro de um vetor.
 
-Esse vetor é como um simbolo grandão levantado para o Clojure que diz:“Ei! Esta função vai receber uma lista ou um vetor como argumento. Facilite minha vida desmembrando a estrutura do argumento para mim e associando nomes significativos às diferentes partes do argumento!”. Quando você desestrutura um vetor ou uma lista, você pode nomear quantos elementos quiser e também usar parametros _rest_:
+Esse vetor é como um simbolo grandão levantado para o Clojure que diz:“Ei! Esta função vai receber uma lista ou um vetor como argumento. Facilite minha vida desmembrando a estrutura do argumento para mim e associando nomes significativos às diferentes partes do argumento!”. Quando você desestrutura um vetor ou uma lista, você pode nomear quantos elementos quiser e também usar parâmetros _rest_:
 
 ``` clojure
 (defn seletor
@@ -897,43 +897,43 @@ Esse vetor é como um simbolo grandão levantado para o Clojure que diz:“Ei! E
 ; => Estamos ignorando o resto das suas escolhas. Aqui estão elas, caso você precise chorar por elas: Chiqueirinho, Aquaman
 ```
 
-Aqui, o parametro _rest_ `escolhas-desimportantes` lida com qualquer numero adicional de escolhas do usuário, após a primeira e segunda.
+Aqui, o parâmetro _rest_ `escolhas-desimportantes` lida com qualquer número adicional de escolhas do usuário, após a primeira e segunda.
 
-Você também pode desestruturar mapas. Da mesma maneira que você diz pro Clojure desestruturar um vetor ou lista, fornecendo um vetor como parametro, você desestrutura mapas ao fornecer um mapa como parametro:
+Você também pode desestruturar mapas. Da mesma maneira que você diz pro Clojure desestruturar um vetor ou lista, fornecendo um vetor como parâmetro, você desestrutura mapas ao fornecer um mapa como parâmetro:
 
 ``` clojure
-(defn anunciar-localizacao-do-tesouro
+(defn anunciar-localização-do-tesouro
 ➊   [{lat :lat lng :lng}]
   (println (str "Lat do tesouro: " lat))
   (println (str "Lng do tesouro: " lng)))
 
-(anunciar-localizacao-do-tesouro {:lat 28.22 :lng 81.33})
+(anunciar-localização-do-tesouro {:lat 28.22 :lng 81.33})
 ;"Lat do tesouro: 28.22"
 ;"Lng do tesouro: 81.33"
 ```
 
 Vamos analisar a linha em ➊ com mais detalhes. É como dizer ao Clojure, "Clojure, mano! Quebra essa pra mim e associe o nome `lat` com o valor correspondente a chave `:lat`. Faz o mesmo pra `lgn` e `:lng`. Flw, vlw!"
 
-Com uma certa frequencia a gente so quer separar as keywords de um mapa, então existe uma sintaxe mais curta para isso. Este tem o mesmo resultado que o exemplo anterior:
+Com uma certa frequência a gente so quer separar as keywords de um mapa, então existe uma sintaxe mais curta para isso. Este tem o mesmo resultado que o exemplo anterior:
 
 
 ``` clojure
-(defn anunciar-localizacao-do-tesouro
+(defn anunciar-localização-do-tesouro
 ➊   [{:keys lat lng}]
   (println (str "Lat do tesouro: " lat))
   (println (str "Lng do tesouro: " lng)))
 ``` 
 
-Você pode reter acesso ao mapa original do argumento usando a keyword `:as`. No exemplo a seguir, o mapa orignal é acessado com `localizacao-do-tesouro`:
+Você pode reter acesso ao mapa original do argumento usando a keyword `:as`. No exemplo a seguir, o mapa orignal é acessado com `localização-do-tesouro`:
 
 ```clojure
-(defn receber-localizacao-do-tesouro
-  [{:keys [lat lng] :as localizacao-do-tesouro}]
+(defn receber-localização-do-tesouro
+  [{:keys [lat lng] :as localização-do-tesouro}]
   (println (str "Lat do tesouro: " lat))
   (println (str "Lng do tesouro: " lng))
 
   ;;Poderia-se supor que isso definiria novas coordenadas para seu navio.
-  (pilotar-navio! localizacao-do-tesouro))
+  (pilotar-navio! localização-do-tesouro))
 ```
 
 Em geral, você pode pensar em desestruturação como instruir o Clojure em como associkar nomes com valores em uma lista, mapa, conjunto ou vetor. Agora, vamos para a parte da função que de fato faz algo: o corpo da função! 
@@ -943,7 +943,7 @@ Em geral, você pode pensar em desestruturação como instruir o Clojure em como
 O corpo da função pode conter qualquer tipo de forma. O Clojure automaticamente retorna a ultima forma avaliada. Este corpo da função contém apenas três formas, e quando você chama a função, ele cospe fora a última forma `"joe"`:
 
 ``` clojure
-(defn funcao-ilustrativa
+(defn função-ilustrativa
 []
 
 (+ 1 304)
@@ -951,23 +951,23 @@ O corpo da função pode conter qualquer tipo de forma. O Clojure automaticament
 "joe")
 
 
-(funcao-ilustrativa)
+(função-ilustrativa)
 ; => "joe"
 ```
 
 Segue mais outro corpo de função que usa a expressção `if`:
 
 ``` clojure
-(defn comentar-numero
+(defn comentar-número
   [x]
   (if (> x 6)
     "Minha nossa! Que númerão!"
     "Esse número é ok, acho..."))
 
-(comentar-numero 5)
+(comentar-número 5)
 ; => "Esse número é ok, acho..."
 
-(comentar-numero 7)
+(comentar-número 7)
 ; => "Minha nossa! Que númerão!"
 
 ```
@@ -1001,7 +1001,7 @@ Parece bastante com `defn`né? Vamos tentar dois exemplos:
 ; => 24
 ```
 
-Você pode tratar `fn` praticamente identicamente da maneira que você trata `defn`. A lista de parametros e corpos da função funcionam exatament da mesma maneira. Você poide usar desestruturação de argumento, parametros rest e por ai vai. Você pode até mesmo associar sua função anonima com um nome, o que não deveria causar surpresa (mas se causou surpresa, bem... Surpresa!):
+Você pode tratar `fn` praticamente identicamente da maneira que você trata `defn`. A lista de parâmetros e corpos da função funcionam exatament da mesma maneira. Você poide usar desestruturação de argumento, parâmetros rest e por ai vai. Você pode até mesmo associar sua função anonima com um nome, o que não deveria causar surpresa (mas se causou surpresa, bem... Surpresa!):
 
 ```clojure
 (def meu-multiplicador-especial (fn [x] (* x 3)))
@@ -1055,7 +1055,7 @@ Como você já deve ter adivinhado, o simbolo de porcentagem `%`, indica o argum
 ```
 
 
-Você também pode passar parametros _rest_ com `%`:
+Você também pode passar parâmetros _rest_ com `%`:
 
 ```clojure 
 (# (identity %1)1 "bleh" :hey)
@@ -1088,7 +1088,7 @@ Aqui, `somar-por` está no escopo, então a função retornada tem acesso a isso
 
 Okay! É hora de você usar o seu conhecimento recém adquirido para um nobre propósito: abater hobbits! Para bater em um hobbit, você primeiramente irá modelar as partes do corpo dele. Cada parte do corpo incluirá o seu tamanho relativo para indicar a possibilidade de ela ser atingida. Para evitar repetição, o modelo do hobbit irá incluir apenas entradas para _left pé _, _left orelha_, e assim por diante. Portanto, você precisará de uma função para simetrizar integralmente o modelo, e criar _right pé_, _right orelha_ e assim por diante. Por ultimo, você criará uma função que itera pelas partes do corpo e aleatoriamente escolhe onde atingir. Ao longo do caminho, você aprenderá sobre algumas novas ferramentas do Clojure: expressões `let`, loops e expressões regulares. Que divertido!
 
-## O proximo top model do Condado dos Hobbits
+## O próximo top model do Condado dos Hobbits
 
 Para o nosso modelo de hobbit, vamos evitar características como jovialidade e travessura, focando apenas no pequenino corpo do hobbit. Aqui está o modelo do hobbit:
 
@@ -1122,7 +1122,7 @@ O que chama a atenção é a ausência do lado direito do hobbit. Vamos arrumar 
 ``` clojure
 (defn parte-correspondente)
 [parte]
-{:nome (clojure.string/replace (:nome parte) #"^left-" "right-") ;left: esquerda/o right: direta/o - mantendo em ingles para nao quebrar a logica do regex em portugues
+{:nome (clojure.string/replace (:nome parte) #"^left-" "right-") ;left: esquerda/o right: direta/o - mantendo em inglês para não quebrar a logica do regex em português
  :tamanho (:tamanho parte))}
 
 (defn simetrizar-partes-do-corpo
@@ -1217,7 +1217,7 @@ Você pode referenciar associações existentes na sua associação `let`:
 
 Nesse exemplo, o `x` em `(inc x)` refere-se a associação criada por `(def x 0)`. O valor resultante é `1`, o qual é então associados ao nome `x` dentro do novo escopo criado pelo `let`. Dentro das delimitações da forma `let`, `x` se refere a `1`, não a `0`.
 
-Você também pode usar os parametros _rest_ no `let`, assim como você pode em funções:
+Você também pode usar os parâmetros _rest_ no `let`, assim como você pode em funções:
 
 
 ```clojure 
@@ -1227,7 +1227,7 @@ Você também pode usar os parametros _rest_ no `let`, assim como você pode em 
 
 ```
 
-Repare que o valor de uma `let` form é a ultima form no corpo da função a ser avaliada. As `let` forms seguem todas as regras de desestruturação que foram apresentadas em [Chamada de Funções na página 48](https://github.com/aanacarolina/clojure-para-os-brabo-e-de-rocha/blob/main/Parte%20I%3A%20Setup%20do%20Ambiente/Capitulo%203%3A%20Do%20Things%3A%20A%20Clojure%20Crash%20Course.md#chamada-de-fun%C3%A7%C3%B5es). Neste caso `[florzinha & dalmatas]` desestrturado `lista-de-dalmatas`, associa a string "Florzinha" ao nome ``florzinha`e a list do resto dos dálmatas a `dalmatas`. O vetor [florzinha dalmatas] é a última expression no `let`, então esse é o valor da `let` form.
+Repare que o valor de uma `let` form é a ultima form no corpo da função a ser avaliada. As `let` forms seguem todas as regras de desestruturação que foram apresentadas em [Chamada de Funções na página 48](https://github.com/aanacarolina/clojure-para-os-brabo-e-de-rocha/blob/main/Parte%20I%3A%20Setup%20do%20Ambiente/capítulo%203%3A%20Do%20Things%3A%20A%20Clojure%20Crash%20Course.md#chamada-de-fun%C3%A7%C3%B5es). Neste caso `[florzinha & dalmatas]` desestrturado `lista-de-dalmatas`, associa a string "Florzinha" ao nome ``florzinha`e a list do resto dos dálmatas a `dalmatas`. O vetor [florzinha dalmatas] é a última expression no `let`, então esse é o valor da `let` form.
 
 As `let` forms tem dois usos principais. Primeiro, elas proporcionam clareza permitindo que você nomeie as coisas. Segundo elas permitem que você avalie uma expression apenas uma vez e reuse o resultado. Isso é especialmente importante quando você precusa reusar o resultado de uma chamada de função cara, como uma chamada API de rede. Isso também é importante quando a expression tem efeitos colaterais.
 
@@ -1244,22 +1244,22 @@ Vamos dar mais uma olhada na `let` form na nossa função de simetrização para
 
 Esse código diz pro Clojure, "Crie um novo escopo. Dentro dele, associe `parte` com o primeiro elemento de `partes-assimentricas-restantes`. Associe `restantes` com o resto dos elementos em `partes-assimentricas-restantes`."
 
-Em reção ao coropo da `let` expression, você aprenderá sobre o significado do `recur` na proxima seção. A chamada da função:
+Em relação ao corpo da `let` expression, você aprenderá sobre o significado do `recur` na próxima seção. A chamada da função:
 
 ``` clojure 
 (into partes-do-corpo-finais
   (set [parte (parte-correspondente parte)]))
 ```
 
-primeiro diz ao Clojure, "Use a função `set`para criar um conjunto que consiste em `parte` e as suas parte correspondente. Depois use a função `into` para adiconar os elementos daquele conjunto ao vetor `partes-do-corpo-finais`." Você cria um conjunto aqui para se assegurar que você está adicionando elementos únicos a  `partes-do-corpo-finais` porque `parte`e `(parte-correspondente parte)` as vezes são a mesma coisa, como vocês irão ver na proxima seção sobre expressoes regulares. Aqui está o exemplo simplificado:
+primeiro diz ao Clojure, "Use a função `set`para criar um conjunto que consiste em `parte` e as suas parte correspondente. Depois use a função `into` para adiconar os elementos daquele conjunto ao vetor `partes-do-corpo-finais`." Você cria um conjunto aqui para se assegurar que você está adicionando elementos únicos a  `partes-do-corpo-finais` porque `parte`e `(parte-correspondente parte)` as vezes são a mesma coisa, como vocês irão ver na próxima seção sobre expressões regulares. Aqui está o exemplo simplificado:
 
 ``` clojure 
 (into [] (set [:a :a]))
 ;=> [:a]
 ```
-Primeiro, `(set [:a :a])` retorna o conjunto `#{:a}` , porque conjuntos não contem elementos duplicados. Em seguida `(into [] #{:a})` retorna o vetor `[:a]`.
+Primeiro, `(set [:a :a])` retorna o conjunto `#{:a}` , porque conjuntos não contêm elementos duplicados. Em seguida `(into [] #{:a})` retorna o vetor `[:a]`.
 
-Voltando ao `let`: repare que `part`é usada multiplas vezes no corpo do `let`. Se a gente usasse a expression original ao inves dos nimes `part`e `restante, ficaria uma bagunça! 
+Voltando ao `let`: repare que `part`é usada múltiplas vezes no corpo do `let`. Se a gente usasse a expression original ao invés dos nimes `part`e `restante, ficaria uma bagunça! 
 Segue um exemplo:
 
 ```clojure 
@@ -1278,11 +1278,11 @@ Na nossa função `simetrizar-partes-do-corpo` nós usamos um `loop, que oferece
 
 ``` clojure
 
-(loop [iteracao 0]
-  (println (str "Iteração " iteracao))
-  (if (> iteracao 3)
+(loop [iteração 0]
+  (println (str "Iteração " iteração))
+  (if (> iteração 3)
     (println "Tchau!")
-    (recur (inc iteracao))))
+    (recur (inc iteração))))
 ; => Iteração 0
 ; => Iteração 1
 ; => Iteração 2
@@ -1291,19 +1291,19 @@ Na nossa função `simetrizar-partes-do-corpo` nós usamos um `loop, que oferece
 ; => Tchau!
 ```
 
-A primeira linha, `loop [iteracao 0]`, começa o loop e cria uma associação _(binding)_ com um valor inicial. Na primeira passagem pelo loop, `iteracao` tem o valor 0. Em seguida, imprimimos uma pequena mensagem. Depois checamos o valor de `iteracao`. Se o valor for maior que 3, é hora de dizer Tchau. Caso contrário, continuamos com a `recur`. É como se o `loop`criasse uma função anonima com um parametro chamado ìteracao` e o `recur` te permite chamar a função de dentro de si mesma, passando o argumento `(inc iteracao)`.
+A primeira linha, `loop [iteração 0]`, começa o loop e cria uma associação _(binding)_ com um valor inicial. Na primeira passagem pelo loop, `iteração` tem o valor 0. Em seguida, imprimimos uma pequena mensagem. Depois checamos o valor de `iteração`. Se o valor for maior que 3, é hora de dizer Tchau. Caso contrário, continuamos com a `recur`. É como se o `loop`criasse uma função anonima com um parâmetro chamado ìteração` e o `recur` te permite chamar a função de dentro de si mesma, passando o argumento `(inc iteração)`.
 
 De fato, você pode fazer a mesma coisa apenas usando uma definição de função normal:
 ``` clojure
-(defn impressao-recursiva
+(defn impressão-recursiva
   ([]
-     (impressao-recursiva 0))
-  ([iteracao]
-     (println iteracao)
-     (if (> iteracao 3)
+     (impressão-recursiva 0))
+  ([iteração]
+     (println iteração)
+     (if (> iteração 3)
        (println "Tchau!")
-       (impressao-recursiva (inc iteracao)))))
-(impressao-recursiva)
+       (impressão-recursiva (inc iteração)))))
+(impressão-recursiva)
 ; => Iteração 0
 ; => Iteração 1
 ; => Iteração 2
@@ -1321,10 +1321,10 @@ Mas, como você pode ver, assim fica mais verboso. Além disso, `loop` tem uma p
 Expressões regulares são ferramentas para performar _pattern matching_ (correspondência de padrões) em textos. A notação literal para uma expressão regular é colocar a expressão entre aspas após a cerquilha:
 
 ```clojure 
-#"expressao-regular"
+#"expressão-regular"
 ```
 
-Na função parte-correspondente do bloco de codigo 3-1, clojure.string/replace usa a expressão regular #"^left-" para encontrar strings com "left-" de modo a substituir o "left-" com "right-". O circunflexo , ^, é como a expressao regular sinaliza que ela vai encontrar o texto "left-" somente se estiver no começo da string, o qual garante que algo como ""cleft-queixo" não vai encontrar uma correspondencia. Você pode testar isso com a função `re-find`, que verifica se uma string corresponde ao padrão descrito por uma expressão regular, retornando o texto correspondente ou `nil` caso não haja correspondência.
+Na função parte-correspondente do bloco de código 3-1, clojure.string/replace usa a expressão regular #"^left-" para encontrar strings com "left-" de modo a substituir o "left-" com "right-". O circunflexo , ^, é como a expressão regular sinaliza que ela vai encontrar o texto "left-" somente se estiver no começo da string, o qual garante que algo como ""cleft-queixo" não vai encontrar uma correspondencia. Você pode testar isso com a função `re-find`, que verifica se uma string corresponde ao padrão descrito por uma expressão regular, retornando o texto correspondente ou `nil` caso não haja correspondência.
 
 ```clojure 
 
@@ -1407,21 +1407,21 @@ partes-do-corpo-finais []]
 
 ```
 
-A funçao simetrizar-partes-do-corpo (que comeca em  ➊) adota uma estratégia geral comum em programação funcional. Dada uma sequência (neste caso, um vetor de partes do corpo e seus tamanhos), a função divide continuamente a sequência em uma cabeça(head) e uma cauda(tail). Em seguida, processa a cabeça, adiciona-a a algum resultado e usa recursão para continuar o processo com a cauda.
+A função simetrizar-partes-do-corpo (que começa em  ➊) adota uma estratégia geral comum em programação funcional. Dada uma sequência (neste caso, um vetor de partes do corpo e seus tamanhos), a função divide continuamente a sequência em uma cabeça(head) e uma cauda(tail). Em seguida, processa a cabeça, adiciona-a a algum resultado e usa recursão para continuar o processo com a cauda.
 
 
 Começamos a iterar sobre as partes do corpo em ➋. A cauda da sequência será associada a `partes-assimetricas-restantes`. Inicialmente, ela é associada à sequência completa passada para a função: `partes-do-corpo-assimetricas`. Também criamos uma sequência de resultado, `partes-do-corpo-finais`; seu valor inicial é um vetor vazio.
 
 Se `partes-assimetricas-restantes` estiver vazio em ➌, isso significa que processamos toda a sequência e podemos retornar o resultado, `partes-do-corpo-finais`. Caso contrário, em ➍ dividimos a lista em cabeça, parte e cauda, ​​com os restantes.
 
-Em ➎, fazemos recursao nos restantes, uma lista que diminui em um elemento a cada iteração do loop, e à expressão (into), que constrói nosso vetor de partes do corpo simetrizadas.
+Em ➎, fazemos recursão nos restantes, uma lista que diminui em um elemento a cada iteração do loop, e à expressão (into), que constrói nosso vetor de partes do corpo simetrizadas.
 
 Se você é iniciante nesse tipo de programação, pode levar algum tempo para entender esse código. Segure firma! Quando você entender o que está acontecendo, vai se sentir uma pessoa de milhões!
 
 
 ## Melhor simetrizar com reduce
 
-O padrao de processar cada elemento em uma sequence e construir um resultado é tão comum que existe uma funcao built-in para isso, chamada `reduce`. Aqui vai um exemplo:
+O padrao de processar cada elemento em uma sequence e construir um resultado é tão comum que existe uma função built-in para isso, chamada `reduce`. Aqui vai um exemplo:
 
 ``` clojure
 ;; adição com reduce
@@ -1435,21 +1435,21 @@ Isso é o mesmo que dizer ao Clojure para fazer isso:
 (+ (+ (+ 1 2) 3) 4)
 ``` 
 
-A funcao `reduce` funciona conforme os seguintes passos:
+A função `reduce` funciona conforme os seguintes passos:
 
 1. Aplique a função dada aos dois primeiros elementos de uma sequence. Dai que o `(+ 1 2)` vieram. 
-2. Aplique a função ao resultado e o proximo elemento da sequence. Nesse caso, o resultado do passo 1 é `3`, e o proximo elemento da sequence tambem é `3`. Entao, o resultado final é `(+ 3 3)`.
+2. Aplique a função ao resultado e o próximo elemento da sequence. Nesse caso, o resultado do passo 1 é `3`, e o próximo elemento da sequence também é `3`. Então, o resultado final é `(+ 3 3)`.
 3. Repita o passo 2 para cada elemento restante na sequence.
 
-Reduce, opcionalmente, tambem recebe um valor inicial. O valor inicial aqui é `15`:
+Reduce, opcionalmente, também recebe um valor inicial. O valor inicial aqui é `15`:
 
 ``` clojure
 (reduce + 15 [1 2 3 4])
 ```
 
-Se você passar um valor inicial, o reduce vai comecar aplicando a funcao dada ao valor inicial e ao primeiro elemento da sequence, ao inves dos dois primeiros elementos da sequence.
+Se você passar um valor inicial, o reduce vai começar aplicando a função dada ao valor inicial e ao primeiro elemento da sequence, ao invés dos dois primeiros elementos da sequence.
 
-Um detalhe para prestar atencao, nesses exemplos, reduce pega uma collection de elementos, [1 2 3 4], e retorna um unico numero. Apesar de que quem programa muitas vezes usa o reduce dessa forma, voce pode usar o reduce para retornar uma colecao ainda maior da que voce usou no comeco, assim como a gente tava tendno fazer cm `simetrizar-partes-do-corpo`. Reduce abstrai a tarefa "processe uma collection e construa um resultado", que é agnostica do tipo de resultado retornado. Para entender mais como o reduce funcional,  aqui vai uma maneira na qual voce pode implementa-la:
+Um detalhe para prestar atenção, nesses exemplos, reduce pega uma collection de elementos, [1 2 3 4], e retorna um único número. Apesar de que quem programa muitas vezes usa o reduce dessa forma, você pode usar o reduce para retornar uma coleção ainda maior da que você usou no começo, assim como a gente tava tendno fazer cm `simetrizar-partes-do-corpo`. Reduce abstrai a tarefa "processe uma collection e construa um resultado", que é agnostica do tipo de resultado retornado. Para entender mais como o reduce funcional,  aqui vai uma maneira na qual você pode implementa-la:
 
 ``` clojure
 (defn meu-reduce
@@ -1475,17 +1475,17 @@ Podemos reimplementar nosso simetrizador da seguinte forma:
           partes-do-corpo-assimetricas))
 ```
 
-Maneiro! Uma vantagem imediata de usar reduce é que em geral vocē escreve menos codigo. A funcao anonima que voce passa para o reduce foca somente no processamento de cada elemento e na construcao do resultado. O motivo disso é que `reduce` lida com o maquinario de baixo nivel que é controlar quais elementos ja foram processados e decidindo quando é para retornar o resultado final ou continuar com a recursao.  
+Maneiro! Uma vantagem imediata de usar reduce é que em geral vocē escreve menos código. A função anonima que você passa para o reduce foca somente no processamento de cada elemento e na construção do resultado. O motivo disso é que `reduce` lida com o maquinario de baixo nivel que é controlar quais elementos ja foram processados e decidindo quando é para retornar o resultado final ou continuar com a recursão.  
 
 
-Usar `reduce` tambem é mais expressivo. Se quem for ler seu codigo encontrar um `loop`, eles nao vai saber exatamente o que o `loop` está fazendo ate ler o final do codigo.  Mas se a pessoa ver o `reduce`, ela imediatamente sabera que o proposito do codigo é processar os elementos da collection e construir um resultado.
+Usar `reduce` também é mais expressivo. Se quem for ler seu código encontrar um `loop`, eles não vai saber exatamente o que o `loop` está fazendo ate ler o final do código.  Mas se a pessoa ver o `reduce`, ela imediatamente sabera que o proposito do código é processar os elementos da collection e construir um resultado.
 
-Finalmente, ao abstrair o processo de `reduce` em uma funcao que recebe outra funcao como argumento, seu programar se torna mais componivel. Voce pode passar a funca `reduce` como argumento como argumento de outra funcao, por exemplo. Voce tambem pode criar uma versao mais generica da `simetrizar-partes-do-corpo`, digamos,`expandir-partes-do-corpo`. Essa receberia uma funcao expansora alem da lista de parte do corpo e te deixaria modelar outras coisas alem simples hobbits. Por exemplo, voce pode ter um expansor de aranhas que poderia multiplicar o numero de olhos e perninhas. Voce deixar voce escrever essa funcao, pois eh sou muito mal! 
+Finalmente, ao abstrair o processo de `reduce` em uma função que recebe outra função como argumento, seu programar se torna mais componivel. você pode passar a funca `reduce` como argumento como argumento de outra função, por exemplo. você também pode criar uma versão mais generica da `simetrizar-partes-do-corpo`, digamos,`expandir-partes-do-corpo`. Essa receberia uma função expansora além da lista de parte do corpo e te deixaria modelar outras coisas além simples hobbits. Por exemplo, você pode ter um expansor de aranhas que poderia multiplicar o número de olhos e perninhas. você deixar você escrever essa função, pois eh sou muito mal! 
 
 
 ## Hobbit Violence
 
-Tens minha palavra, isso é realmente Clojure para os brabo e de rocha! Para colocar a pedra angular no seu trabalho, aqui está a funcao que determina qual parte de um hobbit é golpeada:
+Tens minha palavra, isso é realmente Clojure para os brabo e de rocha! Para colocar a pedra angular no seu trabalho, aqui está a função que determina qual parte de um hobbit é golpeada:
 
 ```clojure
 
@@ -1502,18 +1502,18 @@ Tens minha palavra, isso é realmente Clojure para os brabo e de rocha! Para col
 
 ```
 
-`golpear` funciona pegando um vetor de partes do corpo assimetricas, simetrizando-as na linha ➊ e em seguida somando os tamanhos das partes na linha ➋. Uma vez que somamos os tamanhos, é como se cada numero de 1 até `soma-do-tamanho-das-partes-do-corpo` corresponda a uma parte do corpo; 1 pode corresponder ao olho esquerdo, e 2, 3 e 4 a cabeça. Ela faz isso quando acerta uma parte do corpo (escolhendo um numero randomico naquele intervalo), a possibilidade de que uma parte especifica seja golpear vai depender do tamanho da parte do corpo.
+`golpear` funciona pegando um vetor de partes do corpo assimetricas, simetrizando-as na linha ➊ e em seguida somando os tamanhos das partes na linha ➋. Uma vez que somamos os tamanhos, é como se cada número de 1 até `soma-do-tamanho-das-partes-do-corpo` corresponda a uma parte do corpo; 1 pode corresponder ao olho esquerdo, e 2, 3 e 4 a cabeça. Ela faz isso quando acerta uma parte do corpo (escolhendo um número randomico naquele intervalo), a possibilidade de que uma parte especifica seja golpear vai depender do tamanho da parte do corpo.
 
 
 ![A imag](../imagens/img3-1.png)
 
 
-Imagem 3-1: Partes do corpo correspondem a intervalos de numeros e são golpeadas se o alvo estiver naquele intervalo.
+Imagem 3-1: Partes do corpo correspondem a intervalos de números e são golpeadas se o alvo estiver naquele intervalo.
 
 
-Finalmente um desses numeros é aleatoriamente escolhido e entao usamos o loop na linha ➌ para encontrar e retornar a parte do corpo que corresponde ao numero. O loop faz isso mantendo o controle dos tamanhos acumulados das partes que a gente ja viu e verificando se o tamanho acumulado é maior que o algo. Eu visualizo esse processo como se fosse o enfileiramento das partes do corpo em corredores numerados. Depois que eu enfileiro uma parte do corpo, eu me pergunto: "Já alcancei meu alvo?", se eu tiver chegado, isso significa que a parte do corpo que eu acabei de enfileirar foi a golpeada, Do contrario, eu so continuo a enfileirar essas partes.
+Finalmente um desses números é aleatoriamente escolhido e então usamos o loop na linha ➌ para encontrar e retornar a parte do corpo que corresponde ao número. O loop faz isso mantendo o controle dos tamanhos acumulados das partes que a gente ja viu e verificando se o tamanho acumulado é maior que o algo. Eu visualizo esse processo como se fosse o enfileiramento das partes do corpo em corredores numerados. Depois que eu enfileiro uma parte do corpo, eu me pergunto: "Já alcancei meu alvo?", se eu tiver chegado, isso significa que a parte do corpo que eu acabei de enfileirar foi a golpeada, Do contrario, eu so continuo a enfileirar essas partes.
 
-Por exemplo, digamos que sua lista de partes seja cabeça, olho esquerdo e mão esquerda, como na Figura 3-1. Após pegar a primeira parte, a cabeça, o tamanho acumulado é 3. A parte do corpo é golpeada quando o tamanho acumulado excede o alvo, entao, se o alvo for menor que 3, a cabeça foi golpeada. Caso contrário, você pega a próxima parte, o olho esquerdo, e aumenta o tamanho acumulado para 4, resultando em um golpe se o alvo for maior ou igual a 3 e menor que 4. Da mesma forma, a mão esquerda é golpeada se o alvo for maior ou igual a 4 e menor que 6.
+Por exemplo, digamos que sua lista de partes seja cabeça, olho esquerdo e mão esquerda, como na Figura 3-1. Após pegar a primeira parte, a cabeça, o tamanho acumulado é 3. A parte do corpo é golpeada quando o tamanho acumulado excede o alvo, então, se o alvo for menor que 3, a cabeça foi golpeada. Caso contrário, você pega a próxima parte, o olho esquerdo, e aumenta o tamanho acumulado para 4, resultando em um golpe se o alvo for maior ou igual a 3 e menor que 4. Da mesma forma, a mão esquerda é golpeada se o alvo for maior ou igual a 4 e menor que 6.
 
 Aqui estão alguns exemplos de execução da função de `golpear`:
 
@@ -1534,27 +1534,27 @@ Meu Deus, pobre hobbitzinho! Você é uma pessoa monstruosa!
 
 # Resumo
 
-Este capitulo te deu uma redemoinho de ideas de como fazer as coisas em Clojure. Voce como representar informacoes usando strings, numeros, mapas, keywords, vetores, listas, conjuntos e como nomear essas representacoes com `def` e `let`. Você aprendeu quao flexiveis as funcoes sao e como criar suas proprias funcoes. Alem disso, te foi apresentada a filosofia da simplicidade do Clojure, incluindo suas sintaxe uniforme e sua enfase em usa sua vasta bibliotecas de funcoes em tipos de dados primitivos.
+Este capítulo te deu uma redemoinho de ideas de como fazer as coisas em Clojure. você como representar informações usando strings, números, mapas, keywords, vetores, listas, conjuntos e como nomear essas representacoes com `def` e `let`. Você aprendeu quao flexiveis as funções são e como criar suas proprias funções. Além disso, te foi apresentada a filosofia da simplicidade do Clojure, incluindo suas sintaxe uniforme e sua enfase em usa sua vasta bibliotecas de funções em tipos de dados primitivos.
 
 
-O Capitulo 4 irá te levar para uma examinicao detalhada das funcoes centrais do Clojure e o Capitulo 5 explicará a mentalidade da programacao funcional. Este capitulo te mostrou como escrever codigo Clojure, os proximos dois te mostrarao como escrever Clojure bem!
+O capítulo 4 irá te levar para uma examinição detalhada das funções centrais do Clojure e o capítulo 5 explicará a mentalidade da programação funcional. Este capítulo te mostrou como escrever código Clojure, os próximos dois te mostrarao como escrever Clojure bem!
 
 
-A partir daqui, eu te recomendo com todas as minhas forcas, que voce comece a escrever codigo. Nao ha melhor maneira de solificar seu conhecimento em Clojure. Essa colinha do Clojure [http://clojure.org/api/cheatsheet](http://clojure.org/api/cheatsheet) é uma otima referencia que lista doas as funcoes nativas que operam nas estruturas de dados c que cobrimos nesse capitulo.
+A partir daqui, eu te recomendo com todas as minhas forcas, que você comece a escrever código. não ha melhor maneira de solificar seu conhecimento em Clojure. Essa colinha do Clojure [http://clojure.org/api/cheatsheet](http://clojure.org/api/cheatsheet) é uma otima referencia que lista doas as funções nativas que operam nas estruturas de dados c que cobrimos nesse capítulo.
 
 
-Esses exercicios que vou te passar, vao fazer voce realmente causar cocegas no seu cerebro. Se voce quiser testar ainda mais suas novas habilidades, tente algum dos desafios do Project Euler em [http://www.projecteuler.net/](http://www.projecteuler.net/). Veja tambem o 4Clojure [https://4clojure.oxal.org/](https://4clojure.oxal.org/), um apanhado online de problem em Clojure criados para testar seus conhecimento. Basta escrever algo! 
+Esses exercicios que vou te passar, vao fazer você realmente causar cocegas no seu cerebro. Se você quiser testar ainda mais suas novas habilidades, tente algum dos desafios do Project Euler em [http://www.projecteuler.net/](http://www.projecteuler.net/). Veja também o 4Clojure [https://4clojure.oxal.org/](https://4clojure.oxal.org/), um apanhado online de problem em Clojure criados para testar seus conhecimento. Basta escrever algo! 
 
 
 # Exercícios
 
 Esses exercícios são uma maneira divertida de testar seus conhecimentos em Clojure e aprender mais funções da linguagem. Os três primeiros podem ser concluídos usando apenas as informações apresentadas neste capítulo, mas os três últimos vao exigir o uso de funções que ainda não foram abordadas. Encare os três últimos se você estiver realmente querendo muito  escrever mais código e explorar a biblioteca padrão do Clojure. Se achar os exercícios muito difíceis, revise novamente  após ler os Capítulos 4 e 5,  você vai achá-los bem mais fáceis.
 
-1. Use as funcoes `str`, `vector`, `list`, `hash-map` e `hash-set`
+1. Use as funções `str`, `vector`, `list`, `hash-map` e `hash-set`
 
-2. Escreva a funcao que recebe um numero e adiciona 100 a ele
+2. Escreva a função que recebe um número e adiciona 100 a ele
 
-3. Escreva a funcao `dec-maker, que funcione exatamente como a funcao `inc-maker` exceto que com subtracao 
+3. Escreva a função `dec-maker, que funcione exatamente como a função `inc-maker` exceto que com subtração 
 
 ``` clojure 
 (def dec9 (dec-maker 9))
@@ -1562,14 +1562,14 @@ Esses exercícios são uma maneira divertida de testar seus conhecimentos em Clo
 ; => 1
 ```
 
-4. Escreva uma funcao `mapset`que funciona como um mapa, exceto que o valor de retorno seja um `set`
+4. Escreva uma função `mapset`que funciona como um mapa, exceto que o valor de retorno seja um `set`
 
 ``` clojure
 (mapset inc [1 1 2 2])
 ; => #{2 3}
 ```
 
-5. Crie uma função semelhante a `simetrizar-partes-do-corpo`, exceto que ela precisa funcionar com alienígenas espaciais estranhos com simetria radial. Ao inves de dois olhos, braços, pernas e assim por diante, eles têm cinco.
+5. Crie uma função semelhante a `simetrizar-partes-do-corpo`, exceto que ela precisa funcionar com alienígenas espaciais estranhos com simetria radial. Ao invés de dois olhos, braços, pernas e assim por diante, eles têm cinco.
 
 
 6. Crie uma função que generalize `simetrizar-partes-do-corpo` e a função que você criou no Exercício 5. A nova função deve receber uma collection de partes do corpo e o número de partes do corpo correspondentes a serem somadas. Se você for completamente novo em linguagens Lisp e programação funcional, provavelmente não será muito óbvio como fazer isso. Se você travar, basta passar para o próximo capítulo e revisitar o problema mais tarde.

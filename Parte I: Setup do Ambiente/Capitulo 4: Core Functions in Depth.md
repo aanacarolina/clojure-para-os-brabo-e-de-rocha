@@ -1,0 +1,11 @@
+### *Capítulo 4: Funções principais em profundidade*
+
+Se assim como eu você é fã de carteirinha do _The Vampire Diaries_, uma série juvenil e cheia de drama dignos de novela mexicana, você vai se lembrar do episódio em que a protagonista, Elena, começa a questionar o comportamento do seu misterioso e pálido crush: "Por que ele sumiu instantaneamente sem deixar rastro quando ralei o joelho?" e ​​"Como é que o rosto dele se transformou numa máscara grotesca da morte quando cortei o dedo?", e por aí vai.
+
+Você pode estar se fazendo perguntas semelhantes se começou a usar as funções principais do Clojure. "Por que o `map` retornou uma lista quando eu passei um vetor?" e "Por que o `reduce` trata meu `map` como uma lista de vetores?". E  assim por diante. (A parte boa é que com o Clojure, você pelo menos se livra de contemplar o profundo horror existencial de ser um adolescente de 17 anos para toda a eternidade.)
+
+Neste capítulo, você aprenderá sobre o conceito obscuro, sanguinário, supernatur... _**cof, cof**_ , digo, neste capítulo, você aprenderá sobre o conceito fundamental do Clojure de programação para abstrações e sobre as abstrações de _sequence_ e _collection_. Você também aprenderá sobre _lazy sequences_. Isso lhe dará a base necessária para ler a documentação de funções que você nunca usou antes e para entender o que acontece quando você for tentar utilizá-las.
+
+Em seguida, você irá: ganhar mais experiência com as funções mais usadas. Aprender a trabalhar com listas, vetores, mapas e conjuntos usando as funções `map`, `reduce`, `into`, `conj`, `concat`, `some`, `filter`, `take`, `drop`, `sort`, `sort-by` e `identity`. Também vai aprender a criar novas funções com `apply`, `partial` e `complement`. Todas essas informações te ajudarão a entender como fazer as coisas à maneira Clojure e lhe darão uma base sólida para escrever seu próprio código, bem como para ler e aprender com projetos de outras pessoas.
+
+Por ultimo, você irá aprender a _parsear_ e consultar um arquivo CSV com dados de vampiros para determinar quais nosferatu estão na espreita em sua cidade.![desenho de Sparkly - Vampire Diaries](https://www.braveclojure.com/assets/images/cftbat/core-functions-in-depth/sparkly.png)

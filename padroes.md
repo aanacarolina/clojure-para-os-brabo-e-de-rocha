@@ -29,7 +29,7 @@ true - manter em inglês
 truthy - traduzir para verdadeiro
 bind - significa associar - usar em PT
 index - como posição usar em PT
-index - como indice usar em inglês (?)
+index - como índice usar em inglês (?)
 string - manter em inglês - significa fio
 keyword - manter em inglês - significa palavra-chave
 collection - manter em inglês - significa coleção (estrutura de dados concretas - listas, vetores, mapas)
@@ -37,9 +37,12 @@ sequence - manter em inglês - significa sequencia (são interfaces ordenas e ab
 array - usar em português - matriz
 lists - usar em português. significa lista
 sets - conjuntos - usar em português 
-lazy - mantem em inglês - significa preguicosa
+lazy - manter em inglês - significa preguiçosa
 arity overloading - sobrecarga de aridade. usar em português
 closure - usar em EN - significa encerramento
 rest - resto , usar em inglês
 pattern matching -  correspondência de padrões , usar em inglês
 reduce - reduzir/redução - manter em inglês
+core - principal - dependendo do context manter em EN
+parse - literalmente em PT analisar, mas usar o jargão _parsear_
+query - consultar,  dependendo do context manter em EN

@@ -8,4 +8,41 @@ Neste capítulo, você aprenderá sobre o conceito obscuro, sanguinário, supern
 
 Em seguida, você irá: ganhar mais experiência com as funções mais usadas. Aprender a trabalhar com listas, vetores, mapas e conjuntos usando as funções `map`, `reduce`, `into`, `conj`, `concat`, `some`, `filter`, `take`, `drop`, `sort`, `sort-by` e `identity`. Também vai aprender a criar novas funções com `apply`, `partial` e `complement`. Todas essas informações te ajudarão a entender como fazer as coisas à maneira Clojure e lhe darão uma base sólida para escrever seu próprio código, bem como para ler e aprender com projetos de outras pessoas.
 
-Por ultimo, você irá aprender a _parsear_ e consultar um arquivo CSV com dados de vampiros para determinar quais nosferatu estão na espreita em sua cidade.![desenho de Sparkly - Vampire Diaries](https://www.braveclojure.com/assets/images/cftbat/core-functions-in-depth/sparkly.png)
+Por último, você irá aprender a _parsear_ e consultar um arquivo CSV com dados de vampiros para determinar quais nosferatu estão na espreita em sua cidade.
+![desenho de Sparkly - Vampire Diaries](https://www.braveclojure.com/assets/images/cftbat/core-functions-in-depth/sparkly.png)
+
+## Programando para Abstrações
+
+
+Para entender a programação para abstrações, vamos comparar o Clojure a uma linguagem que não foi construída com esse principio em mente: Emacs Lisp (elisp). No elisp você pode usar a função `mapcar` para criar uma nova lista, que é parecido como você usa `map` no Clojure. Porém, se você quiser usar 'map' em um hash map (uma estrutura de dados parecida com o `map` do Clojure) no eliso, você vai precisar usar a funcao `hashmap`, enquanto que em Clojure você ainda simplesmente usaria `map`. Em outras palavras, elisp usa duas funcoes diferentes, especifica para cada estrutura de dados, para implementar a operacao `map`, mas o Clojure so usa uma. você tambem pde chamar `reduce`em um mapa no Clojure, entanto o elisp não tem uma funcao para reduzir um hashmap 
+
+O motivo é que o Clojure define as funções `map`e `reduce` em termos de abstração de _sequences_, não em termos especificos de cada estrutura de dados. Desde que as estrutura de dados respondam as principais operacoes de _sequence_ (as funções `first`, `rest` e `cons`, que analisaremos mais detalhadamente em breve) ela funcionará com `map`, `reduce` e inúmeras outras funções de _sequence_ sem problemas. É isso que os programadores Clojure entendem por programação para abstrações, e é um princípio fundamental da filosofia Clojure.
+
+Eu penso em abstrações como coleções nomeadas de operações. Se você puder executar todas as operações de uma abstração em um objeto, então esse objeto é uma instância da abstração. Penso dessa forma mesmo fora da programação. Por exemplo, a abstração de bateria inclui a operação "conectar um meio condutor ao seu ânodo e cátodo", e a saída dessa operação é corrente elétrica. Não importa se a bateria é feita de lítio ou de batatas. É uma bateria desde que responda ao conjunto de operações que definem uma bateria.
+
+Do mesmo modo, `map` não se importa como listas, vetores, conjuntos e mapas são implementados. Ela apenas se importa se pode performar operações em _sequences_ nelas. Vamos ver como `map`é definida, em termos de abstração de _sequences_ para que você possa entender a programação para abstrações de modo geral.
+
+## Tratando Listas, Vetores, Conjuntos e Mapas como _Sequences_
+
+Se você pensar na operação de `map` independentemente de qualquer linguagem de programação, ou mesmo da programação em si, seu comportamento essencial é criar uma nova _sequence_ _y_ a partir de uma _sequence_ existente _x_, usando uma função _ƒ_ tal que _y1 = ƒ(x1), y2 = ƒ(x2), ..., yn = ƒ(xn)_. A Imagem 4-1 ilustra como você pode visualizar um mapeamento aplicado a uma _sequence_.
+
+
+![alt text](https://www.braveclojure.com/assets/images/cftbat/core-functions-in-depth/mapping.png)
+Imagem 4-1: Visualizando um mapeamento
+ 
+(1 - sequence
+2 - mapeamento
+3 - aplicação individual da função
+4 - resultado)
+
+O termo _sequence_ aqui se refere a uma _collection_ de elementos organizados em ordem linear, em oposição a, digamos, uma _collection_ não ordenada ou um grafo sem relação de precedência entre seus nós. A Imagem 4-2 mostra como você pode visualizar uma _sequence_, em contraste com as outras duas _collections_ mencionadas.
+
+![alt text](https://www.braveclojure.com/assets/images/cftbat/core-functions-in-depth/collections.png)
+Imagem 4-2: Collections sequenciais e não-sequenciais
+
+(1 - sequence / elemento da sequence
+2 - collection desordenada
+3 - grafo sem relacionamentos antes/depois)
+
+
+Está ausente desta descrição de mapeamento e _sequences_, qualquer menção a listas, vetores ou outras estruturas de dados concretas. O Clojure foi projetado para nos permitir pensar e programar em termos abstratos o máximo possível, e faz isso implementando funções em termos de abstrações de estruturas de dados. Neste caso, `map` é definido em termos da abstração de uma _sequence_. Em uma conversa, você diria que `map`, `reduce` e outras funções de sequência recebem uma sequência ou até mesmo uma `seq`. De fato, Clojuristas geralmente usam o termo _seq_ em vez de _sequence_, usando termos como funções `seq` e a biblioteca `seq` para se referir a funções que realizam operações sequenciais. Seja usando `sequence` ou `seq`, você está indicando que a estrutura de dados em questão será tratada como uma sequência e que o que está guardado no fundo do seu coração, não importa neste contexto.

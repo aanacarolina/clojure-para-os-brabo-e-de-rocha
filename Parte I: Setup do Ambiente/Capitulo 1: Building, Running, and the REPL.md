@@ -85,7 +85,7 @@ Agora vamos de fato executar o projeto. Agora abra o *src/clojure_noob/core.clj*
 ➌   (println "Hello, World!"))
 
 ```
-As linhas no ➊ declaram o namespace. Na qual você não precisa se preocupar agora. A função main ➋ é o ponto de entrada do seu programa, um tópico que sera abordado no Apêndice A. Por agora troque o texto ```"Hello, World!"``` do ➌ por ```"Sou uma chaleirinha"```. A linha inteira ```(println "Sou uma chaleirinha")```.
+As linhas no ➊ declaram o namespace. Na qual você não precisa se preocupar agora. A função main ➋ é o ponto de entrada do seu programa, um tópico que será abordado no Apêndice A. Por agora troque o texto ```"Hello, World!"``` do ➌ por ```"Sou uma chaleirinha"```. A linha inteira ```(println "Sou uma chaleirinha")```.
 
 Em seguida, navegue para o diretório clojure.noob no seu terminal e dê enter:
 
@@ -107,17 +107,17 @@ Esse comando cria o arquivo *target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalo
 
 Veja isso! O arquivo *target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalone.jar.* é o seu novo e premiado programa Clojure o qual você consegue distribuir e rodar em quase qualquer plataforma. 
 
-basicamente agora você tem  todos as informações para construir, executar e distribuir programas clojures (bem) básicos.
+basicamente agora você tem todas as informações para construir, executar e distribuir programas Clojure (bem) básicos.
 
-Nos próximos capitulos você aprenderá mais sobre o que o Lein está fazendo enquanto você executou os comandos anteriores, ganhando um entendimento completo da relação do Clojure com a JVM e como você pode executar códigos em produção.
+Nos próximos capítulos você aprenderá mais sobre o que o Lein está fazendo enquanto você executou os comandos anteriores, ganhando um entendimento completo da relação do Clojure com a JVM e como você pode executar códigos em produção.
 
-Antes de você ir para o capitulo 2 e discutir as glorias e as maravilhas do Emacs vamos a outra importante ferramenta: o REPL.
+Antes de você ir para o capítulo 2 e discutir as glorias e as maravilhas do Emacs vamos a outra importante ferramenta: o REPL.
 
 ## Usando o REPL
 
-O REPL é uma ferramenta para experimentar o código. Ele te permite interagir com um programa em execução e rapidamente testar ideas. Ele faz isso ao te disponibilizar um prompt para execução de código. Ele lê seu input, o avalia, imprime o resultado e faz um loop disponibilizando o prompt novamente.
+O REPL é uma ferramenta para experimentar o código. Ele te permite interagir com um programa em execução e rapidamente testar ideias. Ele faz isso ao te disponibilizar um prompt para execução de código. Ele lê seu input, o avalia, imprime o resultado e faz um loop disponibilizando o prompt novamente.
 
-Esse processo permite um ciclo de feedback rápido que não seria possível na maioria das outras linguagens. Eu fortemente recomendo que você use o REPL com frequência, porque você sera capaz de checar seu entendimento do Clojure enquanto você aprende. Além disso o desenvolvimento usando o REPL é uma parte essencial da experiencia Clojure, e você estaria perdendo muito se não usa-lo. 
+Esse processo permite um ciclo de feedback rápido que não seria possível na maioria das outras linguagens. Eu fortemente recomendo que você use o REPL com frequência, porque você será capaz de checar seu entendimento do Clojure enquanto você aprende. Além disso o desenvolvimento usando o REPL é uma parte essencial da experiência Clojure, e você estaria perdendo muito se não usá-lo. 
 
 Para iniciar o REPL execute isso
 
@@ -143,9 +143,9 @@ clojure-noob.core=>
 
 ```
 
-A ultima linha ``` clojure-noob.core=>``` , te diz que você está no namespace clojure-noob.core. você aprender sobre namespaces depois, mas note que o namespace basicamente corresponde o arquivo src/clojure_noob/core/clj também note que o REPL mostra a versão do Clojure 1.9.0 mas como mencionado antes tudo funcioará normalmente independentemente da versão que você usar. 
+A última linha ``` clojure-noob.core=>``` , te diz que você está no namespace clojure-noob.core. você aprender sobre namespaces depois, mas note que o namespace basicamente corresponde o arquivo src/clojure_noob/core/clj também note que o REPL mostra a versão do Clojure 1.9.0 mas como mencionado antes tudo funcionará normalmente independentemente da versão que você usar. 
 
-O prompt também indica que seu código está carregado no REPL, e você pode executar as funcoes que foram definidas. Por agora so temos uma função ```-main``` definida. Vá em frente e execute isso:
+O prompt também indica que seu código está carregado no REPL, e você pode executar as funções que foram definidas. Por agora só temos uma função ```-main``` definida. Vá em frente e execute isso:
 
 ```
 clojure-noob.core=> (-main)
@@ -154,7 +154,7 @@ nil
 ```
 
 Bom trabalho! você acabou de usar o REPL para avaliar a chamada da função -main.
-Tente algumas outras funcoes básicas de Clojure:
+Tente algumas outras funções básicas de Clojure:
 
 ```
 clojure-noob.core=> (+ 1 2 3 4)
@@ -165,11 +165,11 @@ clojure-noob.core=> (first [1 2 3 4])
 1
 ```
 
-Incrível! você somou alguns números, multiplicou alguns números e pegou o primeiro elemento de um vetor. você também teve seu primeiro encontro com a estranha sintaxe de Lisp! Todos os Lisps, incluindo o Clojure, empregam a notação de prefixo, isto significa que o operador sempre vem primeiro em uma expressão. Se você tem duvida do que isso significa, não se preocupe, você aprenderá sobre a sintaxe do Clojure logo mais. 
+Incrível! você somou alguns números, multiplicou alguns números e pegou o primeiro elemento de um vetor. você também teve seu primeiro encontro com a estranha sintaxe de Lisp! Todos os Lisps, incluindo o Clojure, empregam a notação de prefixo, isto significa que o operador sempre vem primeiro em uma expressão. Se você tem dúvida do que isso significa, não se preocupe, você aprenderá sobre a sintaxe do Clojure logo mais. 
 
-Conceitualmente o REPL é similar a um SSH (Secure Shell). Da mesma maneira que você pode usar o SSH para interagir com um servidor remoto o REPL do Clojure permite que você interaja com o processo do Clojure em execução. Esta funcionalidade é bastante poderosa porque você pode ate mesmo anexar em REPL a um aplicativo ativo em produção, e modificar seu programa enquanto ele esta sendo executado. Por agora você usara o REPL para para construir seu conhecimento da sintaxe e da semântica do Clojure. 
+Conceitualmente o REPL é similar a um SSH (Secure Shell). Da mesma maneira que você pode usar o SSH para interagir com um servidor remoto o REPL do Clojure permite que você interaja com o processo do Clojure em execução. Esta funcionalidade é bastante poderosa porque você pode até mesmo anexar um REPL a um aplicativo ativo em produção, e modificar seu programa enquanto ele está sendo executado. Por agora você usará o REPL para construir seu conhecimento da sintaxe e da semântica do Clojure. 
 
-Mais uma coisa: mais pra frente este livro apresentara códigos sem prompt do REPL, mas por favor sempre experimente executar o código. Segue um exemplo:
+Mais uma coisa: mais pra frente este livro apresentará códigos sem prompt do REPL, mas por favor sempre experimente executar o código. Segue um exemplo:
 
 ```
 (do (println "sem prompt aqui!")
@@ -178,15 +178,15 @@ Mais uma coisa: mais pra frente este livro apresentara códigos sem prompt do RE
 ; => 4
 ```
 
-Quando você ver um trecho de código como este , as linhas que começam com ;=> indicam que o output do código que esta sendo executado. Neste caso, a frase ```sem prompt aqui``` deve ser exibida e o valor de retorno do código é 4. 
+Quando você ver um trecho de código como este , as linhas que começam com ;=> indicam que o output do código que está sendo executado. Neste caso, a frase ```sem prompt aqui``` deve ser exibida e o valor de retorno do código é 4. 
 
 ## Editores de Clojure
 
-A essa altura você devera ter o conhecimento básico que você precisa para aprender Clojure sem ter que se meter com um editor ou IDE (integrated development environment - ambiente de desenvolvimento integrado). Mas se você de fato quiser um bom tutorial de um poderoso editor, o capitulo cobre Emacs, o editor mais popular entre os Clojuristas. você absolutamente não precisa usar Emacs para desenvolvimento em Clojure, mas o Emacs oferece uma integração muito boa com o REPL do Clojure e é muito adequado para escrever códigos Lisp. O que é mais importante, porem, é usar o que funcionar para você.
+A essa altura você deverá ter o conhecimento básico que você precisa para aprender Clojure sem ter que se meter com um editor ou IDE (integrated development environment - ambiente de desenvolvimento integrado). Mas se você de fato quiser um bom tutorial de um poderoso editor, o capítulo cobre Emacs, o editor mais popular entre os Clojuristas. você absolutamente não precisa usar Emacs para desenvolvimento em Clojure, mas o Emacs oferece uma integração muito boa com o REPL do Clojure e é muito adequado para escrever códigos Lisp. O que é mais importante, porém, é usar o que funcionar para você.
 
 Se Emacs não for sua praia, seguem alguns materiais sobre editores e IDEs para desenvolver Clojure:
 
-- Esse video do YouTube te mostrara como configurar o Sublime Text 2 para o desenvolvimento  em Clojure: http://www.youtube.com/watch?v=wBl0rYXQdGg/.
+- Esse video do YouTube te mostrará como configurar o Sublime Text 2 para o desenvolvimento  em Clojure: http://www.youtube.com/watch?v=wBl0rYXQdGg/.
 - Vim tem boas ferramentas para o desenvolvimento  em Clojure. Este artigo é um bom começo: http://mybuddymichael.com/writings/writing-clojure-with-vim-in-2013.html.
 - Counterclockwise é um plugin altamente recomendado para Eclipse: https://github.com/laurentpetit/ccw/wiki/GoogleCodeHome.
 - Cursive Clojure é a IDE recomendada para quem usa IntelliJ: https://cursiveclojure.com/
@@ -202,9 +202,9 @@ Estou muito orgulhoso de você, querida Chaleirinha. você executou o seu primei
 
 
 You held your head like a hero - Você manteve sua cabeça erguida como um herói
-On a history book page         - em um pagina de um livro de historia    
+On a history book page         - em uma página de um livro de história    
 It was the end of a decade     - esse foi o fim de uma década  
-But the start of an age        - mas o inicio de uma era.  
+But the start of an age        - mas o início de uma era.  
                          —Taylor Swift
 
 Bravo!

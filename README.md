@@ -1,27 +1,29 @@
-#Clojure para os Corajosos e Verdadeiros
+#Clojure para os Brabo e de Rocha
 
 Tradução do livro Clojure for the Brave and True
-Me ajudem com o titulo:
+Me ajudem com o título:
 
+- [ ] Clojure para os Corajosos e Verdadeiros
 - [ ] Clojure pros Brabo de Verdade
 - [ ] Clojure para os Fortes e de Rocha
 - [ ] Clojure para os Corajosos e Leais
 - [ ] Clojure para os Audaciosos e Verdadeiros
 - [ ] Clojure para os Valentes e Genuínos
 - [ ] Clojure para os Corajosos e Sinceros
+- [x] Clojure para os Brabo e de Rocha
 
 Alguma outra combinação?
 
 TODO:
 
-- [ ] baixar plugin corretor ortografico IDE
-- [ ] corrigir duvidas de estilo e tradução
+- [x] baixar plugin corretor ortográfico IDE (usar AI)
+- [ ] corrigir dúvidas de estilo e tradução
 
 # O projeto
 
-Me chamo Carol, sou engenheira de software há pouco mais de 2 anos. [Migrei de carreira](https://www.youtube.com/watch?v=vF2PPVPYf4k) vindo de uma área totalmente diferente e, como muitas pessoas na área, vivo quase que diariamente a síndrome do impostora. Dentre as muitas crises, eu venho tentando ler o livro Clojure for the Brave and True, e por diversas vezes, falhei em continuar. 
+Me chamo Carol, sou engenheira de software há pouco mais de 2 anos. [Migrei de carreira](https://www.youtube.com/watch?v=vF2PPVPYf4k) vindo de uma área totalmente diferente e, como muitas pessoas na área, vivo quase que diariamente a síndrome do impostor. Dentre as muitas crises, eu venho tentando ler o livro Clojure for the Brave and True, e por diversas vezes, falhei em continuar. 
 
-No ano passado (2024), a convite do [Arhtur Fucher](https://www.linkedin.com/in/arthur-fucher/) me juntei ao comitê organizador da [Clojure BR](https://discord.gg/FaNxsztw) e achei que poderia resolver essa minha frustração criando uma atividade legal para fazer coletivamente com a comunidade. Por que não fazer disso um momento para produzir conteúdo de qualidade em português?! Espero contar com o apoio da comunidade nesse desafio de chegar ao fim desse livro tão incrível. E que isso seja enriquecedor para todos nós - e as gerações futuras!
+No ano passado (2024), a convite do [Arthur Fucher](https://www.linkedin.com/in/arthur-fucher/) me juntei ao comitê organizador da [Clojure BR](https://discord.gg/FaNxsztw) e achei que poderia resolver essa minha frustração criando uma atividade legal para fazer coletivamente com a comunidade. Por que não fazer disso um momento para produzir conteúdo de qualidade em português?! Espero contar com o apoio da comunidade nesse desafio de chegar ao fim desse livro tão incrível. E que isso seja enriquecedor para todos nós - e as gerações futuras!
 
 # O livro e o autor 
 Antes de iniciar o projeto, conversei com o autor do livro, [Daniel Higginbotham](https://www.linkedin.com/in/danielhigginbotham/), que muito gentilmente aprovou essa missão. 
@@ -34,7 +36,7 @@ Gratidão, Daniel! 💚
 
 # Como Contribuir
 - Participe das Sessões
-A tradução do livro será feita ao vivo, a principio, em sessões nas segundas-feiras, às 20h horario de Brasilia, no Discord da comunidade Clojure-BR. 
+A tradução do livro será feita ao vivo, a princípio, em sessões nas segundas-feiras, às 20h, horário de Brasília, no Discord da comunidade Clojure-BR. 
 Durante essas sessões, venha discutir e traduzir o conteúdo de maneira colaborativa. Sua interação para esclarecer dúvidas e ajustar detalhes será muito apreciada.
 - Faça Revisões
  Após a tradução de uma seção, ela sempre poderá ser revisada.

@@ -46,3 +46,63 @@ Imagem 4-2: Collections sequenciais e não-sequenciais
 
 
 Está ausente desta descrição de mapeamento e _sequences_, qualquer menção a listas, vetores ou outras estruturas de dados concretas. O Clojure foi projetado para nos permitir pensar e programar em termos abstratos o máximo possível, e faz isso implementando funções em termos de abstrações de estruturas de dados. Neste caso, `map` é definido em termos da abstração de uma _sequence_. Em uma conversa, você diria que `map`, `reduce` e outras funções de sequência recebem uma sequência ou até mesmo uma `seq`. De fato, Clojuristas geralmente usam o termo _seq_ em vez de _sequence_, usando termos como funções `seq` e a biblioteca `seq` para se referir a funções que realizam operações sequenciais. Seja usando `sequence` ou `seq`, você está indicando que a estrutura de dados em questão será tratada como uma sequência e que o que está guardado no fundo do seu coração, não importa neste contexto.
+
+
+Se as funções principais de sequência `first`, `rest` e `cons` funcionam em uma estrutura de dados, você pode dizer que a estrutura de dados implementa a abstração de sequência. Listas, vetores, conjuntos e mapas, todos implementam a abstração de sequência, então todos eles trabalham com `map`, como podemos ver aqui:
+
+``` clojure
+(defn titulador
+  [topico]
+  (str topico " para os Brabo e de Rocha"))
+
+(map titulador ["Hamsters" "Ragnarok"])
+; => ("Hamsters para os Brabo e de Rocha" "Ragnarok para os Brabo e de Rocha")
+
+(map titulador '("Empatia" "Decoração"))
+; => ("Empatia para os Brabo e de Rocha" "Decoração para os Brabo e de Rocha")
+
+(map titulador #{"Cotovelos" "Escultura em sabonete"})
+; => ("Cotovelos para os Brabo e de Rocha" "Escultura em sabonte para os Brabo e de Rocha")
+
+(map #(titulador (second %)) {:algo-desconfortavel "Piscando"})
+; => ("Piscando para os Brabo e de Rocha")
+
+```
+
+Os dois primeiros exemplos mostram que `map` funciona de forma idêntica com vetores e listas. O terceiro exemplo mostra que `map` pode funcionar com conjuntos desordenados. No quarto exemplo você precisa chamar a função `second` no argumento da função anônima antes de "titularizar", porque o argumento é um mapa. Irei explicar o porquê em breve, mas primeiro vamos ver as três funções que definem a abstração de sequência.
+
+### first, rest, and cons
+
+Nesta seção, iremos fazer um rápido desvio para o JavaScript para implementar uma lista ligada e três funções principais: `first`, `rest` e `cons`. Depois que essas três funções estiverem implementadas, irei mostrar como você constrói `map` com elas.
+![Imagem de um hamster pirata com espada e escudo](../imagens/hamster.png)
+
+O objetivo aqui é avaliar a distinção entre a abstração seq em Clojure e a implementação concreta de uma lista ligada. Não interessa como uma estrutura de dados específica é implementada: quando se trata de usar funções seq numa estrutura de dados, tudo que o Clojure pergunta é: "Posso usar `first`, `rest` e `cons` nisso?". Se a resposta for sim, você pode usar a biblioteca de seq com aquela estrutura de dados.
+
+Em uma lista ligada, os nós são ligados numa sequência linear. Aqui está como você poderia criar uma em JavaScript. Nesse trecho de código, `next` é nulo, porque esse é o último nó da lista:
+
+``` javascript
+var node3 = {
+  value: "ultimo",
+  next: null
+};
+```
+
+Neste trecho de código, o próximo elemento do `node2` aponta para o `node3`, e o próximo elemento do `node1` aponta para o `node2`; essa é a "ligação" em "lista ligada":
+
+``` javascript
+var node2 = {
+  value: "meio",
+  next: node3
+};
+
+var node1 = {
+  value: "primeiro",
+  next: node2
+};
+```
+
+Graficamente, você pode representar essa lista como apresentado abaixo na Figura 4-3.
+
+![representação visual dos nós de uma lista ligada com quadrados e setas](../imagens/linked-list.png)
+
+Figura 4-3: Uma lista ligada

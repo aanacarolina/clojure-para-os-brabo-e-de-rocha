@@ -106,3 +106,40 @@ Graficamente, você pode representar essa lista como apresentado abaixo na Figur
 ![representação visual dos nós de uma lista ligada com quadrados e setas](../imagens/linked-list.png)
 
 Figura 4-3: Uma lista ligada
+
+Você pode executar três funções principais em uma lista ligada: `first`, `rest` e `cons`. `first` retorna o valor do nó solicitado, `rest` retorna os valores restantes após o nó solicitado e `cons` adiciona um novo nó com o valor fornecido ao início da lista. Depois de implementar essas funções, você pode implementar funções como `map`, `reduce`, `filter` e outras funções sequenciais.
+
+O código a seguir mostra como implementar e usar `first`, `rest` e `cons` com nosso exemplo de nó em JavaScript, bem como como usá-las para retornar nós específicos e derivar uma nova lista. Perceba que o parâmetro de `first` e `rest` se chama _node_. Isso pode ser confuso, pois você pode dizer: "Uai, eu num tô pegando o primeiro elemento de uma lista?". Bem, você opera nos elementos de uma lista um nó de cada vez!
+
+``` javascript
+var first = function(node) {
+  return node.value;
+};
+
+var rest = function(node) {
+  return node.next;
+};
+
+var cons = function(newValue, node) {
+  return {
+    value: newValue,
+    next: node
+  };
+};
+
+first(node1);
+// => "primeiro"
+
+first(rest(node1));
+// => "meio"
+
+first(rest(rest(node1)));
+// => "último"
+
+var node0 = cons("novo primeiro", node1);
+first(node0);
+// => "novo primeiro"
+
+first(rest(node0));
+// => "primeiro"
+```

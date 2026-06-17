@@ -143,3 +143,15 @@ first(node0);
 first(rest(node0));
 // => "primeiro"
 ```
+
+Como mencionado anteriormente, você pode implementar o `map` para `first`, `rest` e `cons`:
+
+``` javascript
+var map = function (list, transform) {
+  if (list === null) {
+    return null;
+  } else {
+    return cons(transform(first(list)), map(rest(list), transform));
+  }
+}
+```

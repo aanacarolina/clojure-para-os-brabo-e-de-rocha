@@ -155,3 +155,53 @@ var map = function (list, transform) {
   }
 }
 ```
+Esta função transforma o primeiro elemento da lista e em seguida chama a si mesma novamente no resto da lista até que alcance o final (um null). Vamos ver isso em ação! Nesse exemplo, você está mapeando a lista que começa com `node1`, retornando uma nova lista onde a string `" mapped!"` é acrescentada ao valor de cada nó. Depois você usa o `first` para retornar o valor do primeiro nó:
+
+``` javascript
+first(
+  map(node1, function (val) { return val + " mapped!"})
+);
+
+// => "first mapped!"
+```
+
+Aí olha que legal: porque `map` é implementada totalmente em termos de `cons`, `first` e `rest` você de fato pode passá-la para qualquer estrutura de dados e ela vai funcionar, desde que `cons`, `first` e `rest`  funcionem naquela estrutura.
+
+Veja como eles funcionariam em um array:
+
+``` javascript
+
+var first = function (array) {
+  return array[0];
+}
+
+var rest = function (array) {
+  var sliced = array.slice(1, array.length);
+  if (sliced.length == 0) {
+    return null;
+  } else {
+    return sliced;
+  }
+}
+
+var cons = function (newValue, array) {
+  return [newValue].concat(array);
+}
+
+
+var list = ["Transylvania", "Forks, WA"];
+map(list, function (val) { return val + " mapped!"})
+// => ["Transylvania mapped!", "Forks, WA mapped!"]
+```
+<!-- referência: filme Crepúsculo  --> 
+
+Este bloco de código define `first`, `rest` e `cons` nos termos das funções de array do JavaScript. Enquanto isso, `map` continua referenciando funções chamadas `first`, `rest` e `cons`, então agora funciona com arrays. Portanto, se você implementar apenas `first`, `rest` e `cons`, você obtém `map` gratuitamente, juntamente com um tantão de outras funções que já mencionamos.
+
+### Abstração por Indireção
+
+Neste ponto, você pode contestar que estou apenas enchendo linguiça, porque ainda temos o problema de como uma função como `first` funciona com diferentes estruturas de dados. O Clojure faz isso usando duas formas de indireção. Na programação, indireção é um termo genérico para os mecanismos que uma linguagem emprega para que um nome possa ter vários significados relacionados. Nesse caso, o nome `first` tem vários significados específicos da estrutura de dados. A indireção é o que torna a abstração possível.
+
+Polimorfismo é uma maneira que o Clojure lida com indireção. Eu não quero me perder nos detalhes, mas basicamente funções polimórficas despacham para diferentes corpos de função baseados no tipo do argumento fornecido. (Não é muito diferente de como funções de múltiplas aridades despacham para diferentes corpos de função baseado no número de argumentos você fornece)
+
+Note que o Clojure tem dois construtores para definir como fazer esse despacho polimórfico: os construtores de interface da plataforma hospedeira (host) e os protocolos independentemente de plataforma. Mas não é necessário entender como elas funcionam quando você está apenas começando. Abordaremos os protocolos no Capítulo 13.
+

@@ -205,3 +205,60 @@ Polimorfismo é uma maneira que o Clojure lida com indireção. Eu não quero me
 
 Note que o Clojure tem dois construtores para definir como fazer esse despacho polimórfico: os construtores de interface da plataforma hospedeira (host) e os protocolos independentemente de plataforma. Mas não é necessário entender como elas funcionam quando você está apenas começando. Abordaremos os protocolos no Capítulo 13.
 
+
+Quando se trata de sequências, o Clojure também cria indireção realizando uma espécie de conversão leve de tipo, produzindo uma estrutura de dados que funciona com as funções de uma abstração. Sempre que o Clojure espera uma sequência — por exemplo, quando você chama `map`, `first`, `rest` ou `cons` — ele chama a função `seq` na estrutura de dados em questão para obter uma estrutura de dados que permita o uso de `first`, `rest` e `cons`.
+
+```  clojure 
+(seq '(1 2 3))
+; => (1 2 3)
+
+(seq [1 2 3])
+; => (1 2 3)
+
+(seq #{1 2 3})
+; => (1 2 3)
+
+(seq {:name "Bill Compton" :occupation "O cara morto e deprimido"})
+; => ([:name "Bill Compton"] [:occupation "O cara morto e deprimido"])
+```
+
+Há dois detalhes importantes aqui. Primeiro, `seq` sempre retorna um valor que se parece e se comporta como uma lista; você chamaria esse valor de sequência ou `seq`. Segundo, a sequência de um `map` consiste em vetores de chave-valor com dois elementos. É por isso que `map` trata seus mapas como listas de vetores! Você pode ver isso no exemplo "Bill Compton". Eu queria destacar esse exemplo em particular porque ele pode ser surpreendente e confuso. Foi para mim quando comecei a usar Clojure. Conhecer esses mecanismos ocultos evitará o tipo de frustração e melancolia geral frequentemente exibida por vampiros do sexo masculino tentando manter sua humanidade.
+
+Você pode converter a seq de volta para um mapa usando `into` para inserir o resultado em um mapa vazio (você verá `into` mais detalhadamente mais tarde):
+
+``` clojure
+(into {} (seq {:a 1 :b 2 :c 3}))
+; => {:a 1, :c 3, :b 2}
+```
+
+Então, as funções de sequência do Clojure usam `seq` em seus argumentos. As funções de sequência são definidas em termos da abstração de sequência, usando `first`, `rest` e `cons`. Contanto que uma estrutura de dados implemente a abstração de sequência, ela pode usar a extensa biblioteca `seq`, que inclui funções de grande sucesso como `reduce`, `filter`, `distinct`, `group-by` e dezenas de outras.
+
+A principal conclusão aqui é que é poderoso focar no que podemos fazer com uma estrutura de dados e ignorar, tanto quanto possível, sua implementação. Implementações raramente importam por si só. Elas são apenas um meio para um fim. Em geral, programar para abstrações te dá poder, permitindo que você use bibliotecas de funções em diferentes estruturas de dados, independentemente de como essas estruturas de dados são implementadas.
+
+### Exemplos de funções Seq
+
+A biblioteca seq do Clojure está repleta de funções úteis que você usará o tempo todo. Agora que você tem uma compreensão mais profunda da abstração de sequência do Clojure, vamos analisar essas funções em detalhes. Se você é iniciante em Lisp e programação funcional, esses exemplos serão surpreendentes e agradáveis.
+
+#### map
+
+Você já viu muitos exemplos de `map`, mas esta seção mostra `map` realizando duas novas tarefas: recebendo múltiplas coleções como argumentos e recebendo uma coleção de funções como argumento. Aqui também destacamos um padrão comum de `map`: o uso de palavras-chave como função de mapeamento.
+
+Até agora, você só viu exemplos de `map` operando em uma única coleção. No código a seguir, a coleção é o vetor `[1 2 3]`:
+
+``` clojure 
+(map inc [1 2 3])
+; => (2 3 4)
+```
+
+Porém, você também pode passar várias coleções pro `map`. Aqui vai um exemplo simples para mostrar como isso funciona:
+
+``` clojure 
+(map str ["a" "b" "c"] ["A" "B" "C"])
+; => ("aA" "bB" "cC")
+```
+
+É como se `map` fizesse o seguinte:
+
+``` clojure 
+(list (str "a" "A") (str "b" "B") (str "c" "C"))
+```

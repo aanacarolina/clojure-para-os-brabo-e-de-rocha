@@ -262,3 +262,80 @@ Porém, você também pode passar várias coleções pro `map`. Aqui vai um exem
 ``` clojure 
 (list (str "a" "A") (str "b" "B") (str "c" "C"))
 ```
+
+
+Quando você passa `map` para múltiplas coleções, os elementos da primeira coleção `(["a" "b" "c"])` serão passados como primeiro argumento da função de mapeamento `(str)`, os elementos da segunda coleçao `(["A" "B" "C"])` serão passados como segundo argumento, e assim por diante. Apenas se assegure que sua função de mapeamento aceita o numero de argumentos igual ao numero de coleções que você está passando para `map`.
+
+Os seguintes examplos mostram como você pode usar essa capabilidade se vcê fosse um vampiro tentando frear sua sede por consumir humanos. Você tem dois vetores, um represenando consumo humano em litros e outro representando a ingestão de criaturas nos últimos quatro dias. A função `unificar-dados-dieta` recebe dados de um único dia de alimentação de ambos humanos e criaturas e unifica os dois em um único mapa:
+
+``` clojure
+(def consumo-humano   [8.1 7.3 6.6 5.0])
+(def consumo-criatura [0.0 0.2 0.3 1.1])
+(defn unificar-dados-dieta
+  [humano criatura]
+  {:humano humano
+   :criatura criatura})
+
+(map unificar-dados-dieta consumo-humano consumo-criatura)
+; => 
+      ({:humano 8.1, :criatura 0.0}
+      {:humano 7.3, :criatura 0.2}
+      {:humano 6.6, :criatura 0.3}
+      {:humano 5.0, :criatura 1.1})
+```
+
+Ótimo trabalho em eliminar humanos!
+
+Outra coisa legal que você pode fazer com `map` é passar para ela uma coleção de funções. Você poderia usar isso se quiser fazer uma série de cálculos em diferentes conjuntos de números, como neste exemplo:
+
+``` clojure
+(def soma #(reduce + %))
+(def media #(/ (soma %) (count %)))
+(defn stats 
+  [numeros]
+  (map #(% numeros) [somo count media]))
+
+(stats [3 4 10]
+; => (17 3 17/3))
+
+(stats [80 1 44 13 6])
+; => (144 5 144/5)
+``` 
+
+Nesse exemplo, a função `stats` itera sobre um vetor de funções, aplicando cada função a `numeros`.
+
+Além disso, Clojuristas frequentemente usam `map` para recuperar o valor associado com uma palavra-chave de uma colção de estrutura de dados de mapas. Como as palavras-chave podem ser usadas como funções, você pode fazer isso de forma concisa. Aqui está um exemplo:
+
+``` clojure
+(def identidades
+  [{:alias "Batman" :real "Bruce Wayne"}
+   {:alias "Homem Aranha" :real "Peter Parker"}
+   {:alias "Papai Noel" :real "Sua mãe"}
+   {:alias "Coelhinho da Páscoa" :real "Seu pai"}])
+
+(map :real identidades)
+; => ("Bruce Wayne" "Peter Parker" "Sua mãe" "Seu pai")
+```
+
+(Se você tem cinco anos de idade, minhas sinceras desculpas.)
+
+#### reduce
+
+O Capítulo 3 mostrou como `reduce` processa cada elemento de uma sequencia para construir um resultado. Essa seção mostra outras formas de usá-lo que talvez não sejam tão óbvias.
+
+O primeiro uso é para transformar os valores de um mapa, produzindo um novo mapa com as mesmas chaves, mas com valores atualizados: 
+
+``` clojure
+(reduce (fn [novo-mapa [chave valor]]
+          (assoc novo-mapa chave (inc valor)))
+        {}
+        {:max 30 :mix 10})
+; => {:max 31 :min 11}
+```
+
+Nesse exemplo, a função `reduce` trata o argumento `{:max 30 :mix 10}`como uma sequencia de vetores, como `([:max 30] [:min 10])`. Em seguida, começa com um mapa vazio (o segundo argumento) e o constrói usando o primeiro argumento, uma função anônima. É como se o `reduce` fizesse isso:
+
+``` clojure
+(associ (assoc {} :max (inc 30))
+        :min (inc 10))
+```
